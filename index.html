@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ติวสอบ AI เพื่อการศึกษา</title>
+<meta name="description" content="สรุปบทเรียนพร้อมภาพประกอบและโหมดทำข้อสอบ วิชาปัญญาประดิษฐ์เพื่องานด้านการศึกษา">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="./">ติวสอบ AI <span>เพื่อการศึกษา</span></a>
+    <nav class="topnav" aria-label="เมนูหลัก">
+      <a href="./" aria-current="page">บทเรียน</a>
+      <a href="exam.html">ทำข้อสอบ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero">
+    <div class="eyebrow">ปัญญาประดิษฐ์เพื่องานด้านการศึกษา · 3(2-2-5)</div>
+    <h1>อ่านให้เข้าใจ แล้วลองทำข้อสอบ</h1>
+    <p class="lede">แต่ละ session มีสรุปพร้อมภาพประกอบ กับคลังข้อสอบปรนัยที่สุ่มลำดับข้อและตัวเลือกทุกครั้ง เลือกทำทีละ session หรือรวมหลาย session ก็ได้</p>
+    <div class="btn-row">
+      <a class="btn" href="exam.html">เริ่มทำข้อสอบ</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="list-h" style="display:grid;gap:12px">
+    <h2 id="list-h">Session</h2>
+    <div class="session-list" id="list">
+      <p class="hint" style="padding-block:18px">กำลังโหลดรายการ…</p>
+    </div>
+  </section>
+
+  <p class="foot">สรุปจากสไลด์และใบงานของรายวิชา ใช้ทบทวนก่อนสอบ</p>
+</main>
+
+<script src="assets/site.js"></script>
+<script>
+(async () => {
+  const list = document.getElementById("list");
+  const { el } = Site;
+  try {
+    const sessions = await Site.sessions();
+    const counts = await Promise.all(
+      sessions.map((s) => (s.quiz ? Site.quiz(s).then((q) => q.length).catch(() => 0) : 0))
+    );
+    list.replaceChildren(
+      ...sessions.map((s, i) => {
+        const ready = Boolean(s.page);
+        const best = s.quiz ? Site.getBest([s.id]) : null;
+        return el("div", { class: "session-row" + (ready ? " ready" : "") },
+          el("div", { class: "session-num" }, s.id),
+          el("div", { class: "session-main" },
+            el("h3", {}, s.title),
+            el("div", { class: "session-en" }, s.en),
+            el("div", { class: "session-meta" },
+              ready ? el("span", { class: "pill ok" }, "พร้อมอ่าน") : el("span", { class: "pill" }, "ยังไม่มีสรุป"),
+              counts[i] ? el("span", {}, `ข้อสอบ ${counts[i]} ข้อ`) : null,
+              best ? el("span", {}, `คะแนนดีสุด ${best.correct}/${best.total}`) : null
+            )
+          ),
+          el("div", { class: "session-actions" },
+            ready ? el("a", { class: "btn quiet", href: s.page }, "อ่านสรุป") : null,
+            counts[i] ? el("a", { class: "btn ghost", href: `exam.html?s=${s.id}` }, "ทำข้อสอบ") : null
+          )
+        );
+      })
+    );
+  } catch (err) {
+    list.replaceChildren(el("p", { class: "hint", style: "padding-block:18px" }, err.message));
+  }
+})();
+</script>
+</body>
+</html>
