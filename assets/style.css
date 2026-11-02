@@ -133,6 +133,26 @@ em.hl { font-style: normal; background: linear-gradient(transparent 55%, var(--h
   .session-num { font-size: 20px; }
 }
 
+/* ---------- summary / full switch ---------- */
+.seg { display: inline-flex; background: var(--surface); border-radius: 10px; padding: 3px; gap: 2px; justify-self: start; }
+.seg a { text-decoration: none; color: var(--muted); font-size: 14.5px; padding: 5px 14px; border-radius: 8px; }
+.seg a:hover { color: var(--ink); }
+.seg a[aria-current="page"] { background: var(--bg); color: var(--ink); font-weight: 500; box-shadow: 0 1px 2px rgb(0 0 0 / 0.08); }
+
+/* ---------- full lesson page ---------- */
+.lesson-toc { border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px; }
+.lesson-toc summary { cursor: pointer; font-weight: 500; }
+.lesson-toc ol { margin: 10px 0 0; padding-left: 0; list-style: none; display: grid; gap: 2px; columns: 2 260px; column-gap: 24px; }
+.lesson-toc li { break-inside: avoid; font-size: 15px; }
+.lesson-toc a { text-decoration: none; color: var(--ink); display: block; padding: 2px 0; }
+.lesson-toc a:hover { color: var(--accent); }
+.lesson-toc .n { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); display: inline-block; width: 2.4em; }
+.slide { gap: 14px; }
+.slide ul, .slide ol { margin: 0; padding-left: 22px; display: grid; gap: 4px; max-width: 68ch; }
+.slide .exam { border-left: 3px solid var(--grpB); padding: 2px 0 2px 12px; font-size: 15.5px; max-width: 68ch; }
+.slide .exam b:first-child { color: var(--grpB); }
+.pager { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
 /* ---------- notes page ---------- */
 .toc { display: flex; flex-wrap: wrap; gap: 6px; }
 .toc a { font-size: 14px; text-decoration: none; color: var(--ink); background: var(--surface); padding: 3px 12px; border-radius: 999px; }
