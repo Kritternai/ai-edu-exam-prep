@@ -5,38 +5,66 @@
     "en": "Machine Learning Paradigms",
     "page": "sessions/s06.html",
     "quiz": "data/quiz/s06.json",
-    "topics": ["Rule-based vs ML", "Supervised", "Unsupervised", "Reinforcement", "Over/Underfitting"]
+    "topics": [
+      "Rule-based vs ML",
+      "Supervised",
+      "Unsupervised",
+      "Reinforcement",
+      "Over/Underfitting"
+    ]
   },
   {
     "id": "07",
     "title": "โครงข่ายประสาทเทียมเบื้องต้น",
     "en": "Neural Networks",
-    "page": null,
+    "page": "sessions/s07.html",
     "quiz": null,
-    "topics": ["Perceptron", "Activation", "MLP", "Loss", "Backpropagation"]
+    "topics": [
+      "Perceptron",
+      "Activation",
+      "MLP",
+      "Loss",
+      "Backpropagation"
+    ]
   },
   {
     "id": "08",
     "title": "การประมวลผลภาษาธรรมชาติ",
     "en": "Natural Language Processing",
-    "page": null,
+    "page": "sessions/s08.html",
     "quiz": null,
-    "topics": ["Token", "Self-Attention", "LLMs", "RAG", "Cognitive Load"]
+    "topics": [
+      "Token",
+      "Self-Attention",
+      "LLMs",
+      "RAG",
+      "Cognitive Load"
+    ]
   },
   {
     "id": "10",
     "title": "ระบบผู้ช่วยสอนส่วนบุคคลและการออกแบบตรรกะช่วยสอน",
     "en": "Personalized Tutoring Systems",
-    "page": null,
+    "page": "sessions/s10.html",
     "quiz": null,
-    "topics": ["ITS 4 Models", "Socratic", "Misconception", "Human-AI roles"]
+    "topics": [
+      "ITS 4 Models",
+      "Socratic",
+      "Misconception",
+      "Human-AI roles"
+    ]
   },
   {
     "id": "11",
     "title": "เหมืองข้อมูลทางการศึกษาและการวิเคราะห์ร่องรอยการเรียนรู้",
     "en": "Educational Data Mining & Learning Analytics",
-    "page": null,
+    "page": "sessions/s11.html",
     "quiz": null,
-    "topics": ["EDM vs LA", "Drop-out Prediction", "Clustering", "Adaptive Logic"]
+    "topics": [
+      "EDM vs LA",
+      "Drop-out Prediction",
+      "Clustering",
+      "Adaptive Logic"
+    ]
   }
 ]

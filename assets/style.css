@@ -201,6 +201,9 @@ svg .t-mono { font-family: var(--f-mono); }
 .trainer { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; gap: 14px; min-width: 0; }
 .trainer select { font-family: var(--f-mono); font-size: 14px; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
 .trainer label { font-size: 14.5px; color: var(--muted); }
+.trainer input[type="range"] { accent-color: var(--accent); }
+.sliders label { display: grid; grid-template-columns: 28px 1fr 44px; gap: 8px; align-items: center; font-family: var(--f-mono); }
+.sliders input[type="range"] { width: 100%; min-width: 0; }
 .bars { display: grid; gap: 8px; }
 .bar-row { display: grid; grid-template-columns: 84px 1fr 64px; gap: 10px; align-items: center; font-size: 14px; }
 .bar-track { height: 14px; background: var(--surface); border-radius: 999px; overflow: hidden; }
