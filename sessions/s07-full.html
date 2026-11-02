@@ -21,7 +21,7 @@
   </div>
 </header>
 
-<main class="page">
+<main class="page" data-figs="1">
 
 <section class="hero">
   <nav class="seg" aria-label="รูปแบบเนื้อหา"><a href="s07.html">ฉบับสรุป</a><a href="s07-full.html" aria-current="page">ฉบับเต็ม</a></nav>
@@ -34,6 +34,7 @@
 <section class="note slide" id="s2" data-n="2">
   <div class="sec-tag">สไลด์ 2</div>
   <h2>ทำไมคอมพิวเตอร์ทั่วไปถึงไม่ฉลาดเท่ามนุษย์</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>คอมทั่วไปเหมือนพนักงานเก่งคนเดียวทำทีละงาน สมองเหมือนพนักงานธรรมดาเป็นพันล้านคนทำพร้อมกัน</p>
   <p>คอมพิวเตอร์ทั่วไปใช้สถาปัตยกรรมดั้งเดิมแบบ <b>Von Neumann</b> ซึ่งประมวลผลเชิงเส้น <b>ทีละคำสั่ง</b> (Sequential Processing) รับคำสั่งหนึ่ง ทำเสร็จ แล้วค่อยทำคำสั่งถัดไป วิธีนี้เก่งมากกับงานคณิตศาสตร์ที่มีขั้นตอนชัดเจน แต่ล้มเหลวในงานที่มนุษย์ทำได้แทบไม่ต้องคิด เช่น การรู้จำใบหน้า หรือการตีความภาษา เพราะงานพวกนี้ไม่มีขั้นตอนตายตัวให้เขียนเป็นคำสั่ง</p>
   <p>ทางออกคือ <b>Artificial Neural Networks</b> (โครงข่ายประสาทเทียม) ซึ่งหันมาศึกษาและเลียนแบบสมองมนุษย์ สมองทำงานแบบ <b>ประมวลผลขนานมหาศาล</b> (Massively Parallel Processing) ผ่านเซลล์ประสาทนับพันล้านตัวที่ทำงานพร้อมกัน แต่ละตัวทำงานง่าย ๆ แต่เมื่อต่อกันเป็นเครือข่ายก็ทำงานซับซ้อนได้</p>
 </section>
@@ -42,6 +43,7 @@
   <div class="sec-tag">สไลด์ 3</div>
   <h2>โครงสร้างเซลล์ประสาทมนุษย์ (Biological Neuron)</h2>
   <p>เซลล์ประสาท 1 ตัวมี 4 ส่วนที่ต้องรู้ เพราะแต่ละส่วนจะกลายเป็นส่วนประกอบของเซลล์ประสาทเทียมในสไลด์ถัดไป</p>
+  <figure><div class="art"><svg viewBox="0 0 720 220" role="img" aria-label="ภาพร่างเซลล์ประสาท"><g class="s-ink" stroke-width="2" fill="none"><path d="M150 110 L90 60 L60 40 M90 60 L70 75"/><path d="M148 104 L70 110 L40 100 M70 110 L45 125"/><path d="M152 118 L95 165 L70 185 M95 165 L75 155"/><line x1="214" y1="110" x2="520" y2="110" stroke-width="3"/><path d="M520 110 L560 80 M520 110 L565 110 M520 110 L560 140"/><path d="M610 110 L650 80 M610 110 L660 110 M610 110 L650 140"/></g><rect x="250" y="102" width="44" height="16" rx="8" class="f-surface s-axis"/><rect x="320" y="102" width="44" height="16" rx="8" class="f-surface s-axis"/><rect x="390" y="102" width="44" height="16" rx="8" class="f-surface s-axis"/><rect x="460" y="102" width="44" height="16" rx="8" class="f-surface s-axis"/><circle cx="180" cy="110" r="34" class="f-pensoft s-pen" stroke-width="2"/><circle cx="568" cy="110" r="4" class="f-B"/><circle cx="604" cy="110" r="4" class="f-B"/><g font-size="13"><text x="20" y="22" class="f-ink">Dendrites · รับสัญญาณ</text><text x="180" y="166" text-anchor="middle" class="f-pen">Soma · รวมสัญญาณ</text><text x="370" y="92" text-anchor="middle" class="f-ink">Axon · ส่งสัญญาณออก</text><text x="586" y="176" text-anchor="middle" class="f-B">Synapse</text><text x="586" y="194" text-anchor="middle" class="f-muted" font-size="12">ปรับความแรง = จุดที่เรียนรู้</text></g></svg></div><figcaption>เซลล์ถัดไปอยู่ทางขวา ช่องว่างระหว่างปลายแอกซอนกับเซลล์ถัดไปคือไซแนปส์</figcaption></figure>
   <ul>
     <li><b>Dendrites (เดนไดรต์)</b> แขนรับสัญญาณไฟฟ้าเคมีจากเซลล์อื่น ทำหน้าที่เป็นทางเข้า (Input)</li>
     <li><b>Soma (ตัวเซลล์)</b> ศูนย์กลางที่รวมสัญญาณกระตุ้นทั้งหมดเข้าด้วยกัน (Summation)</li>
@@ -53,7 +55,9 @@
 <section class="note slide" id="s4" data-n="4">
   <div class="sec-tag">สไลด์ 4</div>
   <h2>ตรรกะการยิงสัญญาณของสมอง</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนกริ่งประตู กดเบาไปไม่ดัง กดแรงพอก็ดังเต็มเสียง กดแรงกว่านั้นก็ไม่ได้ดังกว่าเดิม</p>
   <p>เซลล์ประสาทยิงสัญญาณตามกฎ <b>ทำทั้งหมดหรือไม่ทำเลย (All-or-None Law)</b> ไม่มีการยิงครึ่ง ๆ กลาง ๆ</p>
+  <figure><div class="art"><svg viewBox="0 0 720 190" role="img" aria-label="กฎ all-or-none เทียบสัญญาณกับ threshold"><line x1="60" y1="150" x2="700" y2="150" class="s-axis"/><rect x="80" y="114" width="50" height="36" rx="4" class="f-pen"/><text x="105" y="170" text-anchor="middle" class="f-muted" font-size="12">สัญญาณรวม 0.30</text><rect x="160" y="70" width="56" height="56" rx="8" class="f-surface"/><text x="188" y="106.4" text-anchor="middle" class="f-ink" font-size="24">0</text><rect x="300" y="66" width="50" height="84" rx="4" class="f-pen"/><text x="325" y="170" text-anchor="middle" class="f-muted" font-size="12">สัญญาณรวม 0.70</text><rect x="380" y="70" width="56" height="56" rx="8" class="f-hl"/><text x="408" y="106.4" text-anchor="middle" class="f-ink" font-size="24">1</text><rect x="520" y="36" width="50" height="114" rx="4" class="f-pen"/><text x="545" y="170" text-anchor="middle" class="f-muted" font-size="12">สัญญาณรวม 0.95</text><rect x="600" y="70" width="56" height="56" rx="8" class="f-hl"/><text x="628" y="106.4" text-anchor="middle" class="f-ink" font-size="24">1</text><line x1="60" y1="90" x2="700" y2="90" class="s-bad" stroke-dasharray="6 5" stroke-width="1.6"/><text x="700" y="84" text-anchor="end" class="f-bad" font-size="13">Threshold 0.5</text></svg></div><figcaption>ต่ำกว่าเส้นได้ 0 · เกินเส้นได้ 1 เต็มที่ ไม่ว่าจะเกินมากหรือน้อย (0.7 กับ 0.95 ให้ผลเท่ากัน)</figcaption></figure>
   <ul>
     <li>ถ้าสัญญาณกระตุ้นรวม <b>ไม่ถึง</b> ค่าขีดเริ่มเปลี่ยน (<b>Threshold</b>) เซลล์จะไม่ยิงสัญญาณ ผลลัพธ์ = 0</li>
     <li>ถ้าสัญญาณกระตุ้นรวม <b>สูงเกิน</b> ค่าขีดเริ่มเปลี่ยน เซลล์จะยิงสัญญาณเต็มที่ ผลลัพธ์ = 1</li>
@@ -64,7 +68,31 @@
 <section class="note slide" id="s5" data-n="5">
   <div class="sec-tag">สไลด์ 5</div>
   <h2>การแปลงชีววิทยาไปเป็นเซลล์ประสาทเทียม (Perceptron Model)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>Perceptron คือคนตัดสินใจ 1 คนที่ฟังความเห็นหลายคน (x) ให้น้ำหนักแต่ละคนไม่เท่ากัน (w) แล้วสรุปว่าจะทำหรือไม่</p>
   <p>Perceptron คือแบบจำลองเซลล์ประสาทเทียม 1 ตัว แต่ละส่วนของเซลล์จริงถูกแปลงเป็นสัญลักษณ์ทางคณิตศาสตร์ดังนี้</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 250" role="img" aria-label="แผนภาพ Perceptron">
+      <defs><marker id="a7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-muted"/></marker></defs>
+      <g class="f-surface"><circle cx="70" cy="60" r="26"/><circle cx="70" cy="130" r="26"/><circle cx="70" cy="200" r="26"/></g>
+      <g class="f-ink t-mono" font-size="15" text-anchor="middle"><text x="70" y="65">x₁</text><text x="70" y="135">x₂</text><text x="70" y="205">xₙ</text></g>
+      <line x1="96" y1="62" x2="290" y2="122" class="s-axis" marker-end="url(#a7)"/>
+      <line x1="96" y1="130" x2="290" y2="130" class="s-axis" marker-end="url(#a7)"/>
+      <line x1="96" y1="198" x2="290" y2="138" class="s-axis" marker-end="url(#a7)"/>
+      <g class="f-pen t-mono" font-size="14"><text x="170" y="78">w₁</text><text x="170" y="124">w₂</text><text x="170" y="192">wₙ</text></g>
+      <circle cx="340" cy="130" r="46" class="f-pensoft s-pen" stroke-width="2"/>
+      <text x="340" y="126" text-anchor="middle" class="f-pen t-mono" font-size="18">z = Σwx + b</text>
+      <text x="340" y="148" text-anchor="middle" class="f-muted" font-size="12">Weighted Sum</text>
+      <line x1="386" y1="130" x2="460" y2="130" class="s-axis" marker-end="url(#a7)"/>
+      <rect x="464" y="98" width="110" height="64" rx="10" class="f-hl"/>
+      <text x="519" y="128" text-anchor="middle" class="f-ink t-mono" font-size="17">f(z)</text>
+      <text x="519" y="148" text-anchor="middle" class="f-muted" font-size="12">Activation</text>
+      <line x1="574" y1="130" x2="640" y2="130" class="s-axis" marker-end="url(#a7)"/>
+      <text x="680" y="135" text-anchor="middle" class="f-ink t-mono" font-size="16">ŷ</text>
+      <text x="340" y="215" text-anchor="middle" class="f-muted" font-size="13">b = Bias (เทียบกับ Threshold)</text>
+    </svg>
+    </div>
+  </figure>
   <ul>
     <li><b>Dendrites → Inputs</b> <code>x₁, x₂, …, xₙ</code> ตัวแปรนำเข้า</li>
     <li><b>Synapse → Weights</b> <code>w₁, w₂, …, wₙ</code> ค่าน้ำหนักประจำแต่ละเส้น</li>
@@ -78,6 +106,7 @@
 <section class="note slide" id="s6" data-n="6">
   <div class="sec-tag">สไลด์ 6</div>
   <h2>สมการรากฐานของเซลล์ประสาทเทียม</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ตัดสินใจว่าจะไปดูหนังไหม: เพื่อนชวน (x₁) สำคัญมาก (w สูง) ฝนตก (x₂) ทำให้ไม่อยากไป (w ติดลบ) ส่วน Bias คือนิสัยเดิมว่าชอบออกไปเที่ยวแค่ไหน</p>
   <p>ภายในโหนดประมวลผลเดี่ยว (Single Neuron) มีสมการเดียวที่ต้องจำให้ได้</p>
   <pre class="code">z = (x₁w₁ + x₂w₂ + … + xₙwₙ) + b</pre>
   <ul>
@@ -90,7 +119,9 @@
 <section class="note slide" id="s7" data-n="7">
   <div class="sec-tag">สไลด์ 7</div>
   <h2>ทำไมต้องมี Activation Function</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ไม้บรรทัดตรงกี่อันต่อกันก็ยังได้เส้นตรง Activation คือข้อต่อที่ทำให้งอได้ จึงวาดรูปโค้งได้</p>
   <p><b>ปัญหาขีดจำกัดของสมการเชิงเส้น (Linear Limitation)</b> สมการ z = Σwx + b เป็นสมการเส้นตรง ถ้าไม่ใช้ฟังก์ชันกระตุ้น การนำเส้นตรงมาต่อกันกี่ชั้นก็ยังได้เส้นตรง โครงข่ายที่ต่อกัน 100 ชั้นจะยุบสมการรวมแล้วเท่ากับชั้นเดียว คำนวณได้แค่เส้นตรงเท่านั้น การมีหลายชั้นจึงไม่มีประโยชน์</p>
+  <figure><div class="art"><svg viewBox="0 0 720 230" role="img" aria-label="ปัญหา XOR"><g transform="translate(20 0)"><rect x="0" y="10" width="300" height="190" rx="10" class="f-surface"/><circle cx="70" cy="160" r="10" class="f-A"/><text x="70" y="186" text-anchor="middle" class="f-muted t-mono" font-size="11">(0,0)</text><circle cx="230" cy="50" r="10" class="f-A"/><text x="230" y="36" text-anchor="middle" class="f-muted t-mono" font-size="11">(1,1)</text><circle cx="70" cy="50" r="10" class="f-B"/><text x="70" y="36" text-anchor="middle" class="f-muted t-mono" font-size="11">(0,1)</text><circle cx="230" cy="160" r="10" class="f-B"/><text x="230" y="186" text-anchor="middle" class="f-muted t-mono" font-size="11">(1,0)</text><line x1="40" y1="190" x2="270" y2="20" class="s-bad" stroke-width="2.4" stroke-dasharray="7 5"/><text x="150" y="222" text-anchor="middle" class="f-bad" font-size="13">เส้นตรง 1 เส้น แบ่งไม่ได้</text></g><g transform="translate(400 0)"><rect x="0" y="10" width="300" height="190" rx="10" class="f-surface"/><circle cx="70" cy="160" r="10" class="f-A"/><text x="70" y="186" text-anchor="middle" class="f-muted t-mono" font-size="11">(0,0)</text><circle cx="230" cy="50" r="10" class="f-A"/><text x="230" y="36" text-anchor="middle" class="f-muted t-mono" font-size="11">(1,1)</text><circle cx="70" cy="50" r="10" class="f-B"/><text x="70" y="36" text-anchor="middle" class="f-muted t-mono" font-size="11">(0,1)</text><circle cx="230" cy="160" r="10" class="f-B"/><text x="230" y="186" text-anchor="middle" class="f-muted t-mono" font-size="11">(1,0)</text><line x1="20" y1="110" x2="130" y2="190" class="s-good" stroke-width="2.4"/><line x1="170" y1="20" x2="290" y2="105" class="s-good" stroke-width="2.4"/><text x="150" y="222" text-anchor="middle" class="f-good" font-size="13">หลายเส้น (Non-linear) แบ่งได้</text></g></svg></div><figcaption>XOR: สีเดียวกันอยู่มุมตรงข้ามกัน ไม่มีเส้นตรงเส้นเดียวที่แยกเขียวออกจากส้มได้</figcaption></figure>
   <p><b>ปัญหา XOR (Exclusive OR)</b> เป็นตัวอย่างคลาสสิกของข้อมูลที่ใช้เส้นตรงเส้นเดียวขีดแบ่งกลุ่มไม่ได้ (<b>Non-linearly Separable</b>) ปัญหาในโลกจริงส่วนมากซับซ้อนแบบนี้</p>
   <p><b>ทางแก้</b> ต้องใช้ฟังก์ชันกระตุ้นแบบ <b>ไม่เป็นเส้นตรง (Non-linear)</b> เพื่อดัดและแบ่งพื้นที่ข้อมูล ทำให้โครงข่ายหลายชั้นเรียนรู้รูปแบบโค้งหรือซับซ้อนได้</p>
 </section>
@@ -99,6 +130,40 @@
   <div class="sec-tag">สไลด์ 8</div>
   <h2>ฟังก์ชันกระตุ้นมาตรฐาน: Step และ Sigmoid</h2>
   <p>สองฟังก์ชันนี้เป็นยุคคลาสสิก</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 150" role="img" aria-label="กราฟ step sigmoid relu และตัวอย่าง softmax">
+      <g>
+        <rect x="0" y="0" width="165" height="110" rx="8" class="f-surface"/>
+        <path d="M12 96 H81 V14 H150" class="s-pen" stroke-width="2.6"/>
+        <text x="82" y="134" text-anchor="middle" class="f-ink" font-size="14">Step</text>
+        <text x="82" y="148" text-anchor="middle" class="f-muted" font-size="11">0 หรือ 1 · หาความชันไม่ได้</text>
+      </g>
+      <g transform="translate(185 0)">
+        <rect x="0" y="0" width="165" height="110" rx="8" class="f-surface"/>
+        <path d="M12.0,95.8 L25.8,95.3 L37.3,94.2 L46.5,92.1 L53.4,89.2 L58.0,86.2 L62.6,82.2 L67.2,77.0 L71.8,70.6 L76.4,63.1 L81.0,55.0 L85.6,46.9 L90.2,39.4 L94.8,33.0 L99.4,27.8 L104.0,23.8 L108.6,20.8 L115.5,17.9 L124.7,15.8 L136.2,14.7 L150.0,14.2" class="s-pen" stroke-width="2.6"/>
+        <text x="82" y="134" text-anchor="middle" class="f-ink" font-size="14">Sigmoid</text>
+        <text x="82" y="148" text-anchor="middle" class="f-muted" font-size="11">ช่วง (0,1) · Vanishing Gradient</text>
+      </g>
+      <g transform="translate(370 0)">
+        <rect x="0" y="0" width="165" height="110" rx="8" class="f-surface"/>
+        <path d="M12 96 H81 L150 14" class="s-pen" stroke-width="2.6"/>
+        <text x="82" y="134" text-anchor="middle" class="f-ink" font-size="14">ReLU = max(0, z)</text>
+        <text x="82" y="148" text-anchor="middle" class="f-muted" font-size="11">ลบเป็น 0 · มาตรฐาน Hidden</text>
+      </g>
+      <g transform="translate(555 0)">
+        <rect x="0" y="0" width="165" height="110" rx="8" class="f-surface"/>
+        <rect x="22" y="31" width="30" height="67" rx="3" class="f-pen"/>
+        <rect x="68" y="73" width="30" height="25" rx="3" class="f-pen"/>
+        <rect x="114" y="88" width="30" height="10" rx="3" class="f-pen"/>
+        <g class="f-ink t-mono" font-size="11" text-anchor="middle"><text x="37" y="24">66%</text><text x="83" y="66">24%</text><text x="129" y="81">10%</text></g>
+        <text x="82" y="134" text-anchor="middle" class="f-ink" font-size="14">Softmax</text>
+        <text x="82" y="148" text-anchor="middle" class="f-muted" font-size="11">รวมเป็น 100% · หลายกลุ่ม</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>Softmax ตัวอย่าง: คะแนนดิบ [2, 1, 0.1] แปลงเป็นความน่าจะเป็น [0.66, 0.24, 0.10] ที่รวมกันได้ 1</figcaption>
+  </figure>
   <p><b>Step Function (ขั้นบันได)</b> ผลลัพธ์คือ 0 หรือ 1 ตัดสลับทันทีเมื่อ z ผ่านเกณฑ์ ตรงกับกฎ All-or-None ของเซลล์จริง ข้อจำกัดคือ <b>หาความชันไม่ได้</b> (กราฟเป็นขั้นบันได ความชันเป็นศูนย์หรือไม่นิยาม) ทำให้ใช้ Gradient Descent ปรับน้ำหนักไม่ได้ โมเดลจึงเรียนรู้ต่อไม่ได้</p>
   <p><b>Sigmoid Function</b> บีบผลลัพธ์ให้อยู่ในช่วง (0, 1) เป็นเส้นโค้งรูปตัว S จึงอ่านเป็นความน่าจะเป็นได้ และมีความชันทุกจุด ข้อจำกัดคือ <b>ความชันหาย (Vanishing Gradient)</b> เมื่อ z มีค่าสูงหรือต่ำมาก ปลายกราฟแบนเกือบราบ ความชันเกือบเป็นศูนย์ การปรับน้ำหนักจึงแทบไม่ขยับ โดยเฉพาะในโครงข่ายที่ลึก</p>
 </section>
@@ -106,6 +171,7 @@
 <section class="note slide" id="s9" data-n="9">
   <div class="sec-tag">สไลด์ 9</div>
   <h2>ฟังก์ชันกระตุ้นมาตรฐาน (ต่อ): ReLU และ Softmax</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ReLU = “ถ้าติดลบ ไม่สนใจ ถ้าบวก ส่งต่อตามจริง” · Softmax = แบ่งพิซซ่า 100% ให้แต่ละคำตอบตามความมั่นใจ</p>
   <p>สองฟังก์ชันนี้เป็นขุมพลังของ Deep Learning ยุคปัจจุบัน</p>
   <p><b>ReLU (Rectified Linear Unit)</b> <code>f(z) = max(0, z)</code> ค่าลบกลายเป็น 0 ค่าบวกปล่อยผ่านตามเดิม จุดเด่นคือคำนวณเร็วมาก และไม่เกิดปัญหาความชันหายในฝั่งบวก (ความชันฝั่งบวกเป็น 1 เสมอ) จึงเป็นมาตรฐานของ Hidden Layer</p>
   <p><b>Softmax Function</b> ใช้ใน Output Layer เพื่อแปลงคะแนนดิบของแต่ละคลาสเป็นสัดส่วนความน่าจะเป็นที่รวมกันได้ 100% เหมาะกับการแยกข้อมูลหลายกลุ่ม เช่น คะแนนดิบ [2, 1, 0.1] จะกลายเป็นประมาณ [0.66, 0.24, 0.10]</p>
@@ -115,6 +181,26 @@
   <div class="sec-tag">สไลด์ 10</div>
   <h2>โครงสร้างแบบหลายชั้น (Multilayer Perceptron: MLP)</h2>
   <p><b>ทำไมต้องหลายชั้น</b> โหนดเดี่ยวแก้ปัญหาซับซ้อนไม่ได้ (เช่น XOR) การร้อยเรียงโหนดหลายตัวหลายชั้นช่วยสร้าง <b>การเรียนรู้เชิงลำดับชั้น (Hierarchical Learning)</b> ชั้นแรก ๆ เรียนรู้ลักษณะง่าย ๆ ชั้นหลังนำมาประกอบเป็นลักษณะที่ซับซ้อนขึ้น</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 260" role="img" aria-label="โครงข่าย 2-3-1 พร้อมชื่อชั้น">
+      <g class="s-axis" stroke-width="1">
+        <line x1="120" y1="80" x2="340" y2="50"/><line x1="120" y1="80" x2="340" y2="130"/><line x1="120" y1="80" x2="340" y2="210"/>
+        <line x1="120" y1="180" x2="340" y2="50"/><line x1="120" y1="180" x2="340" y2="130"/><line x1="120" y1="180" x2="340" y2="210"/>
+        <line x1="340" y1="50" x2="560" y2="130"/><line x1="340" y1="130" x2="560" y2="130"/><line x1="340" y1="210" x2="560" y2="130"/>
+      </g>
+      <g class="f-surface s-ink" stroke-width="1.2"><circle cx="120" cy="80" r="24"/><circle cx="120" cy="180" r="24"/></g>
+      <g class="f-pensoft s-pen" stroke-width="1.6"><circle cx="340" cy="50" r="24"/><circle cx="340" cy="130" r="24"/><circle cx="340" cy="210" r="24"/></g>
+      <circle cx="560" cy="130" r="24" class="f-hl s-ink" stroke-width="1.2"/>
+      <g class="f-muted" font-size="12" text-anchor="end"><text x="88" y="76">เวลาเข้าเรียน</text><text x="88" y="92">(ชั่วโมง)</text><text x="88" y="176">คะแนนกลางภาค</text><text x="88" y="192">(%)</text></g>
+      <g class="f-pen t-mono" font-size="11" text-anchor="middle"><text x="340" y="54">+b</text><text x="340" y="134">+b</text><text x="340" y="214">+b</text></g>
+      <text x="560" y="134" text-anchor="middle" class="f-ink t-mono" font-size="11">+b</text>
+      <text x="600" y="128" class="f-ink" font-size="13">ผลทำนาย</text>
+      <g font-size="14" text-anchor="middle"><text x="120" y="250" class="f-ink">Input Layer</text><text x="340" y="250" class="f-pen">Hidden Layer</text><text x="560" y="250" class="f-ink">Output Layer</text></g>
+    </svg>
+    </div>
+    <figcaption>ตัวอย่างบริบทการศึกษา (สไลด์ 11) · ทุกโหนดเชื่อมกับทุกโหนดชั้นถัดไป (Fully Connected)</figcaption>
+  </figure>
   <p>MLP มีองค์ประกอบหลัก 3 ชั้น</p>
   <ul>
     <li><b>ชั้นข้อมูลเข้า (Input Layer)</b></li>
@@ -134,7 +220,9 @@
 <section class="note slide" id="s12" data-n="12">
   <div class="sec-tag">สไลด์ 12</div>
   <h2>ชั้นซ่อน (Hidden Layers) และการสกัดคุณลักษณะ</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนสายการผลิต คนแรกเห็นแค่เส้น คนถัดไปประกอบเส้นเป็นรูปร่าง คนสุดท้ายบอกได้ว่าเป็นหน้าใคร</p>
   <p><b>หน้าที่</b> แปลงและสกัดความสัมพันธ์เชิงลึก (<b>Feature Representation</b>) จากข้อมูลเข้า เรียกว่า “ซ่อน” เพราะเราไม่ได้เห็นหรือกำหนดค่าของมันโดยตรง</p>
+  <figure><div class="art"><svg viewBox="0 0 720 170" role="img" aria-label="ลำดับชั้นการสกัดคุณลักษณะ"><defs><marker id="n07a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs><rect x="20" y="30" width="110" height="100" rx="10" class="f-surface"/><rect x="40" y="50" width="12" height="12" class="f-ink"/><rect x="53" y="50" width="12" height="12" class="f-surface"/><rect x="66" y="50" width="12" height="12" class="f-surface"/><rect x="79" y="50" width="12" height="12" class="f-ink"/><rect x="92" y="50" width="12" height="12" class="f-surface"/><rect x="40" y="63" width="12" height="12" class="f-surface"/><rect x="53" y="63" width="12" height="12" class="f-surface"/><rect x="66" y="63" width="12" height="12" class="f-ink"/><rect x="79" y="63" width="12" height="12" class="f-surface"/><rect x="92" y="63" width="12" height="12" class="f-surface"/><rect x="40" y="76" width="12" height="12" class="f-surface"/><rect x="53" y="76" width="12" height="12" class="f-ink"/><rect x="66" y="76" width="12" height="12" class="f-surface"/><rect x="79" y="76" width="12" height="12" class="f-surface"/><rect x="92" y="76" width="12" height="12" class="f-ink"/><rect x="40" y="89" width="12" height="12" class="f-ink"/><rect x="53" y="89" width="12" height="12" class="f-surface"/><rect x="66" y="89" width="12" height="12" class="f-surface"/><rect x="79" y="89" width="12" height="12" class="f-ink"/><rect x="92" y="89" width="12" height="12" class="f-surface"/><rect x="40" y="102" width="12" height="12" class="f-surface"/><rect x="53" y="102" width="12" height="12" class="f-surface"/><rect x="66" y="102" width="12" height="12" class="f-ink"/><rect x="79" y="102" width="12" height="12" class="f-surface"/><rect x="92" y="102" width="12" height="12" class="f-surface"/><rect x="200" y="30" width="110" height="100" rx="10" class="f-surface"/><g class="s-ink" stroke-width="2.4"><line x1="220" y1="60" x2="260" y2="50"/><line x1="270" y1="100" x2="290" y2="60"/><line x1="225" y1="110" x2="255" y2="110"/></g><rect x="380" y="30" width="110" height="100" rx="10" class="f-surface"/><circle cx="415" cy="70" r="16" class="s-ink" stroke-width="2"/><path d="M445 95 L470 55 L480 100 Z" class="s-ink" stroke-width="2"/><rect x="560" y="30" width="110" height="100" rx="10" class="f-pensoft"/><circle cx="615" cy="80" r="36" class="s-pen" stroke-width="2"/><circle cx="602" cy="72" r="4" class="f-pen"/><circle cx="628" cy="72" r="4" class="f-pen"/><path d="M600 92 Q615 104 630 92" class="s-pen" stroke-width="2"/><line x1="132" y1="80" x2="196" y2="80" class="s-pen" stroke-width="1.6" marker-end="url(#n07a)"/><line x1="312" y1="80" x2="376" y2="80" class="s-pen" stroke-width="1.6" marker-end="url(#n07a)"/><line x1="492" y1="80" x2="556" y2="80" class="s-pen" stroke-width="1.6" marker-end="url(#n07a)"/><g font-size="13" text-anchor="middle"><text x="75" y="152" class="f-muted">พิกเซลดิบ (Input)</text><text x="255" y="152" class="f-ink">Hidden 1 · เส้นขอบ</text><text x="435" y="152" class="f-ink">Hidden 2 · รูปร่าง</text><text x="615" y="152" class="f-pen">Output · ใบหน้า</text></g></svg></div><figcaption>ชั้นแรกเห็นแค่เส้น ชั้นถัดไปรวมเส้นเป็นรูปร่าง ชั้นท้ายรวมรูปร่างเป็นสิ่งที่มีความหมาย</figcaption></figure>
   <ul>
     <li><b>ความลึก (Depth)</b> คือจำนวนชั้นซ่อน ยิ่งลึก โมเดลยิ่งแก้ปัญหาที่ซับซ้อนได้ (ที่มาของคำว่า Deep Learning)</li>
     <li><b>ความกว้าง (Width)</b> คือจำนวนโหนดในแต่ละชั้น ยิ่งกว้าง ยิ่งจำแนกแพทเทิร์นได้หลากหลาย</li>
@@ -156,6 +244,7 @@
 <section class="note slide" id="s14" data-n="14">
   <div class="sec-tag">สไลด์ 14</div>
   <h2>เส้นประสาทเทียมและการนับพารามิเตอร์</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>นับเส้นที่ลากระหว่างชั้น (ทุกจุดต่อทุกจุด) แล้วบวกจำนวนจุดที่ไม่ใช่ชั้นแรก</p>
   <p><b>สายเชื่อมต่อ (Weights)</b> ในโครงข่ายแบบ Fully Connected โหนดทุกตัวลากเส้นเชื่อมไปยังทุกโหนดในชั้นถัดไป แต่ละเส้นมีน้ำหนักของตัวเอง 1 ค่า จำนวน Weights ระหว่างสองชั้นจึงเท่ากับ <b>จำนวนโหนดชั้นก่อน × จำนวนโหนดชั้นถัดไป</b></p>
   <p><b>ค่าความเอนเอียง (Bias)</b> โหนดในชั้นซ่อนและชั้นออกจะมี Bias ประจำตัวเสมอ ตัวละ 1 ค่า ส่วนชั้น Input ไม่มี</p>
   <p><b>Trainable Parameters</b> คือจำนวนสิ่งที่ AI ต้องเรียนรู้ = (จำนวน Weights) + (จำนวน Biases)</p>
@@ -191,6 +280,7 @@
 <section class="note slide" id="s18" data-n="18">
   <div class="sec-tag">สไลด์ 18</div>
   <h2>โครงข่ายประสาทเทียมรู้ได้อย่างไรว่าตัวเองทายผิด</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>Loss คือคะแนนความผิด ยิ่งต่ำยิ่งดี การ Train คือพยายามทำให้คะแนนนี้ใกล้ศูนย์</p>
   <p><b>Loss Function</b> คือมาตรวัดที่เป็นตัวเลขเชิงปริมาณ สะท้อนว่าโครงข่ายทายผิดมากแค่ไหน (ถ้าเฉลี่ยทั้งชุดข้อมูลมักเรียกว่า Cost Function)</p>
   <p>สมการตรรกะพื้นฐาน <code>Error = f(ŷ, y)</code></p>
   <ul>
@@ -204,6 +294,7 @@
   <div class="sec-tag">สไลด์ 19</div>
   <h2>การเลือกมาตรวัดให้ตรงกับประเภทงาน</h2>
   <p><b>ปัญหาพยากรณ์ค่าต่อเนื่อง (Regression)</b> ใช้ <b>Mean Squared Error (MSE)</b></p>
+  <figure><div class="art"><svg viewBox="0 0 720 190" role="img" aria-label="การยกกำลังสองของความผิด"><g font-size="14"><text x="20" y="40" class="f-ink">ข้อ 1 · เฉลย 3 ทาย 2 → ผิด 1</text><rect x="330" y="20" width="24" height="24" class="f-pensoft s-pen"/><text x="370" y="38" class="f-ink t-mono">1² = 1</text><text x="20" y="110" class="f-ink">ข้อ 2 · เฉลย 5 ทาย 7 → ผิด 2</text><rect x="330" y="70" width="48" height="48" class="f-hl s-ink"/><text x="394" y="100" class="f-ink t-mono">2² = 4</text><text x="20" y="168" class="f-pen t-mono" font-size="16">MSE = (1 + 4) / 2 = 2.5</text></g><text x="520" y="60" class="f-muted" font-size="13">ผิดเพิ่ม 2 เท่า</text><text x="520" y="80" class="f-bad" font-size="13">โดนลงโทษเพิ่ม 4 เท่า</text></svg></div><figcaption>พื้นที่สี่เหลี่ยม = ความผิดยกกำลังสอง ทายห่างมากจึงโดนหนักกว่าทายห่างน้อยหลายเท่า</figcaption></figure>
   <pre class="code">MSE = (1/N) Σ (y − ŷ)²</pre>
   <p>หาผลต่างระหว่างเฉลยกับคำทายแต่ละข้อ ยกกำลังสอง แล้วหาค่าเฉลี่ย จุดเด่นคือการยกกำลังสอง <b>ลงโทษหนักหากทายผิดไปจากเฉลยมาก ๆ</b> ผิด 1 หน่วยได้ 1 แต่ผิด 3 หน่วยได้ 9 ตัวอย่าง y = [3, 5], ŷ = [2, 7] → (1 + 4)/2 = 2.5</p>
   <p><b>ปัญหาจำแนกประเภท (Classification)</b> ใช้ <b>Cross-Entropy (Log Loss)</b></p>
@@ -214,7 +305,9 @@
 <section class="note slide" id="s20" data-n="20">
   <div class="sec-tag">สไลด์ 20</div>
   <h2>กฎการปรับน้ำหนัก (The Math of Learning)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนเดินลงเขาตอนหมอกหนา มองไม่เห็นข้างล่าง แต่รู้ว่าพื้นใต้เท้าลาดไปทางไหน ก็ก้าวไปทางที่ลาดลง</p>
   <p>สมการรากฐานการอัปเดตค่าน้ำหนัก (Weight Update Rule)</p>
+  <figure><div class="art"><svg viewBox="0 0 720 190" role="img" aria-label="Gradient descent เดินลงหุบ"><defs><marker id="n07b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-B"/></marker></defs><g transform="translate(300 15) scale(1.3)"><path d="M15.0,15.0 L23.5,34.0 L32.0,51.0 L40.5,66.0 L49.0,79.0 L57.5,90.0 L66.0,99.0 L74.5,106.0 L83.0,111.0 L91.5,114.0 L100.0,115.0 L108.5,114.0 L117.0,111.0 L125.5,106.0 L134.0,99.0 L142.5,90.0 L151.0,79.0 L159.5,66.0 L168.0,51.0 L176.5,34.0 L185.0,15.0" class="s-axis" stroke-width="1.4"/><line x1="23" y1="39" x2="64" y2="102" class="s-pen" stroke-width="1.4" stroke-dasharray="4 3"/><circle cx="43.3" cy="70.6" r="5" class="f-pen"/><circle cx="77.3" cy="107.9" r="5" class="f-B"/><path d="M48 70 Q 66 78 73 102" class="s-B" stroke-width="1.6" marker-end="url(#n07b)"/><circle cx="100" cy="115" r="3" class="f-good"/></g><g font-size="13"><text x="20" y="60" class="f-pen">w_old · ความชันเป็นลบ (ลาดลงทางขวา)</text><text x="20" y="84" class="f-B">ก้าวสวนความชัน ขนาด α → w_new</text><text x="450" y="185" class="f-good">จุดต่ำสุด · Loss น้อยที่สุด</text></g></svg></div><figcaption>เส้นประคือความชันตรงจุดเดิม ลบความชันออกจึงพาเดินลงหุบไปทางจุดต่ำสุด</figcaption></figure>
   <pre class="code">w_new = w_old − α · ∂J/∂w</pre>
   <ul>
     <li><code>w_new</code> ค่าน้ำหนักใหม่ที่ฉลาดขึ้น</li>
@@ -229,17 +322,46 @@
 <section class="note slide" id="s21" data-n="21">
   <div class="sec-tag">สไลด์ 21</div>
   <h2>อัตราการเรียนรู้ (Learning Rate · α)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ก้าวสั้นไปถึงช้า ก้าวยาวไปกระโดดข้ามหุบ ก้าวพอดีถึงจุดต่ำสุดเร็วและนิ่ง</p>
   <ul>
     <li><b>α เล็กเกินไป (เช่น 0.0001)</b> ก้าวสั้นมาก โมเดลเรียนรู้ช้าสุด ๆ (Slow Convergence) ต้องใช้รอบจำนวนมาก</li>
     <li><b>α เหมาะสม (เช่น 0.01)</b> ก้าวอย่างมีเสถียรภาพ ลู่เข้าสู่จุดต่ำสุดได้อย่างราบรื่น</li>
     <li><b>α ใหญ่เกินไป (เช่น 0.9)</b> ก้าวกระโดดกว้างเกิน กระดอนข้ามหุบเขาไปมา (<b>Overshooting</b>) ค่า Loss อาจพุ่งทะลุจอแทนที่จะลดลง</li>
   </ul>
-</section>
+
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 170" role="img" aria-label="ผลของ learning rate เล็ก พอดี ใหญ่">
+      <defs><marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5"><circle cx="5" cy="5" r="4" class="f-B"/></marker></defs>
+      <g>
+        <path d="M15.0,15.0 L23.5,34.0 L32.0,51.0 L40.5,66.0 L49.0,79.0 L57.5,90.0 L66.0,99.0 L74.5,106.0 L83.0,111.0 L91.5,114.0 L100.0,115.0 L108.5,114.0 L117.0,111.0 L125.5,106.0 L134.0,99.0 L142.5,90.0 L151.0,79.0 L159.5,66.0 L168.0,51.0 L176.5,34.0 L185.0,15.0" class="s-axis" stroke-width="1.6"/>
+        <polyline points="26.3,39.9 33.7,54.2 40.3,65.7 46.3,75.1 51.7,82.7 56.5,88.8" class="s-B" stroke-width="2" marker-start="url(#dot)" marker-mid="url(#dot)" marker-end="url(#dot)"/>
+        <text x="100" y="140" text-anchor="middle" class="f-ink" font-size="14">α เล็กไป (0.0001)</text>
+        <text x="100" y="158" text-anchor="middle" class="f-muted" font-size="12">ก้าวสั้น เรียนช้ามาก</text>
+      </g>
+      <g transform="translate(250 0)">
+        <path d="M15.0,15.0 L23.5,34.0 L32.0,51.0 L40.5,66.0 L49.0,79.0 L57.5,90.0 L66.0,99.0 L74.5,106.0 L83.0,111.0 L91.5,114.0 L100.0,115.0 L108.5,114.0 L117.0,111.0 L125.5,106.0 L134.0,99.0 L142.5,90.0 L151.0,79.0 L159.5,66.0 L168.0,51.0 L176.5,34.0 L185.0,15.0" class="s-axis" stroke-width="1.6"/>
+        <polyline points="26.3,39.9 70.5,103.0 88.2,113.1 95.3,114.7 98.1,115.0" class="s-good" stroke-width="2" marker-start="url(#dot)" marker-mid="url(#dot)" marker-end="url(#dot)"/>
+        <text x="100" y="140" text-anchor="middle" class="f-good" font-size="14">α พอดี (0.01)</text>
+        <text x="100" y="158" text-anchor="middle" class="f-muted" font-size="12">ลู่เข้าจุดต่ำสุดอย่างราบรื่น</text>
+      </g>
+      <g transform="translate(500 0)">
+        <path d="M15.0,15.0 L23.5,34.0 L32.0,51.0 L40.5,66.0 L49.0,79.0 L57.5,90.0 L66.0,99.0 L74.5,106.0 L83.0,111.0 L91.5,114.0 L100.0,115.0 L108.5,114.0 L117.0,111.0 L125.5,106.0 L134.0,99.0 L142.5,90.0 L151.0,79.0 L159.5,66.0 L168.0,51.0 L176.5,34.0 L185.0,15.0" class="s-axis" stroke-width="1.6"/>
+        <polyline points="26.3,39.9 181.0,24.1 12,6" class="s-bad" stroke-width="2" marker-start="url(#dot)" marker-mid="url(#dot)" marker-end="url(#dot)"/>
+        <text x="100" y="140" text-anchor="middle" class="f-bad" font-size="14">α ใหญ่ไป (0.9)</text>
+        <text x="100" y="158" text-anchor="middle" class="f-muted" font-size="12">กระดอนข้ามหุบ (Overshooting)</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>แกนนอน = ค่า weight · แกนตั้ง = Loss · จุด = ตำแหน่ง weight หลังแต่ละก้าว</figcaption>
+  </figure></section>
 
 <section class="note slide" id="s22" data-n="22">
   <div class="sec-tag">สไลด์ 22</div>
   <h2>การย้อนกลับด้วยคณิตศาสตร์ (Backpropagation)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนสอบสวนย้อนหลังว่าใครทำให้ผลผิด ไล่จากปลายทางกลับมาทีละด่าน แล้วแบ่งความรับผิดชอบให้แต่ละเส้น</p>
   <p>ปัญหาคือ เรารู้ว่าคำตอบสุดท้ายผิดเท่าไร แต่โครงข่ายมีน้ำหนักเป็นร้อยเป็นพันเส้น จะรู้ได้อย่างไรว่าแต่ละเส้นรับผิดชอบความผิดนั้นแค่ไหน คำตอบคือ <b>กฎลูกโซ่แห่งแคลคูลัส (The Chain Rule)</b> Backprop หาอนุพันธ์ย่อยย้อนกลับทีละชั้น จาก Output ไปหา Input</p>
+  <figure><div class="art"><svg viewBox="0 0 720 180" role="img" aria-label="Forward กับ Backward propagation"><defs><marker id="n07c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker><marker id="n07d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-B"/></marker></defs><rect x="20" y="60" width="140" height="56" rx="10" class="f-surface"/><text x="90" y="92.9" text-anchor="middle" class="f-ink" font-size="14">Input</text><rect x="200" y="60" width="140" height="56" rx="10" class="f-pensoft"/><text x="270" y="92.9" text-anchor="middle" class="f-ink" font-size="14">Hidden</text><rect x="380" y="60" width="140" height="56" rx="10" class="f-pensoft"/><text x="450" y="92.9" text-anchor="middle" class="f-ink" font-size="14">Output</text><rect x="560" y="60" width="140" height="56" rx="10" class="f-hl"/><text x="630" y="92.9" text-anchor="middle" class="f-ink" font-size="14">Loss</text><path d="M90 56 Q 180 20 270 56" class="s-pen" stroke-width="1.6" marker-end="url(#n07c)"/><path d="M270 56 Q 360 20 450 56" class="s-pen" stroke-width="1.6" marker-end="url(#n07c)"/><path d="M450 56 Q 540 20 630 56" class="s-pen" stroke-width="1.6" marker-end="url(#n07c)"/><path d="M630 120 Q 540 160 450 120" class="s-B" stroke-width="1.6" marker-end="url(#n07d)"/><path d="M450 120 Q 360 160 270 120" class="s-B" stroke-width="1.6" marker-end="url(#n07d)"/><path d="M270 120 Q 180 160 90 120" class="s-B" stroke-width="1.6" marker-end="url(#n07d)"/><text x="360" y="18" text-anchor="middle" class="f-pen" font-size="13">Forward · ทายผล</text><text x="360" y="176" text-anchor="middle" class="f-B" font-size="13">Backward · ส่ง “ความชัน” ย้อนกลับทีละช่วง แล้วคูณต่อกัน (Chain Rule)</text></svg></div></figure>
   <pre class="code">∂Loss/∂wᵢⱼ = ∂Loss/∂Output × ∂Output/∂Hidden × ∂Hidden/∂wᵢⱼ</pre>
   <p>อ่านว่า ความชันของ Loss เทียบกับน้ำหนักเส้นหนึ่ง เท่ากับผลคูณของความชันแต่ละช่วงที่สัญญาณเดินผ่าน เมื่อได้ค่านี้แล้วก็นำไปใส่สูตรปรับน้ำหนักในสไลด์ 20</p>
 </section>
@@ -247,7 +369,24 @@
 <section class="note slide" id="s23" data-n="23">
   <div class="sec-tag">สไลด์ 23</div>
   <h2>สรุปวงจรการเรียนรู้ 1 รอบเต็ม</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ทาย → ตรวจ → หาสาเหตุ → แก้ วนไปเรื่อย ๆ เหมือนนักเรียนทำแบบฝึกหัดซ้ำจนเก่ง</p>
   <p>วงจรการฝึกฝน 1 Epoch (The Training Loop) มี 4 ขั้นตอนเรียงกัน</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 120" role="img" aria-label="วงจร training loop 4 ขั้น">
+      <defs><marker id="a7b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs>
+      <g font-size="14" text-anchor="middle">
+        <rect x="5" y="20" width="160" height="60" rx="10" class="f-pensoft"/><text x="85" y="46" class="f-pen">1 Forward Pass</text><text x="85" y="66" class="f-muted" font-size="12">เดาคำตอบ</text>
+        <rect x="190" y="20" width="160" height="60" rx="10" class="f-pensoft"/><text x="270" y="46" class="f-pen">2 Calculate Loss</text><text x="270" y="66" class="f-muted" font-size="12">ตรวจข้อสอบ</text>
+        <rect x="375" y="20" width="160" height="60" rx="10" class="f-pensoft"/><text x="455" y="46" class="f-pen">3 Backpropagation</text><text x="455" y="66" class="f-muted" font-size="12">สืบหาสาเหตุย้อนหลัง</text>
+        <rect x="560" y="20" width="155" height="60" rx="10" class="f-hl"/><text x="637" y="46" class="f-ink">4 Update Weights</text><text x="637" y="66" class="f-muted" font-size="12">Gradient Descent</text>
+      </g>
+      <g class="s-pen" stroke-width="1.6"><line x1="166" y1="50" x2="187" y2="50" marker-end="url(#a7b)"/><line x1="351" y1="50" x2="372" y2="50" marker-end="url(#a7b)"/><line x1="536" y1="50" x2="557" y2="50" marker-end="url(#a7b)"/></g>
+      <path d="M637 82 V104 H85 V84" class="s-pen" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#a7b)"/>
+      <text x="360" y="116" text-anchor="middle" class="f-muted" font-size="12">ครบ 4 ขั้น = 1 Epoch · ทำซ้ำนับพันครั้ง</text>
+    </svg>
+    </div>
+  </figure>
   <ol>
     <li><b>Forward Pass</b> เดาคำตอบไปข้างหน้า</li>
     <li><b>Calculate Loss</b> ตรวจข้อสอบและวัดความผิดพลาด</li>
