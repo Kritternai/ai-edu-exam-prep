@@ -18,7 +18,7 @@
     "title": "โครงข่ายประสาทเทียมเบื้องต้น",
     "en": "Neural Networks",
     "page": "sessions/s07.html",
-    "quiz": null,
+    "quiz": "data/quiz/s07.json",
     "topics": [
       "Perceptron",
       "Activation",
@@ -32,7 +32,7 @@
     "title": "การประมวลผลภาษาธรรมชาติ",
     "en": "Natural Language Processing",
     "page": "sessions/s08.html",
-    "quiz": null,
+    "quiz": "data/quiz/s08.json",
     "topics": [
       "Token",
       "Self-Attention",
@@ -46,7 +46,7 @@
     "title": "ระบบผู้ช่วยสอนส่วนบุคคลและการออกแบบตรรกะช่วยสอน",
     "en": "Personalized Tutoring Systems",
     "page": "sessions/s10.html",
-    "quiz": null,
+    "quiz": "data/quiz/s10.json",
     "topics": [
       "ITS 4 Models",
       "Socratic",
@@ -59,7 +59,7 @@
     "title": "เหมืองข้อมูลทางการศึกษาและการวิเคราะห์ร่องรอยการเรียนรู้",
     "en": "Educational Data Mining & Learning Analytics",
     "page": "sessions/s11.html",
-    "quiz": null,
+    "quiz": "data/quiz/s11.json",
     "topics": [
       "EDM vs LA",
       "Drop-out Prediction",
