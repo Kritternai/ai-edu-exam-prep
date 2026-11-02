@@ -152,6 +152,11 @@ em.hl { font-style: normal; background: linear-gradient(transparent 55%, var(--h
 .slide .exam { border-left: 3px solid var(--grpB); padding: 2px 0 2px 12px; font-size: 15.5px; max-width: 68ch; }
 .slide .exam b:first-child { color: var(--grpB); }
 .pager { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.easy { background: var(--accent-soft); border-radius: var(--radius); padding: 10px 14px; font-size: 15.5px; max-width: 68ch; }
+.easy b:first-child { color: var(--accent); margin-right: 6px; }
+.stack { display: grid; gap: 6px; }
+.stack > div { border-left: 4px solid var(--accent); background: var(--surface); padding: 8px 12px; border-radius: 6px; font-size: 15px; }
+.stack .t { font-family: var(--f-mono); font-size: 12px; color: var(--muted); display: block; }
 
 /* ---------- notes page ---------- */
 .toc { display: flex; flex-wrap: wrap; gap: 6px; }
