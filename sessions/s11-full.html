@@ -21,7 +21,7 @@
   </div>
 </header>
 
-<main class="page">
+<main class="page" data-figs="1">
 
 <section class="hero">
   <nav class="seg" aria-label="รูปแบบเนื้อหา"><a href="s11.html">ฉบับสรุป</a><a href="s11-full.html" aria-current="page">ฉบับเต็ม</a></nav>
@@ -34,6 +34,7 @@
 <section class="note slide" id="s2" data-n="2">
   <div class="sec-tag">สไลด์ 2</div>
   <h2>วิวัฒนาการสู่ระบบปรับตามผู้เรียน</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เส้นทางเดียวทุกคน เทียบกับ GPS ที่เปลี่ยนเส้นทางให้ตามสภาพรถติดของแต่ละคน</p>
   <p><b>ระบบคอมพิวเตอร์ช่วยสอนแบบเดิม (Static CAI)</b> ทุกคนเรียนตามลำดับเดียวกัน หน้า 1 → หน้า 2 → หน้า 3 หากตอบผิด ระบบเพียงแจ้งว่าผิด แล้วบังคับให้ทำซ้ำแบบเดิม ไม่ได้ช่วยให้เข้าใจว่าผิดเพราะอะไร</p>
   <p><b>ระบบผู้ช่วยสอนอัจฉริยะ (Adaptive Platform)</b> ตรวจวัดความถูกต้องและความเร็วของผู้เรียนแบบเรียลไทม์ แล้วปรับเนื้อหาแบบพลวัต (<b>Dynamic Branching</b>) คือแยกเส้นทางตามผู้เรียน</p>
   <ul>
@@ -45,7 +46,22 @@
 <section class="note slide" id="s3" data-n="3">
   <div class="sec-tag">สไลด์ 3</div>
   <h2>ร่องรอยดิจิทัลบนหน้าจอแอปพลิเคชัน</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ทุกคลิกเหมือนรอยเท้าบนทราย ระบบเดินตามรอยเท้าเพื่อเดาว่าผู้เรียนไปทางไหนและติดตรงไหน</p>
   <p><b>ร่องรอยดิจิทัล (Digital Traces)</b> คือบันทึกทุกการกระทำของผู้เรียนบนแอป ใช้เป็นข้อมูลนำเข้าของระบบ ข้อมูลกิจกรรม 1 รายการมีโครงสร้าง</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 110" role="img" aria-label="โครงสร้าง log กิจกรรม">
+      <g font-size="14" text-anchor="middle">
+        <rect x="5" y="10" width="170" height="44" rx="8" class="f-pensoft"/><text x="90" y="38" class="f-pen">วัน-เวลา</text>
+        <rect x="185" y="10" width="170" height="44" rx="8" class="f-pensoft"/><text x="270" y="38" class="f-pen">รหัสผู้เรียน</text>
+        <rect x="365" y="10" width="170" height="44" rx="8" class="f-pensoft"/><text x="450" y="38" class="f-pen">คำสั่งการกระทำ</text>
+        <rect x="545" y="10" width="170" height="44" rx="8" class="f-pensoft"/><text x="630" y="38" class="f-pen">วัตถุเป้าหมายบนจอ</text>
+      </g>
+      <text x="5" y="90" class="f-muted t-mono" font-size="13">2026-11-03 09:14:02 · S6501 · CLICK_HINT · ข้อ 7 ปุ่มคำใบ้</text>
+    </svg>
+    </div>
+    <figcaption>บรรทัดล่างเป็นตัวอย่างสมมติ</figcaption>
+  </figure>
   <pre class="code">[วัน-เวลา] + [รหัสผู้เรียน] + [คำสั่งการกระทำ] + [วัตถุเป้าหมายบนหน้าจอ]</pre>
   <p>เช่น เวลา 09:14 นักเรียนรหัส S6501 กดปุ่มคำใบ้ ของข้อ 7 (ตัวอย่างสมมติ)</p>
   <p><b>พฤติกรรมสำคัญ 4 อย่างที่ระบบบันทึก</b></p>
@@ -68,7 +84,9 @@
 <section class="note slide" id="s5" data-n="5">
   <div class="sec-tag">สไลด์ 5</div>
   <h2>การแบ่งหน้าที่ระหว่าง EDM และ Learning Analytics</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>EDM = หมอที่อ่านผลแล็บ · LA = พยาบาลที่ลงมือดูแลคนไข้ตามผลนั้น</p>
   <p>สองระบบนี้ทำงานร่วมกัน คนหนึ่งเป็นเครื่องประมวลผล อีกคนเป็นผู้จัดการบทเรียน</p>
+  <figure><div class="art"><svg viewBox="0 0 720 170" role="img" aria-label="EDM ส่งผลวิเคราะห์ให้ LA"><defs><marker id="n11a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs><rect x="5" y="40" width="120" height="56" rx="10" class="f-surface"/><text x="65" y="72.5" text-anchor="middle" class="f-ink" font-size="13">ร่องรอยการคลิก</text><line x1="127" y1="68" x2="153" y2="68" class="s-pen" stroke-width="1.6" marker-end="url(#n11a)"/><rect x="158" y="30" width="160" height="76" rx="10" class="f-pensoft"/><text x="238" y="63.4" text-anchor="middle" class="f-pen" font-size="14">EDM · หลังบ้าน</text><text x="238" y="82.4" text-anchor="middle" class="f-muted" font-size="12">วิเคราะห์ ทำนาย</text><line x1="320" y1="68" x2="346" y2="68" class="s-pen" stroke-width="1.6" marker-end="url(#n11a)"/><rect x="351" y="40" width="110" height="56" rx="10" class="f-surface"/><text x="406" y="63.5" text-anchor="middle" class="f-ink" font-size="13">“เสี่ยง 70%”</text><text x="406" y="81.5" text-anchor="middle" class="f-muted" font-size="11">เก็บหลังบ้าน</text><line x1="463" y1="68" x2="489" y2="68" class="s-pen" stroke-width="1.6" marker-end="url(#n11a)"/><rect x="494" y="30" width="160" height="76" rx="10" class="f-hl"/><text x="574" y="63.4" text-anchor="middle" class="f-ink" font-size="14">LA · หน้าบ้าน</text><text x="574" y="82.4" text-anchor="middle" class="f-muted" font-size="12">ตัดสินใจแสดงผล</text><g font-size="12" class="f-muted" text-anchor="middle"><text x="238" y="130">เหมือนเซ็นเซอร์ + สมองกลของรถ</text><text x="574" y="130">เหมือนระบบสั่งเร่ง / เบรก</text><text x="574" y="150">เช่น ส่งข้อความกระตุ้น สลับข้อสอบ</text></g></svg></div></figure>
   <p><b>EDM (Educational Data Mining · ระบบหลังบ้าน)</b> วิเคราะห์ข้อมูลเชิงสถิติ ค้นหาแบบแผนการคลิก และคำนวณโอกาสที่ผู้เรียนจะสอบตก</p>
   <p><b>LA (Learning Analytics · ระบบหน้าบ้าน)</b> วิเคราะห์การเรียนรู้โดยนำผลลัพธ์จาก EDM มาตัดสินใจว่าจะแสดงอะไรบนหน้าจอ เช่น ส่งข้อความกระตุ้น หรือสับรางข้อสอบ</p>
   <p><b>เปรียบเทียบกับรถยนต์</b> EDM คือเซ็นเซอร์และสมองกลที่ตรวจวัดความเร็วของรถ ส่วน LA คือระบบขับเคลื่อนอัตโนมัติที่สั่งเร่งหรือเบรกตามสภาพถนน</p>
@@ -78,7 +96,33 @@
 <section class="note slide" id="s6" data-n="6">
   <div class="sec-tag">สไลด์ 6</div>
   <h2>วงจรการประมวลผลอัตโนมัติภายในแอปพลิเคชัน</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนแอร์อัตโนมัติ วัดอุณหภูมิ → ตัดสินใจ → ปรับความเย็น → วัดใหม่ วนไปเองตลอด</p>
   <p><b>ผังวงจรการทำงานอัตโนมัติ (Automated Processing Pipeline)</b></p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 270" role="img" aria-label="วงจรปิด 6 ขั้นของ pipeline">
+      <defs><marker id="a11" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs>
+      <g font-size="13" text-anchor="middle">
+        <rect x="30" y="20" width="190" height="50" rx="10" class="f-surface"/><text x="125" y="50" class="f-ink">1 ผู้เรียนทำกิจกรรม</text>
+        <rect x="265" y="20" width="190" height="50" rx="10" class="f-surface"/><text x="360" y="50" class="f-ink">2 บันทึกร่องรอยดิจิทัล</text>
+        <rect x="500" y="20" width="190" height="50" rx="10" class="f-surface"/><text x="595" y="50" class="f-ink">3 แปลงเป็นตัวชี้วัด</text>
+        <rect x="500" y="190" width="190" height="50" rx="10" class="f-pensoft"/><text x="595" y="220" class="f-pen">4 AI ประเมินแนวคิด</text>
+        <rect x="265" y="190" width="190" height="50" rx="10" class="f-pensoft"/><text x="360" y="220" class="f-pen">5 ปรับเนื้อหาอัตโนมัติ</text>
+        <rect x="30" y="190" width="190" height="50" rx="10" class="f-hl"/><text x="125" y="220" class="f-ink">6 กลับไปหน้าจอผู้เรียน</text>
+      </g>
+      <g class="s-pen" stroke-width="1.6">
+        <line x1="221" y1="45" x2="261" y2="45" marker-end="url(#a11)"/>
+        <line x1="456" y1="45" x2="496" y2="45" marker-end="url(#a11)"/>
+        <line x1="595" y1="72" x2="595" y2="186" marker-end="url(#a11)"/>
+        <line x1="499" y1="215" x2="459" y2="215" marker-end="url(#a11)"/>
+        <line x1="264" y1="215" x2="224" y2="215" marker-end="url(#a11)"/>
+        <line x1="125" y1="188" x2="125" y2="74" marker-end="url(#a11)"/>
+      </g>
+      <text x="360" y="135" text-anchor="middle" class="f-muted" font-size="13">วงจรปิดเรียลไทม์</text>
+      <text x="360" y="153" text-anchor="middle" class="f-muted" font-size="13">ไม่ต้องรอมนุษย์สั่ง</text>
+    </svg>
+    </div>
+  </figure>
   <ol>
     <li>ผู้เรียนทำกิจกรรมบนแอป</li>
     <li>ระบบบันทึกร่องรอยดิจิทัล</li>
@@ -94,6 +138,7 @@
   <div class="sec-tag">สไลด์ 7</div>
   <h2>การตรวจจับและแก้ปัญหาผู้เรียนคิดไม่ออกอัตโนมัติ</h2>
   <p><b>กลไก Automated Remediation Loop</b> (วงจรซ่อมเสริมอัตโนมัติ)</p>
+  <figure><div class="art"><svg viewBox="0 0 720 180" role="img" aria-label="วงจรซ่อมเสริมอัตโนมัติ"><defs><marker id="n11b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs><rect x="10" y="40" width="200" height="64" rx="10" class="f-surface"/><text x="110" y="67.4" text-anchor="middle" class="f-ink" font-size="14">โจทย์สมการ</text><text x="110" y="86.4" text-anchor="middle" class="f-muted" font-size="12">✗ ✗ ✗ + เวลาเพิ่มผิดปกติ</text><line x1="212" y1="72" x2="256" y2="72" class="s-pen" stroke-width="1.6" marker-end="url(#n11b)"/><rect x="260" y="40" width="200" height="64" rx="10" class="f-hl"/><text x="360" y="67.4" text-anchor="middle" class="f-ink" font-size="14">พักโจทย์ไว้</text><text x="360" y="86.4" text-anchor="middle" class="f-muted" font-size="12">ดึงโจทย์ปูพื้นฐานมาแทน</text><line x1="462" y1="72" x2="506" y2="72" class="s-pen" stroke-width="1.6" marker-end="url(#n11b)"/><rect x="510" y="40" width="200" height="64" rx="10" class="f-surface"/><text x="610" y="67.4" text-anchor="middle" class="f-good" font-size="14">บวกลบติดลบ ✓</text><text x="610" y="86.4" text-anchor="middle" class="f-muted" font-size="12">ผ่านพื้นฐานแล้ว</text><path d="M610 106 V140 H110 V108" class="s-pen" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#n11b)"/><text x="360" y="162" text-anchor="middle" class="f-muted" font-size="13">พากลับไปทำโจทย์สมการเดิมอีกครั้ง</text></svg></div></figure>
   <p><b>สัญญาณที่ตรวจพบ</b> ผู้เรียนทำโจทย์เรื่องเดิมผิดติดต่อกัน 3 ครั้ง และเวลาที่ใช้ต่อข้อเพิ่มขึ้นผิดปกติ</p>
   <p><b>การวินิจฉัยของระบบ</b> เกิดภาวะคิดไม่ออก (<b>Impasse State</b>)</p>
   <p><b>การตอบสนองอัตโนมัติ</b></p>
@@ -108,6 +153,7 @@
 <section class="note slide" id="s8" data-n="8">
   <div class="sec-tag">สไลด์ 8</div>
   <h2>การคาดการณ์ความเสี่ยงที่ผู้เรียนจะเลิกใช้งาน (Drop-out Prediction)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนสังเกตว่าเพื่อนเริ่มมาเรียนสาย หลับบ่อย ส่งงานไม่ครบ แล้วรีบเข้าไปคุยก่อนเขาจะหยุดเรียน</p>
   <p><b>ปัญหา</b> ผู้เรียนอาจปิดแอปและเลิกใช้ เมื่อเนื้อหายากเกินไปหรือรู้สึกเบื่อ</p>
   <p><b>ตัวแปรพยากรณ์ความเสี่ยง</b></p>
   <ul>
@@ -122,13 +168,29 @@
   <div class="sec-tag">สไลด์ 9</div>
   <h2>การนำผลการทำนายไปใช้ปรับเนื้อหาบทเรียน</h2>
   <p><b>การจำแนกระดับความชำนาญ (Mastery Classification)</b> แยกสถานะผู้เรียนเป็น <b>ยังไม่เข้าใจ</b>, <b>กำลังพัฒนา</b> หรือ <b>บรรลุเป้าหมาย</b> ผลลัพธ์ใช้ปลดล็อกด่านถัดไป หรือล็อกไว้ให้ฝึกซ้ำ</p>
+  <figure><div class="art"><svg viewBox="0 0 720 130" role="img" aria-label="สามระดับความชำนาญ"><rect x="20" y="40" width="226" height="36" rx="6" class="f-surface"/><rect x="250" y="40" width="226" height="36" rx="6" class="f-pensoft"/><rect x="480" y="40" width="226" height="36" rx="6" class="f-hl"/><g font-size="14" text-anchor="middle"><text x="133" y="63" class="f-ink">ยังไม่เข้าใจ</text><text x="363" y="63" class="f-pen">กำลังพัฒนา</text><text x="593" y="63" class="f-ink">บรรลุเป้าหมาย</text></g><g font-size="12" text-anchor="middle" class="f-muted"><text x="133" y="100">ล็อกด่าน · ฝึกซ้ำ</text><text x="363" y="100">ฝึกต่อในระดับเดิม</text><text x="593" y="100">ปลดล็อกด่านถัดไป</text></g><path d="M300 20 L310 34 L320 20 Z" class="f-pen"/><text x="330" y="30" class="f-pen" font-size="12">ผู้เรียนตอนนี้</text></svg></div><figcaption>Mastery Classification · ส่วน Elo หรือ IRT ใช้เลือกความยากของข้อถัดไปภายในแต่ละช่วง</figcaption></figure>
   <p><b>การประมาณค่าระดับความสามารถ (Proficiency Estimation)</b> คำนวณเป็นคะแนนทักษะสะสม เช่น <b>Elo Rating</b> (ระบบจัดอันดับแบบที่ใช้ในหมากรุก ผู้เรียนกับโจทย์ต่างมีคะแนน ทำโจทย์ยากผ่านได้คะแนนเพิ่มมาก) หรือ <b>Item Response Theory</b> (ทฤษฎีที่ประมาณความสามารถจากรูปแบบการตอบข้อสอบที่มีความยากต่างกัน) ผลลัพธ์ใช้สุ่มเลือกโจทย์ที่มีความยากเหมาะกับระดับปัจจุบัน</p>
 </section>
 
 <section class="note slide" id="s10" data-n="10">
   <div class="sec-tag">สไลด์ 10</div>
   <h2>การจัดกลุ่มผู้เรียนอัตโนมัติ (Clustering)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>จับกลุ่มคนที่เรียนคล้ายกันไว้ด้วยกัน โดยไม่ต้องตั้งเกณฑ์ไว้ก่อน แล้วค่อยดูว่าแต่ละกลุ่มต้องการอะไร</p>
   <p><b>การค้นหากลุ่มรูปแบบการเรียนรู้ (Learner Clustering)</b> อัลกอริทึมจัดผู้เรียนที่มีพฤติกรรมการใช้งานคล้ายกันไว้ด้วยกัน <b>โดยไม่ต้องกำหนดเกณฑ์ล่วงหน้า</b> เป็นการใช้ Unsupervised Learning จาก Session 6</p>
+  <figure>
+      <svg viewBox="0 0 280 240" role="img" aria-label="กราฟจัดกลุ่มผู้เรียนตามเวลาและความถูกต้อง">
+        <path d="M34 206 H270 M34 206 V10" class="s-axis"/>
+        <text x="152" y="232" text-anchor="middle" class="f-muted" font-size="12">เวลาเฉลี่ยต่อบทเรียน →</text>
+        <text x="14" y="108" text-anchor="middle" class="f-muted" font-size="12" transform="rotate(-90 14 108)">สัดส่วนตอบถูก →</text>
+        <g class="f-A"><circle cx="70" cy="40" r="5"/><circle cx="84" cy="30" r="5"/><circle cx="62" cy="54" r="5"/><circle cx="92" cy="48" r="5"/><circle cx="78" cy="62" r="5"/></g>
+        <g class="f-B"><circle cx="210" cy="160" r="5"/><circle cx="228" cy="172" r="5"/><circle cx="240" cy="150" r="5"/><circle cx="220" cy="186" r="5"/><circle cx="250" cy="176" r="5"/></g>
+        <g class="f-pen"><circle cx="50" cy="176" r="5"/><circle cx="60" cy="188" r="5"/><circle cx="44" cy="192" r="5"/><circle cx="66" cy="168" r="5"/></g>
+        <text x="104" y="40" class="f-A" font-size="12">Fast Learners</text>
+        <text x="170" y="132" class="f-B" font-size="12">Struggling</text>
+        <text x="76" y="182" class="f-pen" font-size="12">Guessers</text>
+      </svg>
+      <figcaption>แกน X = เวลาเฉลี่ยต่อบทเรียน · แกน Y = สัดส่วนตอบถูก (สไลด์ 10)</figcaption>
+    </figure>
   <p><b>ตัวแปรที่ใช้วัดระยะห่าง</b> แกน X คือเวลาเฉลี่ยที่ใช้ต่อบทเรียน แกน Y คือสัดส่วนการทำแบบฝึกหัดถูกต้อง ผู้เรียนแต่ละคนเป็นจุดบนกราฟ จุดที่อยู่ใกล้กันถูกจัดเป็นกลุ่มเดียวกัน</p>
   <p><b>ประโยชน์</b> แพลตฟอร์มกำหนดกลยุทธ์การแสดงผลให้เหมาะกับแต่ละกลุ่มได้พร้อมกัน แทนที่จะใช้วิธีเดียวกับทุกคน</p>
 </section>
@@ -148,6 +210,7 @@
 <section class="note slide" id="s12" data-n="12">
   <div class="sec-tag">สไลด์ 12</div>
   <h2>การแปรรูปข้อมูลการคลิกเป็นตัวแปรความรู้ (Feature Engineering)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>จำนวนครั้งที่กดปุ่มอย่างเดียวไม่บอกอะไร ต้องแปลงเป็น “ใช้เวลาเท่าไร” “ถูกตั้งแต่แรกไหม” ถึงจะมีความหมาย</p>
   <p><b>ปัญหา</b> บันทึกการกดปุ่มเพียงอย่างเดียวบอกระดับความเข้าใจไม่ได้ เพราะเป็นแค่เหตุการณ์ดิบ ๆ ต้องแปลงเป็นตัวแปรที่มีความหมาย</p>
   <ul>
     <li><b>การคลิกตอบ</b> คำนวณเป็น <code>Response_Time</code> เวลาที่ใช้คิดต่อข้อ</li>
@@ -159,6 +222,7 @@
 <section class="note slide" id="s13" data-n="13">
   <div class="sec-tag">สไลด์ 13</div>
   <h2>การดักจับพฤติกรรมหาช่องโหว่ของระบบ (Gaming the System Detection)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนครูจับได้ว่าเด็กลอกเพื่อน จึงไม่นับคะแนนข้อนั้น และเปลี่ยนวิธีถามให้ต้องคิดเอง</p>
   <p>พฤติกรรมหาช่องโหว่และไม่ตั้งใจเรียนที่พบบ่อย</p>
   <ul>
     <li><b>Rapid Guessing</b> กดสุ่มตัวเลือกภายใน 1 วินาที</li>
@@ -174,7 +238,9 @@
 <section class="note slide" id="s14" data-n="14">
   <div class="sec-tag">สไลด์ 14</div>
   <h2>การคัดกรองข้อมูลรบกวน (Data Cleaning) ก่อนนำไปวิเคราะห์</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ล้างผักก่อนทำอาหาร ข้อมูลสกปรกทำให้ผลวิเคราะห์เพี้ยน</p>
   <p>ข้อมูลดิบมีความผิดปกติที่ไม่ได้มาจากการเรียนรู้ ถ้าไม่ทำความสะอาด ผลวิเคราะห์จะเพี้ยน</p>
+  <figure><div class="art"><svg viewBox="0 0 720 190" role="img" aria-label="ข้อมูลก่อนและหลังทำความสะอาด"><defs><marker id="n11c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-muted"/></marker></defs><text x="20" y="20" class="f-muted" font-size="13">ข้อมูลดิบ</text><text x="420" y="20" class="f-muted" font-size="13">หลังทำความสะอาด</text><rect x="20" y="32" width="320" height="42" rx="8" class="f-surface"/><text x="180" y="57.9" text-anchor="middle" class="f-ink" font-size="14">แอปกระตุก ส่งคำตอบซ้ำ 3 ครั้ง</text><line x1="344" y1="53" x2="414" y2="53" class="s-axis" stroke-width="1.4" marker-end="url(#n11c)"/><rect x="420" y="32" width="280" height="42" rx="8" class="f-pensoft"/><text x="560" y="57.9" text-anchor="middle" class="f-pen" font-size="14">Noise · นับเป็น 1 ครั้ง</text><rect x="20" y="84" width="320" height="42" rx="8" class="f-surface"/><text x="180" y="109.9" text-anchor="middle" class="f-ink" font-size="14">เปิดค้างไว้ 2 ชั่วโมง</text><line x1="344" y1="105" x2="414" y2="105" class="s-axis" stroke-width="1.4" marker-end="url(#n11c)"/><rect x="420" y="84" width="280" height="42" rx="8" class="f-pensoft"/><text x="560" y="109.9" text-anchor="middle" class="f-pen" font-size="14">Outlier · ตัดส่วนเกิน 5 นาที</text><rect x="20" y="136" width="320" height="42" rx="8" class="f-surface"/><text x="180" y="161.9" text-anchor="middle" class="f-ink" font-size="14">สัญญาณหลุดกลางข้อ</text><line x1="344" y1="157" x2="414" y2="157" class="s-axis" stroke-width="1.4" marker-end="url(#n11c)"/><rect x="420" y="136" width="280" height="42" rx="8" class="f-pensoft"/><text x="560" y="161.9" text-anchor="middle" class="f-pen" font-size="14">Dropout · พักสถานะ ไม่ให้ 0</text></svg></div></figure>
   <ul>
     <li><b>สัญญาณรบกวน (Noise)</b> แอปกระตุกจนส่งคำตอบซ้ำ ระบบรวมเป็นครั้งเดียว</li>
     <li><b>ค่าผิดปกติ (Outlier)</b> ผู้เรียนเปิดแอปค้างไว้ 2 ชั่วโมง ระบบตัดเวลาที่เกิน 5 นาทีออกจากการคำนวณ เพราะไม่ใช่เวลาคิดจริง</li>
@@ -186,6 +252,7 @@
   <div class="sec-tag">สไลด์ 15</div>
   <h2>การตรวจสอบความสอดคล้องของข้อมูลการเรียนรู้ (Cross-Validation)</h2>
   <p><b>หลักการ</b> ตรวจความรู้ของผู้เรียนจากหลายกิจกรรม เพื่อยืนยันว่าเข้าใจจริง ไม่ใช่บังเอิญถูกในกิจกรรมเดียว</p>
+  <figure><div class="art"><svg viewBox="0 0 720 170" role="img" aria-label="เทียบผลหลายกิจกรรม"><defs><marker id="n11d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-bad"/></marker></defs><rect x="10" y="30" width="160" height="64" rx="10" class="f-surface"/><text x="90" y="57.4" text-anchor="middle" class="f-good" font-size="14">เลือกตอบ</text><text x="90" y="76.4" text-anchor="middle" class="f-muted" font-size="12">100% ✓</text><rect x="185" y="30" width="160" height="64" rx="10" class="f-surface"/><text x="265" y="57.4" text-anchor="middle" class="f-bad" font-size="14">เติมคำ</text><text x="265" y="76.4" text-anchor="middle" class="f-muted" font-size="12">0% ✗</text><rect x="360" y="30" width="160" height="64" rx="10" class="f-surface"/><text x="440" y="57.4" text-anchor="middle" class="f-ink" font-size="14">จับคู่ / เรียงลำดับ</text><text x="440" y="76.4" text-anchor="middle" class="f-muted" font-size="12">ใช้ยืนยันเพิ่ม</text><line x1="522" y1="62" x2="556" y2="62" class="s-bad" stroke-width="1.6" marker-end="url(#n11d)"/><rect x="560" y="22" width="150" height="80" rx="10" class="f-hl"/><text x="635" y="47.9" text-anchor="middle" class="f-ink" font-size="14">ไม่สอดคล้อง</text><text x="635" y="66.9" text-anchor="middle" class="f-muted" font-size="12">น่าจะเดา</text><text x="635" y="85.9" text-anchor="middle" class="f-muted" font-size="12">ลดระดับความชำนาญ</text><text x="360" y="140" text-anchor="middle" class="f-muted" font-size="13">เลือกตอบเดาถูกได้ แต่เติมคำต้องรู้จริง</text></svg></div></figure>
   <ul>
     <li>กิจกรรมที่ 1 โจทย์เลือกตอบ (Multiple Choice)</li>
     <li>กิจกรรมที่ 2 โจทย์เติมคำ (Fill-in-the-blank)</li>
@@ -197,7 +264,38 @@
 <section class="note slide" id="s16" data-n="16">
   <div class="sec-tag">สไลด์ 16</div>
   <h2>ความสัมพันธ์เชิงสถิติในอัลกอริทึมที่ควรระวัง</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>คนที่พกร่มมักเจอฝน ไม่ได้แปลว่าร่มทำให้ฝนตก เป็นเพราะเขาเห็นเมฆครึ้มจึงพกร่ม</p>
   <p><b>ข้อควรระวัง</b> ข้อมูลที่เกิดคู่กันไม่จำเป็นต้องเป็นสาเหตุของกันเสมอไป (Correlation ไม่ใช่ Causation)</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 200" role="img" aria-label="ตัวอย่างความสัมพันธ์ที่ไม่ใช่สาเหตุ">
+      <defs>
+        <marker id="a11r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-bad"/></marker>
+        <marker id="a11g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-good"/></marker>
+      </defs>
+      <text x="10" y="22" class="f-bad" font-size="14">ระบบสรุปผิด</text>
+      <g font-size="13" text-anchor="middle">
+        <rect x="10" y="34" width="200" height="50" rx="8" class="f-surface"/><text x="110" y="56" class="f-ink">อ่านหน้าสรุปคำศัพท์นาน</text>
+        <rect x="290" y="34" width="150" height="50" rx="8" class="f-surface"/><text x="365" y="64" class="f-ink">คะแนนต่ำ</text>
+        <rect x="520" y="34" width="190" height="50" rx="8" class="f-surface s-bad"/><text x="615" y="56" class="f-bad">สั่งข้ามหน้าสรุป</text><text x="615" y="74" class="f-bad" font-size="11">ยิ่งทำร้ายเด็กอ่อน</text>
+      </g>
+      <line x1="212" y1="59" x2="286" y2="59" class="s-bad" stroke-width="1.6" marker-end="url(#a11r)"/>
+      <text x="249" y="50" text-anchor="middle" class="f-bad" font-size="11">“ทำให้”</text>
+      <line x1="442" y1="59" x2="516" y2="59" class="s-bad" stroke-width="1.6" marker-end="url(#a11r)"/>
+
+      <text x="10" y="122" class="f-good" font-size="14">ความจริงเชิงการเรียนรู้</text>
+      <g font-size="13" text-anchor="middle">
+        <rect x="10" y="134" width="200" height="50" rx="8" class="f-hl"/><text x="110" y="164" class="f-ink">พื้นฐานอ่อน</text>
+        <rect x="290" y="134" width="200" height="50" rx="8" class="f-surface"/><text x="390" y="164" class="f-ink">ต้องอ่านคำศัพท์นาน</text>
+      </g>
+      <line x1="212" y1="159" x2="286" y2="159" class="s-good" stroke-width="1.6" marker-end="url(#a11g)"/>
+      <path d="M110 186 V196 H600 V186" class="s-good" stroke-width="1.4"/>
+      <rect x="520" y="134" width="170" height="50" rx="8" class="f-surface"/><text x="605" y="164" text-anchor="middle" class="f-ink" font-size="13">คะแนนต่ำ</text>
+      <line x1="600" y1="196" x2="600" y2="188" class="s-good" stroke-width="1.4" marker-end="url(#a11g)"/>
+    </svg>
+    </div>
+    <figcaption>สาเหตุจริงคือ “พื้นฐานอ่อน” ซึ่งทำให้เกิดทั้งสองอย่าง ผู้ออกแบบต้องเข้าใจตรรกะการเรียนรู้ ไม่ตั้งเงื่อนไขตามค่าสถิติที่ไม่ใช่สาเหตุ</figcaption>
+  </figure>
   <p><b>ข้อมูลที่ระบบตรวจพบ</b> ผู้เรียนที่ใช้เวลาบนหน้าสรุปคำศัพท์นาน มักทำแบบทดสอบได้คะแนนต่ำ</p>
   <p><b>การสรุปผิดพลาดของระบบ</b> “การอ่านสรุปคำศัพท์ทำให้คะแนนตก” ดังนั้นระบบสั่งให้ข้ามหน้าสรุป</p>
   <p><b>ความจริงเชิงการเรียนรู้</b> ผู้เรียนที่มีพื้นฐานอ่อนจำเป็นต้องใช้เวลาอ่านคำศัพท์นานกว่าคนอื่น พื้นฐานอ่อนจึงเป็นสาเหตุของทั้งการอ่านนานและคะแนนต่ำ การตัดหน้าสรุปทิ้งยิ่งทำร้ายผู้เรียนกลุ่มนี้</p>
@@ -207,6 +305,7 @@
 <section class="note slide" id="s17" data-n="17">
   <div class="sec-tag">สไลด์ 17</div>
   <h2>ควรหลีกเลี่ยงการแจ้งคะแนนความเสี่ยงให้ผู้เรียน</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>บอกเด็กว่า “เธอน่าจะสอบตก” ไม่ได้ช่วยให้เขาเก่งขึ้น บอกว่า “อีกนิดเดียว” ช่วยมากกว่า</p>
   <p><b>จริยธรรมการแสดงผล (Anti-Labeling UI)</b> ป้องกันการแปะป้ายผู้เรียนหรือแสดงข้อความเชิงลบ</p>
   <ul>
     <li><b>สิ่งที่ไม่ควรทำ</b> แสดงตัวเลขความเสี่ยง เช่น “คุณมีโอกาสสอบตก 80%” ซึ่งทำลายแรงจูงใจ และอาจกลายเป็นการทำนายที่เป็นจริงเอง (Self-fulfilling Prophecy ใน Session 6)</li>
@@ -218,6 +317,7 @@
 <section class="note slide" id="s18" data-n="18">
   <div class="sec-tag">สไลด์ 18</div>
   <h2>ปัจจัยเชิงเทคนิคที่เซ็นเซอร์ตรวจไม่พบ</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ระบบเห็นว่าเด็กกดผิด แต่ไม่รู้ว่าจอแตก อย่าตัดสินจากตัวเลขอย่างเดียว</p>
   <p><b>ขีดจำกัดของข้อมูล</b> ระบบเห็นเฉพาะสิ่งที่บันทึกได้ เช่น อัตราการกดผิด และเวลาที่นิ่งค้างบนหน้าจอ แต่ไม่เห็นความจริงที่อยู่นอกสายตาระบบ</p>
   <ul>
     <li>หน้าจอทัชสกรีนมีปัญหา ทำให้กดพลาด (ระบบเข้าใจว่าตอบผิด)</li>
@@ -242,6 +342,7 @@
   <div class="sec-tag">สไลด์ 20</div>
   <h2>ตรรกะการปรับเปลี่ยนเนื้อหาแบบปรับเหมาะ (Adaptive Branching Logic)</h2>
   <p>ตัวอย่างแผนผังการตัดสินใจ (Decision Logic)</p>
+  <figure><div class="art"><svg viewBox="0 0 720 220" role="img" aria-label="ผังการแยกเส้นทางตามคะแนน"><defs><marker id="n11e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-muted"/></marker></defs><rect x="10" y="80" width="150" height="56" rx="10" class="f-hl"/><text x="85" y="112.9" text-anchor="middle" class="f-ink" font-size="14">ผลแบบทดสอบ</text><path d="M162 100 L250 40" class="s-axis" stroke-width="1.4" marker-end="url(#n11e)"/><path d="M162 108 L250 108" class="s-axis" stroke-width="1.4" marker-end="url(#n11e)"/><path d="M162 116 L250 176" class="s-axis" stroke-width="1.4" marker-end="url(#n11e)"/><rect x="255" y="14" width="220" height="52" rx="8" class="f-surface"/><text x="365" y="44.9" text-anchor="middle" class="f-ink" font-size="14">≥ 80% และตอบเร็ว</text><rect x="500" y="14" width="210" height="52" rx="10" class="f-pensoft"/><text x="605" y="35.4" text-anchor="middle" class="f-pen" font-size="14">Fast-Track</text><text x="605" y="54.4" text-anchor="middle" class="f-muted" font-size="12">ข้ามพื้นฐาน → ท้าทาย</text><rect x="255" y="82" width="220" height="52" rx="8" class="f-surface"/><text x="365" y="112.9" text-anchor="middle" class="f-ink" font-size="14">50–79%</text><rect x="500" y="82" width="210" height="52" rx="10" class="f-surface"/><text x="605" y="103.4" text-anchor="middle" class="f-ink" font-size="14">Standard Flow</text><text x="605" y="122.4" text-anchor="middle" class="f-muted" font-size="12">เส้นทางปกติ</text><rect x="255" y="150" width="220" height="52" rx="8" class="f-surface"/><text x="365" y="180.9" text-anchor="middle" class="f-ink" font-size="14">&lt; 50% หรือผิดซ้ำ</text><rect x="500" y="150" width="210" height="52" rx="10" class="f-hl"/><text x="605" y="171.4" text-anchor="middle" class="f-ink" font-size="14">Remedial Loop</text><text x="605" y="190.4" text-anchor="middle" class="f-muted" font-size="12">ซ่อมเสริม ย่อยเนื้อหา</text></svg></div><figcaption>85% แต่ตอบช้า ไม่เข้าเงื่อนไขบนสุด เพราะต้องครบทั้งคะแนนและความเร็ว จึงไป Standard Flow</figcaption></figure>
   <ul>
     <li><b>เงื่อนไข 1</b> คะแนน ≥ 80% และตอบเร็ว → ข้ามโจทย์พื้นฐาน ไปสู่ภารกิจท้าทาย (<b>Fast-Track</b>)</li>
     <li><b>เงื่อนไข 2</b> คะแนน 50–79% → ดำเนินตามเส้นทางปกติ (<b>Standard Flow</b>)</li>
@@ -253,18 +354,33 @@
 <section class="note slide" id="s21" data-n="21">
   <div class="sec-tag">สไลด์ 21</div>
   <h2>บันไดคำใบ้ 3 ระดับอัตโนมัติ (Scaffolded Hint Progression)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนช่วยเพื่อนทำโจทย์: ชี้จุดก่อน → บอกกฎ → ทำขั้นแรกให้ดู แต่ไม่ทำให้ทั้งข้อ</p>
   <ol>
     <li><b>ระดับ 1 · คำใบ้สะกิดความคิด (Prompting)</b> ชี้จุดสังเกต เช่น “ลองสังเกตเครื่องหมายบวกลบตรงนี้”</li>
     <li><b>ระดับ 2 · คำใบ้อธิบายกฎเกณฑ์ (Rule Explanation)</b> สรุปหลักการสั้น ๆ เช่น “จำได้ไหม กฎข้อนี้ต้องทำในวงเล็บก่อน”</li>
     <li><b>ระดับ 3 · คำใบ้ชี้นำคำตอบ (Bottom-out Hint)</b> แสดงวิธีทำขั้นตอนแรก เพื่อให้ผู้เรียนคิดต่อเอง</li>
   </ol>
   <p><b>ข้อควรระวัง</b> แม้ระดับสูงสุด ระบบก็ <b>ไม่เฉลยคำตอบสำเร็จรูปทันที</b> เพื่อป้องกันการหยุดคิด</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 200" role="img" aria-label="บันไดคำใบ้ 3 ระดับ">
+      <g font-size="14">
+        <rect x="10" y="130" width="225" height="60" rx="8" class="f-surface"/><text x="22" y="154" class="f-ink" font-weight="600">1 · Prompting</text><text x="22" y="176" class="f-muted" font-size="12">“ลองสังเกตเครื่องหมายบวกลบตรงนี้”</text>
+        <rect x="245" y="80" width="225" height="110" rx="8" class="f-pensoft"/><text x="257" y="104" class="f-pen" font-weight="600">2 · Rule Explanation</text><text x="257" y="126" class="f-muted" font-size="12">“จำได้ไหม กฎข้อนี้ต้องทำ</text><text x="257" y="142" class="f-muted" font-size="12">ในวงเล็บก่อน”</text>
+        <rect x="480" y="30" width="230" height="160" rx="8" class="f-hl"/><text x="492" y="54" class="f-ink" font-weight="600">3 · Bottom-out Hint</text><text x="492" y="76" class="f-muted" font-size="12">แสดงวิธีทำ “ขั้นตอนแรก”</text><text x="492" y="92" class="f-muted" font-size="12">ให้ผู้เรียนคิดต่อเอง</text>
+      </g>
+      <text x="10" y="40" class="f-ink" font-size="13">ช่วยมากขึ้นทีละขั้น</text>
+      <text x="10" y="60" class="f-bad" font-size="13">แต่ไม่เฉลยคำตอบสำเร็จรูปทันที</text>
+    </svg>
+    </div>
+  </figure>
 </section>
 
 <section class="note slide" id="s22" data-n="22">
   <div class="sec-tag">สไลด์ 22</div>
   <h2>กลไกความปลอดภัย (Circuit Breakers)</h2>
   <p><b>ปัญหา</b> หากปล่อยให้ผู้เรียนทำโจทย์ไม่ผ่านซ้ำ ๆ จะเกิดความเครียดสะสมและหมดแรงจูงใจ คำว่า Circuit Breaker มาจากเบรกเกอร์ไฟฟ้าที่ตัดวงจรเมื่อกระแสเกิน</p>
+  <figure><div class="art"><svg viewBox="0 0 720 150" role="img" aria-label="Circuit breaker หยุดพักแล้วเริ่มจากตัวอย่าง"><defs><marker id="n11f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs><rect x="10" y="40" width="150" height="60" rx="10" class="f-surface"/><text x="85" y="65.4" text-anchor="middle" class="f-bad" font-size="14">ไม่ผ่าน</text><text x="85" y="84.4" text-anchor="middle" class="f-muted" font-size="12">✗ ✗ ✗</text><line x1="162" y1="70" x2="196" y2="70" class="s-pen" stroke-width="1.6" marker-end="url(#n11f)"/><rect x="200" y="40" width="150" height="60" rx="10" class="f-hl"/><text x="275" y="65.4" text-anchor="middle" class="f-ink" font-size="14">ตัดวงจร</text><text x="275" y="84.4" text-anchor="middle" class="f-muted" font-size="12">หยุดบทเรียน</text><line x1="352" y1="70" x2="386" y2="70" class="s-pen" stroke-width="1.6" marker-end="url(#n11f)"/><rect x="390" y="40" width="150" height="60" rx="10" class="f-pensoft"/><text x="465" y="65.4" text-anchor="middle" class="f-pen" font-size="14">พักสายตา 1 นาที</text><text x="465" y="84.4" text-anchor="middle" class="f-muted" font-size="12">ข้อความผ่อนคลาย</text><line x1="542" y1="70" x2="576" y2="70" class="s-pen" stroke-width="1.6" marker-end="url(#n11f)"/><rect x="580" y="40" width="130" height="60" rx="10" class="f-surface"/><text x="645" y="65.4" text-anchor="middle" class="f-ink" font-size="14">Walkthrough</text><text x="645" y="84.4" text-anchor="middle" class="f-muted" font-size="12">ทีละขั้น</text><text x="360" y="130" text-anchor="middle" class="f-muted" font-size="13">เหมือนเบรกเกอร์ไฟฟ้า ตัดก่อนความเครียดสะสมจนหมดแรงจูงใจ</text></svg></div></figure>
   <p><b>ตัวอย่างการทำงาน</b></p>
   <ol>
     <li>เมื่อผู้เรียนทำไม่ผ่านครบ 3 ครั้ง ระบบสั่งหยุดบทเรียนชั่วคราว</li>
@@ -276,7 +392,9 @@
 <section class="note slide" id="s23" data-n="23">
   <div class="sec-tag">สไลด์ 23</div>
   <h2>การรักษาระยะความพยายามของผู้เรียน (Productive Struggle)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>รอสักครู่ก่อนช่วย ให้เด็กได้ลองแก้เอง เหมือนพ่อแม่ที่ไม่รีบเข้าไปพยุงทุกครั้งที่ลูกล้ม</p>
   <p><b>ความเสี่ยง</b> ระบบที่ฉลาดเกินไปอาจยื่นคำใบ้เร็วเกินไป จนผู้เรียนไม่ได้ใช้ความคิด ความพยายามที่ “พอดี” (Productive Struggle) เป็นสิ่งที่ทำให้เกิดการเรียนรู้</p>
+  <figure><div class="art"><svg viewBox="0 0 720 130" role="img" aria-label="ไทม์ไลน์หน่วงคำใบ้"><line x1="30" y1="60" x2="700" y2="60" class="s-axis" stroke-width="1.6"/><rect x="60" y="44" width="400" height="32" rx="6" class="f-pensoft"/><text x="260" y="65" text-anchor="middle" class="f-pen" font-size="14">ช่วงคิดเอง 15–30 วินาที (ยังไม่มีคำใบ้)</text><circle cx="60" cy="60" r="8" class="f-bad"/><text x="60" y="100" text-anchor="middle" class="f-bad" font-size="13">ตอบผิดครั้งแรก</text><circle cx="460" cy="60" r="8" class="f-good"/><text x="470" y="100" text-anchor="middle" class="f-good" font-size="13">คำใบ้ระดับ 1 ปรากฏ</text><text x="620" y="40" text-anchor="middle" class="f-muted" font-size="12">Self-Regulation</text></svg></div></figure>
   <p><b>กฎการหน่วงเวลา (Deliberate Delay)</b> เมื่อผู้เรียนตอบผิดครั้งแรก ระบบยังไม่แสดงคำใบ้ทันที แต่หน่วงเวลา <b>15–30 วินาที</b> เพื่อให้ผู้เรียนทบทวนและลองคิดใหม่เอง</p>
   <p><b>เป้าหมาย</b> สร้างทักษะการกำกับตนเอง (<b>Self-Regulation</b>) ผ่านการลองผิดลองถูก ผู้เรียนเรียนรู้ที่จะตรวจและแก้ความผิดพลาดของตัวเองก่อนพึ่งความช่วยเหลือ</p>
 </section>
