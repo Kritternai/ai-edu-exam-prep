@@ -11,7 +11,8 @@
       "Unsupervised",
       "Reinforcement",
       "Over/Underfitting"
-    ]
+    ],
+    "full": "sessions/s06-full.html"
   },
   {
     "id": "07",
@@ -25,7 +26,8 @@
       "MLP",
       "Loss",
       "Backpropagation"
-    ]
+    ],
+    "full": "sessions/s07-full.html"
   },
   {
     "id": "08",
@@ -39,7 +41,8 @@
       "LLMs",
       "RAG",
       "Cognitive Load"
-    ]
+    ],
+    "full": "sessions/s08-full.html"
   },
   {
     "id": "10",
@@ -52,7 +55,8 @@
       "Socratic",
       "Misconception",
       "Human-AI roles"
-    ]
+    ],
+    "full": "sessions/s10-full.html"
   },
   {
     "id": "11",
@@ -65,6 +69,7 @@
       "Drop-out Prediction",
       "Clustering",
       "Adaptive Logic"
-    ]
+    ],
+    "full": "sessions/s11-full.html"
   }
 ]

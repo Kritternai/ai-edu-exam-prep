@@ -25,7 +25,7 @@
   <section class="hero">
     <div class="eyebrow">ปัญญาประดิษฐ์เพื่องานด้านการศึกษา · 3(2-2-5)</div>
     <h1>อ่านให้เข้าใจ แล้วลองทำข้อสอบ</h1>
-    <p class="lede">แต่ละ session มีสรุปพร้อมภาพประกอบ กับคลังข้อสอบปรนัยที่สุ่มลำดับข้อและตัวเลือกทุกครั้ง เลือกทำทีละ session หรือรวมหลาย session ก็ได้</p>
+    <p class="lede">แต่ละ session มีฉบับสรุปพร้อมภาพประกอบ ฉบับเต็มที่อธิบายทีละสไลด์ และคลังข้อสอบปรนัยที่สุ่มลำดับข้อและตัวเลือกทุกครั้ง เลือกทำทีละ session หรือรวมหลาย session ก็ได้</p>
     <div class="btn-row">
       <a class="btn" href="exam.html">เริ่มทำข้อสอบ</a>
     </div>
@@ -68,6 +68,7 @@
           ),
           el("div", { class: "session-actions" },
             ready ? el("a", { class: "btn quiet", href: s.page }, "อ่านสรุป") : null,
+            s.full ? el("a", { class: "btn quiet", href: s.full }, "ฉบับเต็ม") : null,
             counts[i] ? el("a", { class: "btn ghost", href: `exam.html?s=${s.id}` }, "ทำข้อสอบ") : null
           )
         );
