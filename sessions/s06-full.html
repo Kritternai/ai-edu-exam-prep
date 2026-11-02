@@ -21,7 +21,7 @@
   </div>
 </header>
 
-<main class="page">
+<main class="page" data-figs="1">
 
 <section class="hero">
   <nav class="seg" aria-label="รูปแบบเนื้อหา"><a href="s06.html">ฉบับสรุป</a><a href="s06-full.html" aria-current="page">ฉบับเต็ม</a></nav>
@@ -34,7 +34,47 @@
 <section class="note slide" id="s2" data-n="2">
   <div class="sec-tag">สไลด์ 2</div>
   <h2>เปรียบเทียบ 2 กระบวนทัศน์</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ยุคเก่าเหมือนเขียนสูตรอาหารให้คอมทำตาม ยุคใหม่เหมือนให้คอมชิมอาหารหลายจานพร้อมบอกว่าจานไหนอร่อย แล้วให้มันหาสูตรเอง</p>
   <p>คำว่า “กระบวนทัศน์” (Paradigm) หมายถึงกรอบความคิดพื้นฐานที่ใช้มองและแก้ปัญหา สไลด์นี้ใช้สมการคณิตศาสตร์ธรรมดา <code>f(x) = y</code> เป็นตัวเปรียบเทียบ: เราป้อนค่า <code>x</code> เข้าไปในฟังก์ชัน <code>f</code> แล้วได้ค่า <code>y</code> ออกมา โปรแกรมคอมพิวเตอร์ทุกโปรแกรมทำงานแบบนี้ คือรับข้อมูลเข้า แปลงด้วยกฎบางอย่าง แล้วให้ผลลัพธ์ออกมา</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 270" role="img" aria-label="แผนภาพเปรียบเทียบ Rule-based กับ Machine Learning">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-ink"/></marker>
+        <marker id="arrP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker>
+      </defs>
+      <text x="10" y="26" class="f-muted" font-size="15">โลกยุคเก่า · Rule-based Programming</text>
+      <rect x="10" y="40" width="150" height="62" rx="8" class="f-surface"/>
+      <text x="85" y="68" text-anchor="middle" class="f-ink" font-size="16">Input</text>
+      <text x="85" y="90" text-anchor="middle" class="f-ink t-mono" font-size="15">x</text>
+      <text x="183" y="78" text-anchor="middle" class="f-ink" font-size="22">+</text>
+      <rect x="205" y="40" width="190" height="62" rx="8" class="f-hl"/>
+      <text x="300" y="66" text-anchor="middle" class="f-ink" font-size="16">กฎ f ที่ “คน” เขียน</text>
+      <text x="300" y="88" text-anchor="middle" class="f-muted" font-size="13">if ... then ...</text>
+      <line x1="405" y1="71" x2="520" y2="71" class="s-ink" stroke-width="1.6" marker-end="url(#arr)"/>
+      <rect x="530" y="40" width="170" height="62" rx="8" class="f-surface"/>
+      <text x="615" y="68" text-anchor="middle" class="f-ink" font-size="16">Output</text>
+      <text x="615" y="90" text-anchor="middle" class="f-ink t-mono" font-size="15">y</text>
+
+      <line x1="10" y1="135" x2="710" y2="135" class="s-axis" stroke-dasharray="4 6"/>
+
+      <text x="10" y="168" class="f-pen" font-size="15">โลกยุคใหม่ · Machine Learning</text>
+      <rect x="10" y="182" width="150" height="62" rx="8" class="f-surface"/>
+      <text x="85" y="210" text-anchor="middle" class="f-ink" font-size="16">Data</text>
+      <text x="85" y="232" text-anchor="middle" class="f-ink t-mono" font-size="15">x</text>
+      <text x="183" y="220" text-anchor="middle" class="f-ink" font-size="22">+</text>
+      <rect x="205" y="182" width="190" height="62" rx="8" class="f-surface"/>
+      <text x="300" y="208" text-anchor="middle" class="f-ink" font-size="16">Desired Output</text>
+      <text x="300" y="230" text-anchor="middle" class="f-ink t-mono" font-size="15">y (เฉลย)</text>
+      <line x1="405" y1="213" x2="520" y2="213" class="s-pen" stroke-width="1.6" marker-end="url(#arrP)"/>
+      <text x="462" y="203" text-anchor="middle" class="f-pen" font-size="12">สถิติ</text>
+      <rect x="530" y="182" width="170" height="62" rx="8" class="f-pensoft s-pen" stroke-width="1.6"/>
+      <text x="615" y="208" text-anchor="middle" class="f-pen" font-size="16">Learned Model</text>
+      <text x="615" y="230" text-anchor="middle" class="f-pen t-mono" font-size="15">f (เครื่องสร้าง)</text>
+    </svg>
+    </div>
+    <figcaption>ยุคเก่า: ให้ x กับ f แล้วได้ y · ยุคใหม่: ให้ x กับ y แล้วได้ f</figcaption>
+  </figure>
   <p><b>โลกยุคเก่า (Rule-based Programming)</b> คือ <code>Input (x) + Human Rules (f) → Output (y)</code> มนุษย์เป็นคนคิดกฎ <code>f</code> ด้วยสมองตัวเอง แล้วเขียนเป็นโค้ด เช่น “ถ้าคะแนนต่ำกว่า 50 ให้ถือว่าตก” คอมพิวเตอร์ทำตามกฎนั้นเป๊ะ ๆ ไม่ได้คิดเอง</p>
   <p><b>โลกยุคใหม่ (Machine Learning Paradigm)</b> คือ <code>Data (x) + Desired Output (y) → Learned Model (f)</code> เราไม่ได้เขียนกฎเอง แต่ให้ตัวอย่างข้อมูลพร้อมคำตอบที่ต้องการ แล้วคอมพิวเตอร์ใช้สถิติ <b>สร้างกฎ f ขึ้นมาเองโดยอัตโนมัติ</b> สิ่งที่ได้ออกมาจากการเรียนรู้จึงไม่ใช่คำตอบ แต่เป็น “โมเดล” ที่นำไปตอบข้อมูลใหม่ได้</p>
   <p class="exam"><b>จุดออกสอบ</b> ถ้าโจทย์ถามว่า ML “สร้างอะไร” คำตอบคือ f (กฎหรือโมเดล) ไม่ใช่ x หรือ y</p>
@@ -43,7 +83,9 @@
 <section class="note slide" id="s3" data-n="3">
   <div class="sec-tag">สไลด์ 3</div>
   <h2>ข้อจำกัดของ Rule-based</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนเขียนป้าย “ห้ามทำ...” ติดผนังไปเรื่อย ๆ ทุกครั้งที่มีคนหาช่องโหว่ใหม่ สุดท้ายผนังเต็ม ป้ายขัดกันเอง และก็ยังมีช่องโหว่</p>
   <p>Rule-based ใช้ได้ดีกับปัญหาที่กฎชัดเจนและนับได้ แต่ปัญหาในโลกจริงจำนวนมากซับซ้อนเกินกว่าที่มนุษย์จะเขียนกฎได้หมด สไลด์ระบุปัญหาหลัก 2 ข้อ</p>
+  <figure><div class="art"><svg viewBox="0 0 720 220" role="img" aria-label="กฎเพิ่มขึ้นเรื่อย ๆ จนกลายเป็นกฎระเบิด"><text x="20" y="20" class="f-muted" font-size="13">เริ่มต้น · 1 กฎ</text><rect x="20" y="34" width="190" height="32" rx="6" class="f-surface"/><text x="115" y="54.5" text-anchor="middle" class="f-ink" font-size="13">ถ้าเจอ “ฟรี” → สแปม</text><text x="250" y="20" class="f-muted" font-size="13">สแปมหลบได้ · ต้องเพิ่มกฎ</text><rect x="250" y="34" width="190" height="28" rx="6" class="f-surface"/><text x="345" y="52.5" text-anchor="middle" class="f-ink" font-size="13">ถ้าเจอ “ฟรี”</text><rect x="250" y="70" width="190" height="28" rx="6" class="f-surface"/><text x="345" y="88.5" text-anchor="middle" class="f-ink" font-size="13">ถ้าเจอ “ฟ.รี”</text><rect x="250" y="106" width="190" height="28" rx="6" class="f-surface"/><text x="345" y="124.5" text-anchor="middle" class="f-ink" font-size="13">ถ้าเจอ “ฟ รี”</text><rect x="250" y="142" width="190" height="28" rx="6" class="f-surface"/><text x="345" y="160.6" text-anchor="middle" class="f-ink" font-size="13">ถ้าเจอ “FREE”</text><text x="480" y="20" class="f-muted" font-size="13">หลายปีผ่านไป · กฎทับซ้อนกันเอง</text><rect x="480" y="34" width="32" height="18" rx="3" class="f-hl"/><rect x="518" y="34" width="32" height="18" rx="3" class="f-surface"/><rect x="556" y="34" width="32" height="18" rx="3" class="f-surface"/><rect x="594" y="34" width="32" height="18" rx="3" class="f-surface"/><rect x="632" y="34" width="32" height="18" rx="3" class="f-surface"/><rect x="670" y="34" width="32" height="18" rx="3" class="f-hl"/><rect x="480" y="60" width="32" height="18" rx="3" class="f-surface"/><rect x="518" y="60" width="32" height="18" rx="3" class="f-hl"/><rect x="556" y="60" width="32" height="18" rx="3" class="f-surface"/><rect x="594" y="60" width="32" height="18" rx="3" class="f-surface"/><rect x="632" y="60" width="32" height="18" rx="3" class="f-surface"/><rect x="670" y="60" width="32" height="18" rx="3" class="f-surface"/><rect x="480" y="86" width="32" height="18" rx="3" class="f-surface"/><rect x="518" y="86" width="32" height="18" rx="3" class="f-surface"/><rect x="556" y="86" width="32" height="18" rx="3" class="f-hl"/><rect x="594" y="86" width="32" height="18" rx="3" class="f-surface"/><rect x="632" y="86" width="32" height="18" rx="3" class="f-surface"/><rect x="670" y="86" width="32" height="18" rx="3" class="f-surface"/><rect x="480" y="112" width="32" height="18" rx="3" class="f-surface"/><rect x="518" y="112" width="32" height="18" rx="3" class="f-surface"/><rect x="556" y="112" width="32" height="18" rx="3" class="f-surface"/><rect x="594" y="112" width="32" height="18" rx="3" class="f-hl"/><rect x="632" y="112" width="32" height="18" rx="3" class="f-surface"/><rect x="670" y="112" width="32" height="18" rx="3" class="f-surface"/><rect x="480" y="138" width="32" height="18" rx="3" class="f-surface"/><rect x="518" y="138" width="32" height="18" rx="3" class="f-surface"/><rect x="556" y="138" width="32" height="18" rx="3" class="f-surface"/><rect x="594" y="138" width="32" height="18" rx="3" class="f-surface"/><rect x="632" y="138" width="32" height="18" rx="3" class="f-hl"/><rect x="670" y="138" width="32" height="18" rx="3" class="f-surface"/><rect x="480" y="164" width="32" height="18" rx="3" class="f-hl"/><rect x="518" y="164" width="32" height="18" rx="3" class="f-surface"/><rect x="556" y="164" width="32" height="18" rx="3" class="f-surface"/><rect x="594" y="164" width="32" height="18" rx="3" class="f-surface"/><rect x="632" y="164" width="32" height="18" rx="3" class="f-surface"/><rect x="670" y="164" width="32" height="18" rx="3" class="f-hl"/><line x1="512" y1="43" x2="594" y2="121" class="s-bad" stroke-width="1.6"/><line x1="556" y1="69" x2="670" y2="147" class="s-bad" stroke-width="1.6"/><line x1="518" y1="173" x2="632" y2="95" class="s-bad" stroke-width="1.6"/><line x1="594" y1="43" x2="518" y2="147" class="s-bad" stroke-width="1.6"/><text x="250" y="196" class="f-ink" font-size="12">ยังมีวิธีหลบใหม่เสมอ</text><text x="250" y="212" class="f-muted" font-size="12">(Endless Edge Cases)</text><text x="480" y="204" class="f-bad" font-size="13">Rule Explosion · ดูแลไม่ไหว</text></svg></div><figcaption>ยิ่งแก้ด้วยการเพิ่มกฎ กฎยิ่งมากและขัดกันเอง แต่ก็ยังตามไม่ทันวิธีหลบใหม่ ๆ</figcaption></figure>
   <ul>
     <li><b>ภาวะกฎระเบิด (Rule Explosion)</b> ยิ่งปัญหายุ่งยาก ต้องเพิ่มกฎมากขึ้นเรื่อย ๆ กฎใหม่ไปทับซ้อนหรือขัดกับกฎเก่า จนสุดท้ายไม่มีใครดูแลระบบได้</li>
     <li><b>ข้อยกเว้นไม่รู้จบ (Endless Edge Cases)</b> มนุษย์คาดเดาเงื่อนไขทุกแบบในโลกจริงไม่ได้ครบ จะมีกรณีแปลก ๆ ที่กฎไม่ครอบคลุมเสมอ</li>
@@ -63,7 +105,42 @@
 <section class="note slide" id="s5" data-n="5">
   <div class="sec-tag">สไลด์ 5</div>
   <h2>กระบวนทัศน์หลักของการเรียนรู้ของเครื่อง</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ครูมีเฉลยให้ = Supervised · ไม่มีเฉลย ให้หาเอง = Unsupervised · ไม่มีเฉลย แต่ได้คะแนนบวกลบหลังทำ = Reinforcement</p>
   <p>การเรียนรู้ของเครื่องแบ่งเป็น 3 กระบวนทัศน์หลัก ตัวแบ่งคือ “ข้อมูลที่ใช้สอนมีหน้าตาอย่างไร”</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 300" role="img" aria-label="ผังตัดสินใจเลือกกระบวนทัศน์">
+      <defs>
+        <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-muted"/></marker>
+      </defs>
+      <rect x="230" y="10" width="260" height="56" rx="28" class="f-hl"/>
+      <text x="360" y="44" text-anchor="middle" class="f-ink" font-size="16">เรียนจาก “รางวัล/บทลงโทษ” ไหม?</text>
+
+      <path d="M490 38 H600 V110" class="s-axis" marker-end="url(#arr2)"/>
+      <text x="545" y="30" text-anchor="middle" class="f-muted" font-size="13">ใช่</text>
+      <rect x="520" y="114" width="190" height="80" rx="10" class="f-bg s-B" stroke-width="2"/>
+      <text x="615" y="146" text-anchor="middle" class="f-B" font-size="16">Reinforcement</text>
+      <text x="615" y="170" text-anchor="middle" class="f-muted" font-size="13">ลองผิดลองถูก + Reward</text>
+
+      <path d="M360 66 V110" class="s-axis" marker-end="url(#arr2)"/>
+      <text x="374" y="94" class="f-muted" font-size="13">ไม่</text>
+      <rect x="230" y="114" width="260" height="56" rx="28" class="f-hl"/>
+      <text x="360" y="148" text-anchor="middle" class="f-ink" font-size="16">ข้อมูลมี “เฉลย y” ไหม?</text>
+
+      <path d="M300 170 V200 H120 V214" class="s-axis" marker-end="url(#arr2)"/>
+      <text x="200" y="194" text-anchor="middle" class="f-muted" font-size="13">มี</text>
+      <rect x="10" y="218" width="220" height="74" rx="10" class="f-bg s-pen" stroke-width="2"/>
+      <text x="120" y="248" text-anchor="middle" class="f-pen" font-size="16">Supervised</text>
+      <text x="120" y="272" text-anchor="middle" class="f-muted" font-size="13">Classification · Regression</text>
+
+      <path d="M420 170 V200 H600 V214" class="s-axis" marker-end="url(#arr2)"/>
+      <text x="520" y="194" text-anchor="middle" class="f-muted" font-size="13">ไม่มี</text>
+      <rect x="470" y="218" width="240" height="74" rx="10" class="f-bg s-A" stroke-width="2"/>
+      <text x="590" y="248" text-anchor="middle" class="f-A" font-size="16">Unsupervised</text>
+      <text x="590" y="272" text-anchor="middle" class="f-muted" font-size="13">Clustering · Dim. Reduction</text>
+    </svg>
+    </div>
+  </figure>
   <ul>
     <li><b>การเรียนรู้แบบมีผู้สอน (Supervised Learning)</b> มีข้อมูลเข้า x และมีเฉลย y คู่กัน</li>
     <li><b>การเรียนรู้แบบไม่มีผู้สอน (Unsupervised Learning)</b> มีแค่ข้อมูลเข้า x ไม่มีเฉลย</li>
@@ -75,7 +152,9 @@
 <section class="note slide" id="s6" data-n="6">
   <div class="sec-tag">สไลด์ 6</div>
   <h2>การเรียนรู้จากตัวอย่างที่มีเฉลย (Supervised Learning)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนทำแบบฝึกหัดแล้วเปิดเฉลยท้ายเล่มตรวจ ทำผิดตรงไหนก็แก้ความเข้าใจตรงนั้น</p>
   <p><b>นิยาม</b> ป้อนชุดข้อมูลเป็นคู่อันดับ <code>(xᵢ, yᵢ)</code> เพื่อฝึกให้โมเดลหาฟังก์ชัน f ที่ทำให้ <code>f(x) = y</code> ได้แม่นที่สุด สไลด์เปรียบเหมือนนักเรียนทำแบบฝึกหัดที่มีเฉลยท้ายเล่ม ทำเสร็จก็เปิดเฉลยตรวจ แล้วแก้ความเข้าใจตามที่ผิด</p>
+  <figure><div class="art"><svg viewBox="0 0 720 150" role="img" aria-label="Classification ได้หมวด Regression ได้ตัวเลข"><defs><marker id="n06a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs><rect x="10" y="40" width="110" height="50" rx="10" class="f-pensoft"/><text x="65" y="69.9" text-anchor="middle" class="f-pen" font-size="14">โมเดล</text><line x1="122" y1="65" x2="160" y2="65" class="s-pen" stroke-width="1.6" marker-end="url(#n06a)"/><rect x="166" y="44" width="70" height="42" rx="21" class="f-hl"/><text x="201" y="71" text-anchor="middle" class="f-ink" font-size="15">ผ่าน</text><rect x="244" y="44" width="70" height="42" rx="21" class="f-surface"/><text x="279" y="71" text-anchor="middle" class="f-muted" font-size="15">ตก</text><text x="10" y="130" class="f-ink" font-size="14">Classification · เลือก 1 หมวดจากที่กำหนด</text><rect x="380" y="40" width="110" height="50" rx="10" class="f-pensoft"/><text x="435" y="69.9" text-anchor="middle" class="f-pen" font-size="14">โมเดล</text><line x1="492" y1="65" x2="530" y2="65" class="s-pen" stroke-width="1.6" marker-end="url(#n06a)"/><line x1="540" y1="65" x2="710" y2="65" class="s-axis"/><g class="f-muted" font-size="11" text-anchor="middle"><text x="540" y="84">0</text><text x="710" y="84">100</text></g><circle cx="663" cy="65" r="7" class="f-pen"/><text x="663" y="50" text-anchor="middle" class="f-pen t-mono" font-size="14">72.5</text><text x="380" y="130" class="f-ink" font-size="14">Regression · ได้ตัวเลขต่อเนื่องค่าไหนก็ได้</text></svg></div></figure>
   <p>งานหลักของ Supervised Learning มี 2 แบบ ต่างกันที่ <b>ชนิดของเฉลย y</b></p>
   <ul>
     <li><b>การจำแนกประเภท (Classification)</b> เฉลยเป็นกลุ่มหรือหมวดหมู่ เช่น ผ่าน/ตก, มะเร็ง/ปกติ, สแปม/ไม่สแปม</li>
@@ -88,6 +167,26 @@
   <div class="sec-tag">สไลด์ 7</div>
   <h2>ตัวอย่างของ Supervised Learning</h2>
   <p><b>Classification 2 มิติ</b> เครื่องคัดแยกแอปเปิลกับส้ม ใช้ข้อมูล <code>x = [น้ำหนัก, ความขรุขระ]</code> ผลไม้แต่ละลูกกลายเป็นจุดบนกราฟ 2 แกน โมเดลเรียนรู้ที่จะลากเส้น <b>Decision Boundary</b> แบ่งจุดสองกลุ่มออกจากกัน ผลไม้ลูกใหม่ตกฝั่งไหนก็ทายว่าเป็นชนิดนั้น</p>
+  <figure>
+      <h3>Classification · จำแนกประเภท</h3>
+      <p>เฉลยเป็น <b>กลุ่ม/หมวด</b> เช่น ผ่าน/ตก, มะเร็ง/ปกติ</p>
+      <svg viewBox="0 0 260 210" role="img" aria-label="กราฟแยกส้มกับแอปเปิลด้วยเส้น Decision Boundary">
+        <path d="M30 180 H250 M30 180 V12" class="s-axis"/>
+        <text x="140" y="203" text-anchor="middle" class="f-muted" font-size="12">น้ำหนัก →</text>
+        <text x="14" y="96" text-anchor="middle" class="f-muted" font-size="12" transform="rotate(-90 14 96)">ความขรุขระ →</text>
+        <g class="f-B">
+          <circle cx="60" cy="50" r="7"/><circle cx="78" cy="70" r="7"/><circle cx="52" cy="82" r="7"/><circle cx="92" cy="40" r="7"/><circle cx="100" cy="88" r="7"/><circle cx="70" cy="110" r="7"/>
+        </g>
+        <g class="f-A">
+          <circle cx="170" cy="140" r="7"/><circle cx="196" cy="120" r="7"/><circle cx="210" cy="150" r="7"/><circle cx="150" cy="160" r="7"/><circle cx="226" cy="104" r="7"/><circle cx="182" cy="164" r="7"/>
+        </g>
+        <path d="M70 176 L232 24" class="s-pen" stroke-width="2.4" stroke-dasharray="7 5"/>
+        <text x="150" y="44" class="f-pen" font-size="12">Decision Boundary</text>
+        <text x="46" y="140" class="f-B" font-size="13">ส้ม</text>
+        <text x="200" y="88" class="f-A" font-size="13">แอปเปิล</text>
+      </svg>
+      <figcaption><code>x = [น้ำหนัก, ความขรุขระ]</code> แล้วโมเดลลากเส้นแบ่ง</figcaption>
+    </figure>
   <p><b>Regression หลายตัวแปร</b> ประเมินราคาอสังหาริมทรัพย์จาก <code>x = [พื้นที่, ห้องนอน, ระยะรถไฟฟ้า, อายุบ้าน]</code> เมื่อมีตัวแปรหลายตัว โมเดลไม่ได้สร้างเส้นตรงเส้นเดียว แต่สร้างสมการ <b>Hyperplane</b> (ระนาบในหลายมิติ) ที่ใกล้จุดข้อมูลทั้งหมดที่สุด</p>
   <p><b>High-dimensional Classification</b> วินิจฉัยภาพเซลล์มะเร็งเต้านมจากคุณลักษณะของเซลล์ <b>30 ตัวแปร</b> มนุษย์มองพื้นที่ 30 มิติไม่ออก แต่โมเดลคำนวณได้ สไลด์ใช้คำว่า “บิดพับมิติข้อมูล” เพื่อหาเส้นแบ่งโซนเซลล์ปกติกับเซลล์มะเร็ง</p>
 </section>
@@ -95,7 +194,46 @@
 <section class="note slide" id="s8" data-n="8">
   <div class="sec-tag">สไลด์ 8</div>
   <h2>ตรรกะภายใน Supervised Learning (Linear Regression)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนหมุนปุ่มวิทยุหาคลื่น ฟังว่าเพี้ยนไปทางไหน (error) แล้วหมุนกลับทางนั้นทีละนิด (learning rate) จนเสียงชัด</p>
   <p>โจทย์คือทำนายคะแนนสอบ y จากชั่วโมงอ่านหนังสือ x ด้วยสมการ <code>y = w * x</code> โดย <code>w</code> (weight) คือตัวคูณที่โมเดลต้องหาเอง ข้อมูลคือ (1,20), (2,40), (3,60), (4,80), (5,100) ซึ่งคำตอบที่ถูกคือ w = 20</p>
+  <figure>
+      <h3>Regression · ถดถอย</h3>
+      <p>เฉลยเป็น <b>ตัวเลขต่อเนื่อง</b> เช่น ราคาบ้าน, คะแนนสอบ</p>
+      <svg viewBox="0 0 260 210" role="img" aria-label="กราฟเส้นตรง y = 20x ทำนายคะแนนจากชั่วโมงอ่าน">
+        <path d="M30 180 H250 M30 180 V12" class="s-axis"/>
+        <g class="f-muted" font-size="11">
+          <text x="66" y="194" text-anchor="middle">1</text><text x="102" y="194" text-anchor="middle">2</text><text x="138" y="194" text-anchor="middle">3</text><text x="174" y="194" text-anchor="middle">4</text><text x="210" y="194" text-anchor="middle">5</text>
+          <text x="24" y="148" text-anchor="end">20</text><text x="24" y="116" text-anchor="end">40</text><text x="24" y="84" text-anchor="end">60</text><text x="24" y="52" text-anchor="end">80</text><text x="24" y="20" text-anchor="end">100</text>
+        </g>
+        <line x1="30" y1="180" x2="230" y2="0" class="s-pen" stroke-width="2.4"/>
+        <g class="f-ink">
+          <circle cx="66" cy="148" r="5"/><circle cx="102" cy="116" r="5"/><circle cx="138" cy="84" r="5"/><circle cx="174" cy="52" r="5"/><circle cx="210" cy="20" r="5"/>
+        </g>
+        <text x="150" y="146" class="f-pen t-mono" font-size="14">y = 20x</text>
+        <text x="140" y="207" text-anchor="middle" class="f-muted" font-size="11">ชั่วโมงอ่านหนังสือ (x)</text>
+      </svg>
+      <figcaption>ข้อมูลสไลด์ 8: (1,20) (2,40) … (5,100) แล้ว w เข้าใกล้ 20</figcaption>
+    </figure>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 150" role="img" aria-label="วงจรทาย หา error ปรับ weight">
+      <defs><marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs>
+      <rect x="20" y="30" width="190" height="70" rx="10" class="f-pensoft"/>
+      <text x="115" y="58" text-anchor="middle" class="f-pen" font-size="15">1. ทาย</text>
+      <text x="115" y="82" text-anchor="middle" class="f-ink t-mono" font-size="13">pred = w * x</text>
+      <line x1="215" y1="65" x2="262" y2="65" class="s-pen" stroke-width="1.6" marker-end="url(#arr3)"/>
+      <rect x="266" y="30" width="190" height="70" rx="10" class="f-pensoft"/>
+      <text x="361" y="58" text-anchor="middle" class="f-pen" font-size="15">2. หา Error</text>
+      <text x="361" y="82" text-anchor="middle" class="f-ink t-mono" font-size="13">error = y − pred</text>
+      <line x1="461" y1="65" x2="508" y2="65" class="s-pen" stroke-width="1.6" marker-end="url(#arr3)"/>
+      <rect x="512" y="30" width="190" height="70" rx="10" class="f-hl"/>
+      <text x="607" y="58" text-anchor="middle" class="f-pen" font-size="15">3. ปรับ Weight</text>
+      <text x="607" y="82" text-anchor="middle" class="f-ink t-mono" font-size="13">w += lr * error</text>
+      <path d="M607 104 V130 H115 V106" class="s-pen" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arr3)"/>
+      <text x="361" y="145" text-anchor="middle" class="f-muted" font-size="12">วนซ้ำทุก epoch จน error เข้าใกล้ 0</text>
+    </svg>
+    </div>
+  </figure>
 <pre class="code">data = [(1, 20), (2, 40), (3, 60), (4, 80), (5, 100)]
 w = 0.0 ; learning_rate = 0.01
 
@@ -118,7 +256,22 @@ for epoch in range(100):
 <section class="note slide" id="s9" data-n="9">
   <div class="sec-tag">สไลด์ 9</div>
   <h2>การเรียนรู้จากตัวอย่างที่ไม่มีเฉลย (Unsupervised Learning)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนเทเลโก้ปนกันทั้งกล่องให้เด็ก ไม่มีใครบอกวิธีแยก แต่เด็กจะจับกองตามสีหรือขนาดได้เอง</p>
   <p><b>นิยาม</b> ป้อนเฉพาะข้อมูลดิบ x ไม่มีเฉลย y ให้ระบบค้นหารูปแบบหรือโครงสร้างที่ซ่อนอยู่เอง สไลด์เปรียบเหมือนเด็กจัดกล่องเลโก้ที่ไม่มีคู่มือ ไม่มีใครบอกว่าต้องแยกอย่างไร แต่เด็กจะคัดแยกตามสีหรือขนาดได้เองโดยสัญชาตญาณ</p>
+  <figure>
+      <h3>Dimensionality Reduction · ลดมิติ (PCA)</h3>
+      <svg viewBox="0 0 240 230" role="img" aria-label="PCA หาแกนใหม่ที่ข้อมูลกระจายมากที่สุด">
+        <path d="M30 200 H230 M30 200 V10" class="s-axis"/>
+        <g class="f-muted">
+          <circle cx="60" cy="168" r="4.5"/><circle cx="74" cy="150" r="4.5"/><circle cx="88" cy="146" r="4.5"/><circle cx="96" cy="128" r="4.5"/><circle cx="112" cy="122" r="4.5"/><circle cx="124" cy="104" r="4.5"/><circle cx="140" cy="100" r="4.5"/><circle cx="150" cy="82" r="4.5"/><circle cx="166" cy="76" r="4.5"/><circle cx="180" cy="58" r="4.5"/><circle cx="196" cy="50" r="4.5"/>
+        </g>
+        <line x1="44" y1="182" x2="214" y2="34" class="s-A" stroke-width="2.6"/>
+        <text x="196" y="30" class="f-A" font-size="12" text-anchor="end">PC1</text>
+        <line x1="100" y1="72" x2="150" y2="128" class="s-B" stroke-width="1.8" stroke-dasharray="5 4"/>
+        <text x="96" y="66" class="f-B" font-size="12">PC2</text>
+      </svg>
+      <figcaption>หาแกนใหม่ (Principal Component) ที่ <b>รักษา Variance ไว้มากที่สุด</b> แล้วตัดแกนที่บอกอะไรน้อยทิ้ง เช่น แบบสอบถาม 100 ข้อ เหลือ 3 แกนหลัก</figcaption>
+    </figure>
   <p>งานหลักมี 2 แบบ</p>
   <ul>
     <li><b>การจัดกลุ่ม (Clustering)</b> คำนวณระยะห่างทางเรขาคณิต (Distance) ระหว่างจุดข้อมูล จุดที่อยู่ใกล้กันถูกจัดไว้กลุ่มเดียวกัน</li>
@@ -138,7 +291,55 @@ for epoch in range(100):
 <section class="note slide" id="s11" data-n="11">
   <div class="sec-tag">สไลด์ 11</div>
   <h2>ตัวอย่างโปรแกรม Unsupervised Learning ใช้ K-Means</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>K-Means คือปักธงตัวแทนกลุ่มไว้ก่อน ให้ทุกคนเดินไปหาธงที่ใกล้ที่สุด แล้วย้ายธงไปไว้ตรงกลางกลุ่ม ทำซ้ำจนธงไม่ขยับ</p>
   <p>โจทย์คือจัดกลุ่มพฤติกรรมนักเรียน 6 คนจาก <code>x = [เข้าเรียน, ส่งงาน]</code> โดยคำนวณ <b>Euclidean Distance</b> (ระยะทางเส้นตรงระหว่างสองจุด)</p>
+  <figure>
+      <h3>Clustering · จัดกลุ่ม (K-Means)</h3>
+      <svg viewBox="0 0 240 230" role="img" aria-label="กราฟ K-Means จัดนักเรียน 6 คนเป็น 2 กลุ่ม">
+        <path d="M30 200 H230 M30 200 V10" class="s-axis"/>
+        <text x="130" y="224" text-anchor="middle" class="f-muted" font-size="12">เข้าเรียน →</text>
+        <text x="14" y="105" text-anchor="middle" class="f-muted" font-size="12" transform="rotate(-90 14 105)">ส่งงาน →</text>
+        <circle cx="56" cy="174" r="38" class="s-A" stroke-width="1.4" stroke-dasharray="4 4"/>
+        <circle cx="186" cy="38" r="38" class="s-B" stroke-width="1.4" stroke-dasharray="4 4"/>
+        <g class="f-A"><circle cx="48" cy="164" r="6"/><circle cx="66" cy="182" r="6"/><circle cx="48" cy="182" r="6"/></g>
+        <g class="f-B"><circle cx="174" cy="38" r="6"/><circle cx="192" cy="56" r="6"/><circle cx="192" cy="20" r="6"/></g>
+        <path d="M42 176 l12 12 M54 176 l-12 12" class="s-ink" stroke-width="2.5"/>
+        <path d="M186 32 l12 12 M198 32 l-12 12" class="s-ink" stroke-width="2.5"/>
+        <text x="84" y="150" class="f-A" font-size="12">กลุ่ม A</text>
+        <text x="122" y="80" class="f-B" font-size="12">กลุ่ม B</text>
+        <text x="96" y="196" class="f-muted" font-size="11">✕ = centroid</text>
+      </svg>
+      <figcaption>ข้อมูลสไลด์ 11: <code>[1,2] [2,1] [1,1]</code> กับ <code>[8,9] [9,8] [9,10]</code> · centroid A = [1,1], B = [9,9]</figcaption>
+    </figure>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 200" role="img" aria-label="K-Means 1 มิติ คะแนน 10 15 80 85">
+      <text x="10" y="22" class="f-muted" font-size="14">ใบงาน 2.2.2–2.2.3 · คะแนน [10, 15, 80, 85] · K = 2</text>
+      <text x="10" y="58" class="f-ink" font-size="14">① วางตัวแทน</text>
+      <line x1="140" y1="54" x2="700" y2="54" class="s-axis"/>
+      <g class="f-muted" font-size="11" text-anchor="middle"><text x="140" y="72">0</text><text x="420" y="72">50</text><text x="700" y="72">100</text></g>
+      <g class="f-ink"><circle cx="196" cy="54" r="6"/><circle cx="224" cy="54" r="6"/><circle cx="588" cy="54" r="6"/><circle cx="616" cy="54" r="6"/></g>
+      <path d="M242 44 l20 20 M262 44 l-20 20" class="s-A" stroke-width="3"/>
+      <path d="M578 34 l20 20 M598 34 l-20 20" class="s-B" stroke-width="3"/>
+      <text x="252" y="38" text-anchor="middle" class="f-A" font-size="12">A=20</text>
+      <text x="588" y="28" text-anchor="middle" class="f-B" font-size="12">B=80</text>
+
+      <text x="10" y="118" class="f-ink" font-size="14">② วัดระยะ เข้ากลุ่มที่ใกล้</text>
+      <line x1="140" y1="114" x2="700" y2="114" class="s-axis"/>
+      <g class="f-A"><circle cx="196" cy="114" r="7"/><circle cx="224" cy="114" r="7"/></g>
+      <g class="f-B"><circle cx="588" cy="114" r="7"/><circle cx="616" cy="114" r="7"/></g>
+      <text x="210" y="140" text-anchor="middle" class="f-A t-mono" font-size="12">|15−20|=5 &lt; |15−80|=65</text>
+
+      <text x="10" y="180" class="f-ink" font-size="14">③ ย้ายตัวแทนไปที่ค่าเฉลี่ย</text>
+      <line x1="140" y1="176" x2="700" y2="176" class="s-axis"/>
+      <path d="M200 166 l20 20 M220 166 l-20 20" class="s-A" stroke-width="3"/>
+      <path d="M592 166 l20 20 M612 166 l-20 20" class="s-B" stroke-width="3"/>
+      <text x="250" y="182" class="f-A t-mono" font-size="12">A = (10+15)/2 = 12.5</text>
+      <text x="440" y="182" class="f-B t-mono" font-size="12">B = 82.5</text>
+    </svg>
+    </div>
+    <figcaption>ทำ ② และ ③ ซ้ำจนตัวแทนไม่ขยับ ระบบแยกเด็กเก่งกับเด็กอ่อนได้โดยไม่มีใครบอก เพราะใช้แค่ “ระยะห่าง”</figcaption>
+  </figure>
 <pre class="code">import math
 
 students = [[1, 2], [2, 1], [1, 1], [8, 9], [9, 8], [9, 10]]
@@ -164,7 +365,30 @@ print(f"{group_A = }, {group_B = }")</pre>
 <section class="note slide" id="s12" data-n="12">
   <div class="sec-tag">สไลด์ 12</div>
   <h2>การเรียนรู้ผ่านการลองผิดลองถูก (Reinforcement Learning)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนฝึกสุนัข ไม่มีใครอธิบายให้มันฟัง แต่ทำแล้วได้ขนมหรือโดนดุ มันจะค่อย ๆ รู้เองว่าควรทำอะไร</p>
   <p><b>นิยาม</b> สมองกล (<b>Agent</b>) เรียนรู้อยู่ในสภาวะแวดล้อม (<b>Environment</b>) และเลือกการกระทำ (<b>Action</b>) เพื่อให้ได้ <b>รางวัลสะสมรวมสูงสุด (Maximize Cumulative Reward)</b> คำว่า “สะสม” สำคัญมาก หมายความว่ามองระยะยาว บางครั้งยอมเสียรางวัลตอนนี้เพื่อได้มากกว่าในอนาคต</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 240" role="img" aria-label="วงจร Agent Environment Action State Reward">
+      <defs>
+        <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-B"/></marker>
+        <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-A"/></marker>
+      </defs>
+      <rect x="30" y="70" width="200" height="100" rx="12" class="f-pensoft"/>
+      <text x="130" y="112" text-anchor="middle" class="f-pen" font-size="20">Agent</text>
+      <text x="130" y="138" text-anchor="middle" class="f-muted" font-size="13">สมองกล / ระบบแนะนำบทเรียน</text>
+      <rect x="490" y="70" width="200" height="100" rx="12" class="f-hl"/>
+      <text x="590" y="112" text-anchor="middle" class="f-ink" font-size="20">Environment</text>
+      <text x="590" y="138" text-anchor="middle" class="f-muted" font-size="13">ด่านในเกม / ตัวผู้เรียน</text>
+      <path d="M150 66 C 250 0, 470 0, 570 66" class="s-B" stroke-width="2.4" marker-end="url(#arrB)"/>
+      <text x="360" y="30" text-anchor="middle" class="f-B" font-size="16">Action (A)</text>
+      <text x="360" y="50" text-anchor="middle" class="f-muted" font-size="12">เช่น ส่งโจทย์ยาก หรือ ง่าย</text>
+      <path d="M570 174 C 470 240, 250 240, 150 174" class="s-A" stroke-width="2.4" marker-end="url(#arrA)"/>
+      <text x="360" y="200" text-anchor="middle" class="f-A" font-size="16">State (S) + Reward (R)</text>
+      <text x="360" y="220" text-anchor="middle" class="f-muted" font-size="12">สถานะใหม่ + แต้ม (นับเป็น 1 องค์ประกอบ)</text>
+    </svg>
+    </div>
+  </figure>
   <p>สไลด์เปรียบเหมือนการฝึกสุนัข หรือการเล่นเกมเพื่อชนะ ไม่มีใครบอกคำตอบที่ถูกล่วงหน้า แต่ทำแล้วได้รางวัลหรือโดนลงโทษ แล้วค่อย ๆ ปรับพฤติกรรม</p>
   <p><b>วงจร 4 องค์ประกอบหลัก</b></p>
   <ul>
@@ -192,6 +416,7 @@ print(f"{group_A = }, {group_B = }")</pre>
 <section class="note slide" id="s15" data-n="15">
   <div class="sec-tag">สไลด์ 15</div>
   <h2>องค์ประกอบหลัก (ต่อ): Reward</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>Reward คือ “คะแนนทันที” หลังทำแต่ละครั้ง ถ้าตั้งคะแนนผิด AI ก็จะขยันทำสิ่งผิด</p>
   <p><b>Reward (R · รางวัล)</b> คือแต้มบวก (รางวัล) หรือแต้มลบ (บทลงโทษ) ที่ได้ <b>ทันที</b> หลังทำ Action เพื่อบอกว่าสิ่งที่ทำไปดีหรือแย่ ในเกมคือคะแนน ในระบบการศึกษา ถ้านักเรียนทำโจทย์ข้อนั้นผ่านก็บวกแต้ม ถ้านักเรียนกดออกจากระบบเพราะโจทย์ยากเกินไปก็ติดลบแต้ม</p>
   <p>สไลด์หมายเหตุว่า <b>[Reward + New State] นับเป็น 1 องค์ประกอบ</b> เพราะ Environment ส่งสองอย่างนี้กลับมาพร้อมกันในแต่ละรอบ จึงเป็นวงจร 4 องค์ประกอบคือ Agent, Environment, Action และ State+Reward</p>
   <p>การออกแบบ Reward สำคัญมาก ถ้าให้รางวัลผิด AI ก็เรียนพฤติกรรมผิด เช่น ในใบงานให้คิดว่าบอตเตือนส่งงานควรได้แต้มติดลบถ้าเตือนตอนนักเรียนกำลังเรียน และได้แต้มบวกถ้าเตือนหลังเลิกเรียน</p>
@@ -201,6 +426,20 @@ print(f"{group_A = }, {group_B = }")</pre>
   <div class="sec-tag">สไลด์ 16</div>
   <h2>ตัวอย่างของ Reinforcement Learning</h2>
   <p><b>สัญชาตญาณ: ฝึกสุนัขนั่ง</b> นั่งได้ขนม (+1) เห่าโดนดุ (−1) สุนัขค่อย ๆ เรียนว่าการนั่งคุ้มกว่า</p>
+  <figure>
+      <h3>Q-Table · สมุดความจำของ AI</h3>
+      <svg viewBox="0 0 260 150" role="img" aria-label="ตาราง Q ก่อนและหลังได้ reward -5">
+        <text x="10" y="20" class="f-muted" font-size="12">ช่องเริ่มต้น (state 0) · [ซ้าย, ขวา]</text>
+        <rect x="10" y="32" width="110" height="40" class="f-bg s-axis"/><rect x="120" y="32" width="110" height="40" class="f-bg s-axis"/>
+        <text x="65" y="58" text-anchor="middle" class="f-ink t-mono" font-size="15">0.0</text>
+        <text x="175" y="58" text-anchor="middle" class="f-ink t-mono" font-size="15">0.0</text>
+        <text x="120" y="92" text-anchor="middle" class="f-muted" font-size="12">เดินขวา ตกหลุม ได้ Reward −5</text>
+        <rect x="10" y="102" width="110" height="40" class="f-bg s-A" stroke-width="2"/><rect x="120" y="102" width="110" height="40" class="f-bg s-bad" stroke-width="2"/>
+        <text x="65" y="128" text-anchor="middle" class="f-A t-mono" font-size="15">0.0 ✓</text>
+        <text x="175" y="128" text-anchor="middle" class="f-bad t-mono" font-size="15">−5.0</text>
+      </svg>
+      <figcaption>รอบหน้า AI จะเลือก <b>ซ้าย</b> เพราะค่าในตารางสูงกว่า (0 &gt; −5) · Grid World: ตกกับดัก −10, เจอทางออก +50</figcaption>
+    </figure>
   <p><b>หุ่นยนต์ในเขาวงกต (Grid World)</b> เดินตกกับดักได้ −10 เดินเจอทางออกได้ +50 ผลที่ได้ถูกบันทึกลง <b>Q-Table</b> ซึ่งเป็นตารางความจำว่าในแต่ละช่อง แต่ละทิศให้คะแนนเท่าไร ในใบงาน ช่องเริ่มต้นมีตาราง [ซ้าย, ขวา] = [0, 0] เดินขวาแล้วได้ −5 ตารางจึงเป็น [0, −5] รอบหน้า AI จะเลือกซ้ายเพราะค่าสูงกว่า</p>
   <p><b>การทรงตัวทางฟิสิกส์ (CartPole)</b> ขยับรถเข็นซ้ายขวาเพื่อเลี้ยงไม้ที่ตั้งอยู่ไม่ให้ล้ม ยิ่งไม้ตั้งได้นานยิ่งได้รางวัล เป็นหลักการเบื้องต้นของโดรนและหุ่นยนต์ทรงตัว</p>
 </section>
@@ -209,6 +448,7 @@ print(f"{group_A = }, {group_B = }")</pre>
   <div class="sec-tag">สไลด์ 17</div>
   <h2>ตัวอย่างของ Reinforcement Learning (ต่อ)</h2>
   <p><b>การวางแผนระยะยาว (Super Mario)</b> AI ยอมเสี่ยงกระโดดเหยียบศัตรู แม้อาจตาย เพื่อแลกกับคะแนนในด่านที่สูงกว่า แสดงว่ามันไม่ได้ดูแค่รางวัลตรงหน้า แต่ดูรางวัลสะสม</p>
+  <figure><div class="art"><svg viewBox="0 0 720 200" role="img" aria-label="เส้นทางปลอดภัยได้รางวัลรวมน้อยกว่าเส้นทางเสี่ยง"><defs><marker id="n06b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-muted"/></marker><marker id="n06c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-good"/></marker></defs><circle cx="50" cy="100" r="28" class="f-hl"/><text x="50" y="105" text-anchor="middle" class="f-ink" font-size="14">เริ่ม</text><path d="M78 90 L150 45" class="s-axis" stroke-width="1.4" marker-end="url(#n06b)"/><path d="M78 110 L150 155" class="s-good" stroke-width="2" marker-end="url(#n06c)"/><rect x="155" y="22" width="110" height="44" rx="10" class="f-surface"/><text x="210" y="49.6" text-anchor="middle" class="f-ink" font-size="16">+1</text><rect x="285" y="22" width="110" height="44" rx="10" class="f-surface"/><text x="340" y="49.6" text-anchor="middle" class="f-ink" font-size="16">+1</text><rect x="415" y="22" width="110" height="44" rx="10" class="f-surface"/><text x="470" y="49.6" text-anchor="middle" class="f-ink" font-size="16">+1</text><text x="560" y="50" class="f-muted" font-size="14">รวม = 3</text><rect x="155" y="132" width="110" height="44" rx="10" class="f-surface"/><text x="210" y="149.1" text-anchor="middle" class="f-bad" font-size="16">−1</text><text x="210" y="170.1" text-anchor="middle" class="f-muted" font-size="14">เหยียบศัตรู</text><rect x="285" y="132" width="240" height="44" rx="10" class="f-surface"/><text x="405" y="149.1" text-anchor="middle" class="f-good" font-size="16">+10</text><text x="405" y="170.1" text-anchor="middle" class="f-muted" font-size="14">ไปถึงด่านโบนัส</text><text x="560" y="160" class="f-good" font-size="15" font-weight="600">รวม = 9 ✓</text></svg></div><figcaption>RL มองรางวัล “สะสม” ยอมเสีย −1 ตอนนี้ เพื่อได้รวมมากกว่าในตอนท้าย</figcaption></figure>
   <p><b>ระดับสะเทือนโลก (AlphaGo ของ DeepMind)</b> ใช้วิธี <b>Self-play</b> แข่งกับตัวเองนับล้านกระดาน จนค้นพบกลยุทธ์ที่มนุษย์ไม่คุ้นเคย คือ <b>สละหมากเพื่อยึดพื้นที่ระยะยาว</b> ซึ่งเป็นตัวอย่างชัดเจนของการยอมเสียตอนนี้เพื่อชนะในตอนท้าย</p>
   <p><b>ด้านครุศาสตร์ (Adaptive Learning Pathway)</b> AI จัดข้อสอบตามความเข้าใจของนักเรียนแต่ละคน โดยเป้าหมายระยะยาวคือให้นักเรียนสอบผ่านปลายภาคได้สูงสุด ไม่ใช่แค่ทำข้อถัดไปให้ถูก</p>
 </section>
@@ -216,7 +456,9 @@ print(f"{group_A = }, {group_B = }")</pre>
 <section class="note slide" id="s18" data-n="18">
   <div class="sec-tag">สไลด์ 18</div>
   <h2>ความสมดุล (Generalization)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>นักเรียนที่ดีไม่ใช่คนที่จำข้อสอบเก่าได้หมด แต่คือคนที่เจอข้อสอบใหม่แล้วยังทำได้</p>
   <p><b>เป้าหมายสูงสุดของ Machine Learning</b> ไม่ใช่การทำข้อสอบเก่า (Training Data) ได้ 100% แต่คือ <b>Generalization</b> หมายถึงความสามารถในการทำข้อสอบใหม่ที่ไม่เคยเห็น (Unseen Data) ได้ดี เพราะในการใช้งานจริง โมเดลต้องเจอข้อมูลใหม่ตลอด</p>
+  <figure><div class="art"><svg viewBox="0 0 720 215" role="img" aria-label="คะแนนข้อสอบเก่าและข้อสอบใหม่ของโมเดล 3 แบบ"><line x1="70" y1="180" x2="710" y2="180" class="s-axis"/><rect x="90" y="124" width="56" height="56" rx="4" class="f-pen"/><text x="118" y="118" text-anchor="middle" class="f-ink t-mono" font-size="12">40%</text><rect x="154" y="127" width="56" height="53" rx="4" class="f-B"/><text x="182" y="121" text-anchor="middle" class="f-ink t-mono" font-size="12">38%</text><text x="150" y="202" text-anchor="middle" class="f-bad" font-size="14">Underfitting</text><rect x="310" y="51" width="56" height="129" rx="4" class="f-pen"/><text x="338" y="45" text-anchor="middle" class="f-ink t-mono" font-size="12">92%</text><rect x="374" y="57" width="56" height="123" rx="4" class="f-B"/><text x="402" y="51" text-anchor="middle" class="f-ink t-mono" font-size="12">88%</text><text x="370" y="202" text-anchor="middle" class="f-good" font-size="14">Good Fit</text><rect x="530" y="40" width="56" height="140" rx="4" class="f-pen"/><text x="558" y="34" text-anchor="middle" class="f-ink t-mono" font-size="12">100%</text><rect x="594" y="103" width="56" height="77" rx="4" class="f-B"/><text x="622" y="97" text-anchor="middle" class="f-ink t-mono" font-size="12">55%</text><text x="590" y="202" text-anchor="middle" class="f-B" font-size="14">Overfitting</text><rect x="70" y="4" width="14" height="14" rx="3" class="f-pen"/><text x="90" y="16" class="f-ink" font-size="13">ข้อสอบเก่า (Training)</text><rect x="260" y="4" width="14" height="14" rx="3" class="f-B"/><text x="280" y="16" class="f-ink" font-size="13">ข้อสอบใหม่ (Unseen)</text></svg></div><figcaption>ตัวเลขสมมติเพื่อให้เห็นภาพ · Overfit ได้เต็มข้อสอบเก่า แต่ตกข้อสอบใหม่ ส่วน Good Fit ได้ใกล้เคียงกันทั้งสอง</figcaption></figure>
   <p>สภาวะอันตรายมี 2 อย่าง</p>
   <ul>
     <li><b>Underfitting (เรียนรู้น้อยเกินไป · ขี้เกียจ)</b> โมเดลเรียบง่ายเกินไป จับความสัมพันธ์อะไรไม่ได้เลย เรียกว่า <b>High Bias</b> คือมีอคติไปทางคำตอบง่าย ๆ</li>
@@ -236,7 +478,36 @@ print(f"{group_A = }, {group_B = }")</pre>
 <section class="note slide" id="s20" data-n="20">
   <div class="sec-tag">สไลด์ 20</div>
   <h2>สรุปภาพรวม Overfitting และ Underfitting</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>Underfit = อ่านน้อยไป · Overfit = ท่องจำจนติดรายละเอียดขยะ · Good Fit = เข้าใจหลักแล้วนำไปใช้ได้</p>
   <p>ถ้ามองเป็นเส้นกราฟบนข้อมูลชุดเดียวกัน จะเห็น 3 แบบ</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 230" role="img" aria-label="กราฟ 3 แบบ underfit good fit overfit บนข้อมูลชุดเดียวกัน">
+      <g>
+        <rect x="5" y="5" width="225" height="170" rx="10" class="f-surface"/>
+        <line x1="20" y1="94" x2="215" y2="94" class="s-bad" stroke-width="2.6"/>
+        <g class="f-ink"><circle cx="25" cy="150" r="4.5"/><circle cx="47" cy="140" r="4.5"/><circle cx="69" cy="118" r="4.5"/><circle cx="91" cy="122" r="4.5"/><circle cx="113" cy="98" r="4.5"/><circle cx="135" cy="92" r="4.5"/><circle cx="157" cy="76" r="4.5"/><circle cx="179" cy="82" r="4.5"/><circle cx="201" cy="58" r="4.5"/></g>
+        <text x="117" y="200" text-anchor="middle" class="f-bad" font-size="16">Underfitting</text>
+        <text x="117" y="220" text-anchor="middle" class="f-muted" font-size="12">High Bias · Low Variance</text>
+      </g>
+      <g transform="translate(245 0)">
+        <rect x="5" y="5" width="225" height="170" rx="10" class="f-surface"/>
+        <path d="M18 156 C 80 128, 140 92, 214 54" class="s-good" stroke-width="2.6"/>
+        <g class="f-ink"><circle cx="25" cy="150" r="4.5"/><circle cx="47" cy="140" r="4.5"/><circle cx="69" cy="118" r="4.5"/><circle cx="91" cy="122" r="4.5"/><circle cx="113" cy="98" r="4.5"/><circle cx="135" cy="92" r="4.5"/><circle cx="157" cy="76" r="4.5"/><circle cx="179" cy="82" r="4.5"/><circle cx="201" cy="58" r="4.5"/></g>
+        <text x="117" y="200" text-anchor="middle" class="f-good" font-size="16">Good Fit</text>
+        <text x="117" y="220" text-anchor="middle" class="f-muted" font-size="12">Balanced · จับแก่น (Signal)</text>
+      </g>
+      <g transform="translate(490 0)">
+        <rect x="5" y="5" width="225" height="170" rx="10" class="f-surface"/>
+        <path d="M18 160 C 22 150, 40 128, 47 140 S 60 100, 69 118 S 86 140, 91 122 S 104 80, 113 98 S 128 104, 135 92 S 150 58, 157 76 S 172 102, 179 82 S 194 40, 201 58 S 210 70, 214 60" class="s-B" stroke-width="2.4"/>
+        <g class="f-ink"><circle cx="25" cy="150" r="4.5"/><circle cx="47" cy="140" r="4.5"/><circle cx="69" cy="118" r="4.5"/><circle cx="91" cy="122" r="4.5"/><circle cx="113" cy="98" r="4.5"/><circle cx="135" cy="92" r="4.5"/><circle cx="157" cy="76" r="4.5"/><circle cx="179" cy="82" r="4.5"/><circle cx="201" cy="58" r="4.5"/></g>
+        <text x="117" y="200" text-anchor="middle" class="f-B" font-size="16">Overfitting</text>
+        <text x="117" y="220" text-anchor="middle" class="f-muted" font-size="12">Low Bias · High Variance</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>ข้อมูลชุดเดียวกัน 3 โมเดล: เส้นตรงทื่อ / เส้นโค้งราบเรียบ / เส้นคดเคี้ยววิ่งผ่านทุกจุด รวมถึง Noise</figcaption>
+  </figure>
   <ul>
     <li><b>Underfitting</b> เส้นตรงทื่อ ๆ ไม่ครอบคลุมจุดข้อมูล · High Bias / Low Variance</li>
     <li><b>Good Fit</b> เส้นโค้งราบเรียบ จับแนวโน้มหลักได้อย่างยืดหยุ่น · Balanced</li>
@@ -253,7 +524,9 @@ print(f"{group_A = }, {group_B = }")</pre>
 <section class="note slide" id="s21" data-n="21">
   <div class="sec-tag">สไลด์ 21</div>
   <h2>จริยธรรมและจิตวิทยาทางการศึกษา</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>AI บอกได้แค่ว่า “ในอดีต เด็กแบบนี้มักเป็นแบบนั้น” แต่ไม่รู้ว่าเด็กคนนี้กำลังเจออะไร ครูคือคนที่รู้</p>
   <p>หัวใจของสไลด์นี้คือ <b>ความตระหนักรู้ของผู้สอน (Human-in-the-Loop)</b> ครูต้องอยู่ในวงจรการตัดสินใจเสมอ เหตุผลมีดังนี้</p>
+  <figure><div class="art"><svg viewBox="0 0 720 230" role="img" aria-label="วงจรการทำนายที่เป็นจริงเอง"><defs><marker id="n06d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-bad"/></marker></defs><rect x="30" y="20" width="260" height="60" rx="10" class="f-surface"/><text x="160" y="54.9" text-anchor="middle" class="f-ink" font-size="14">AI ทำนายว่า “เสี่ยงตก”</text><rect x="430" y="20" width="260" height="60" rx="10" class="f-surface"/><text x="560" y="45.4" text-anchor="middle" class="f-ink" font-size="14">ครูลดความคาดหวัง</text><text x="560" y="64.4" text-anchor="middle" class="f-muted" font-size="12">ให้โอกาสและความช่วยเหลือน้อยลง</text><rect x="430" y="150" width="260" height="60" rx="10" class="f-surface"/><text x="560" y="175.4" text-anchor="middle" class="f-ink" font-size="14">เด็กหมดกำลังใจ</text><text x="560" y="194.4" text-anchor="middle" class="f-muted" font-size="12">เลิกพยายาม</text><rect x="30" y="150" width="260" height="60" rx="10" class="f-surface"/><text x="160" y="175.4" text-anchor="middle" class="f-bad" font-size="14">เด็กตกจริง</text><text x="160" y="194.4" text-anchor="middle" class="f-muted" font-size="12">ข้อมูลใหม่ “ยืนยัน” ว่า AI แม่น</text><line x1="292" y1="50" x2="426" y2="50" class="s-bad" stroke-width="1.6" marker-end="url(#n06d)"/><line x1="560" y1="82" x2="560" y2="146" class="s-bad" stroke-width="1.6" marker-end="url(#n06d)"/><line x1="428" y1="180" x2="294" y2="180" class="s-bad" stroke-width="1.6" marker-end="url(#n06d)"/><line x1="160" y1="148" x2="160" y2="84" class="s-bad" stroke-width="1.6" marker-end="url(#n06d)"/><text x="360" y="122" text-anchor="middle" class="f-bad" font-size="14">Self-fulfilling Prophecy</text></svg></div><figcaption>คำทำนายไม่ได้ “ถูก” เพราะเด็กไม่เก่ง แต่เพราะการกระทำของคนที่เชื่อคำทำนาย ครูจึงต้องตัดวงจรนี้</figcaption></figure>
   <ul>
     <li><b>AI คือเครื่องมือคำนวณทางสถิติ ไม่ใช่สามัญสำนึก</b> มันหาแพทเทิร์นในตัวเลขได้ แต่ไม่เข้าใจบริบทชีวิตของนักเรียน</li>
     <li><b>ระวัง Algorithmic Bias (อคติทางสถิติ)</b> ถ้าข้อมูลในอดีตมีความไม่เป็นธรรม เช่น นักเรียนบางกลุ่มเคยได้รับโอกาสน้อย โมเดลจะเรียนและผลิตซ้ำอคตินั้น</li>
