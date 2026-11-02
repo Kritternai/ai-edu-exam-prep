@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 10 · Personalized Tutoring</title>
+<meta name="description" content="สรุป Session 10 ระบบผู้ช่วยสอนส่วนบุคคลและการออกแบบตรรกะช่วยสอน พร้อมภาพประกอบ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../">ติวสอบ AI <span>เพื่อการศึกษา</span></a>
+    <nav class="topnav" aria-label="เมนูหลัก">
+      <a href="../">บทเรียน</a>
+      <a href="../exam.html">ทำข้อสอบ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+<section class="hero">
+  <div class="eyebrow">Session 10 · Personalized Tutoring Systems &amp; Instructional Logic Design</div>
+  <h1>ระบบผู้ช่วยสอนส่วนบุคคลและการออกแบบตรรกะช่วยสอน</h1>
+  <p class="lede">ระบบช่วยสอนที่ดี <em class="hl">ต้องไม่คิดแทนผู้เรียน</em> แต่ต้องอ่านพฤติกรรมให้ออกว่าเด็กเดา สะเพร่า เข้าใจผิด หรือคิดไม่ออก แล้วช่วยให้ตรงจุด และ <em class="hl">คืนเวลาให้ครูดูแลจิตใจ</em></p>
+  <p class="lede">“ความสะดวกสบาย คือ ยาพิษของการเรียนรู้”</p>
+  <nav class="toc" aria-label="สารบัญ">
+    <a href="#cai">1 CAI กับ ITS</a>
+    <a href="#four">2 องค์ประกอบ 4 อย่าง</a>
+    <a href="#socratic">3 Socratic</a>
+    <a href="#adapt">4 ดูแล 3 ด้าน</a>
+    <a href="#psy">5 จิตวิทยา</a>
+    <a href="#logic">6 ตรรกะเงื่อนไข</a>
+    <a href="#special">7 กรณีพิเศษ</a>
+    <a href="#roles">8 AI กับครู</a>
+  </nav>
+</section>
+
+<!-- 1 -->
+<section class="note" id="cai">
+  <div class="sec-tag">1 · CAI vs ITS <span class="slide-ref">สไลด์ 2</span></div>
+  <h2>ทุกคนเดินทางเดียว หรือปรับตามแต่ละคน</h2>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 200" role="img" aria-label="CAI เป็นเส้นตรง ITS แตกแขนงตามผู้เรียน">
+      <defs><marker id="a10" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-muted"/></marker></defs>
+      <text x="10" y="22" class="f-ink" font-size="15">CAI · Computer-Assisted Instruction</text>
+      <g font-size="13" text-anchor="middle">
+        <rect x="10" y="40" width="80" height="40" rx="6" class="f-surface"/><text x="50" y="65" class="f-ink">หน้า 1</text>
+        <rect x="120" y="40" width="80" height="40" rx="6" class="f-surface"/><text x="160" y="65" class="f-ink">หน้า 2</text>
+        <rect x="230" y="40" width="80" height="40" rx="6" class="f-surface"/><text x="270" y="65" class="f-ink">หน้า 3</text>
+      </g>
+      <g class="s-axis"><line x1="90" y1="60" x2="116" y2="60" marker-end="url(#a10)"/><line x1="200" y1="60" x2="226" y2="60" marker-end="url(#a10)"/></g>
+      <text x="10" y="110" class="f-muted" font-size="12">ทุกคนเดินเหมือนกัน · ตอบผิดบอกแค่ “ผิด”</text>
+
+      <text x="380" y="22" class="f-pen" font-size="15">ITS · Intelligent Tutoring System</text>
+      <g font-size="13" text-anchor="middle">
+        <rect x="380" y="80" width="90" height="40" rx="6" class="f-pensoft"/><text x="425" y="105" class="f-pen">วิเคราะห์</text>
+        <rect x="530" y="30" width="180" height="36" rx="6" class="f-surface"/><text x="620" y="53" class="f-ink">เข้าใจเร็ว → โจทย์ท้าทาย</text>
+        <rect x="530" y="82" width="180" height="36" rx="6" class="f-surface"/><text x="620" y="105" class="f-ink">ปกติ → บทถัดไป</text>
+        <rect x="530" y="134" width="180" height="36" rx="6" class="f-surface"/><text x="620" y="157" class="f-ink">ติดขัด → ซ่อมพื้นฐาน</text>
+      </g>
+      <g class="s-pen" stroke-width="1.4"><path d="M470 95 L526 50" marker-end="url(#a10)"/><path d="M470 100 L526 100" marker-end="url(#a10)"/><path d="M470 105 L526 150" marker-end="url(#a10)"/></g>
+      <text x="380" y="192" class="f-muted" font-size="12">วิเคราะห์กระบวนการคิด หาจุดที่ผิด แล้วปรับเนื้อหาเฉพาะบุคคล</text>
+    </svg>
+    </div>
+  </figure>
+</section>
+
+<!-- 2 -->
+<section class="note" id="four">
+  <div class="sec-tag">2 · 4 Components of ITS <span class="slide-ref">สไลด์ 3–7</span></div>
+  <h2>องค์ประกอบ 4 อย่างของระบบการสอนอัจฉริยะ</h2>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 250" role="img" aria-label="ITS ตรงกลาง ล้อมด้วย 4 โมเดล">
+      <g class="s-axis" stroke-width="1.4"><line x1="360" y1="125" x2="170" y2="55"/><line x1="360" y1="125" x2="550" y2="55"/><line x1="360" y1="125" x2="170" y2="195"/><line x1="360" y1="125" x2="550" y2="195"/></g>
+      <circle cx="360" cy="125" r="46" class="f-hl"/>
+      <text x="360" y="130" text-anchor="middle" class="f-ink" font-size="18" font-weight="600">ITS</text>
+      <g font-size="14" text-anchor="middle">
+        <rect x="40" y="20" width="260" height="70" rx="10" class="f-pensoft"/><text x="170" y="48" class="f-pen" font-weight="600">Domain Model</text><text x="170" y="70" class="f-muted" font-size="13">What to teach · สอนอะไร</text>
+        <rect x="420" y="20" width="260" height="70" rx="10" class="f-pensoft"/><text x="550" y="48" class="f-pen" font-weight="600">Student Model</text><text x="550" y="70" class="f-muted" font-size="13">Who is learning · ผู้เรียนเป็นอย่างไร</text>
+        <rect x="40" y="160" width="260" height="70" rx="10" class="f-pensoft"/><text x="170" y="188" class="f-pen" font-weight="600">Pedagogical Model</text><text x="170" y="210" class="f-muted" font-size="13">How to teach · สอนอย่างไร</text>
+        <rect x="420" y="160" width="260" height="70" rx="10" class="f-pensoft"/><text x="550" y="188" class="f-pen" font-weight="600">User Interface</text><text x="550" y="210" class="f-muted" font-size="13">How to interact · สื่อสารอย่างไร</text>
+      </g>
+    </svg>
+    </div>
+  </figure>
+
+  <div class="grid2">
+    <div class="card sup">
+      <h3>Domain Model · เนื้อหา</h3>
+      <p>มีแผนผังวิชาเป็น <b>โครงข่ายความรู้ (Network of Concepts)</b> รู้ว่าเรื่องไหนต้องรู้ก่อน</p>
+      <p class="hint">บวกลบจำนวนติดลบ ม.1 → <i>ต้องรู้ก่อน</i> → แก้สมการเชิงเส้น ม.2 · ปัญหาของ ม.2 วันนี้ ส่วนมากมาจากช่องโหว่ ม.1</p>
+    </div>
+    <div class="card sup">
+      <h3>Student Model · ผู้เรียน</h3>
+      <p>แปลงพฤติกรรมบนหน้าจอเป็นข้อมูลการเรียนรู้ (<b>Data Mapping</b>)</p>
+      <ul>
+        <li>ตอบผิดซ้ำเรื่องเดิม → <b>Learning Gap</b></li>
+        <li>คลิกตอบเร็วเกิน (&lt; 3 วินาที) → <b>Rapid Guessing</b></li>
+        <li>หยุดนิ่งนานผิดปกติ → <b>Struggle / Impasse</b> (กำลังคิดแต่หาทางออกเองไม่ได้)</li>
+      </ul>
+    </div>
+    <div class="card sup">
+      <h3>Pedagogical Model · การสอน</h3>
+      <ul>
+        <li>หลีกเลี่ยงการเฉลยทันที ให้คิดเองก่อน</li>
+        <li>ใช้คำถามนำแบบ <b>Socratic</b></li>
+        <li>ส่งคำใบ้ทีละขั้น (<b>Scaffolding</b>)</li>
+        <li>รู้จังหวะ เมื่อไหร่ควรเงียบ บอกใบ้ หรือเรียกครูมนุษย์</li>
+      </ul>
+    </div>
+    <div class="card sup">
+      <h3>User Interface · การสื่อสาร</h3>
+      <ul>
+        <li>รวมพื้นที่คิดและคำใบ้ในจอเดียว ลด <b>Split-Attention</b></li>
+        <li>เลี่ยงข้อความเตือนสีแดงแรง ๆ ใช้ข้อความชวนคิด</li>
+        <li>แสดง <b>Mastery Bar</b> ให้เห็นพัฒนาการ</li>
+        <li>หน้าจอสะอาด เป็นมิตร ลดความเครียด</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="note" id="socratic">
+  <div class="sec-tag">3 · Socratic Questioning <span class="slide-ref">สไลด์ 8–9</span></div>
+  <h2>ไม่บอกคำตอบ แต่ถามจนผู้เรียนเห็นเอง</h2>
+  <p>หลักการ: <b>ไม่เฉลยทันที</b> · <b>ถามต่อยอดทีละขั้น</b> · <b>ชวนอธิบายเหตุผล</b> ไม่ใช่ตอบสั้น · <b>เปิดพื้นที่ให้ค้นพบเอง</b></p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 230" role="img" aria-label="ตัวอย่างคำถามนำ แก้สมการ 2x+3=7">
+      <text x="10" y="24" class="f-ink" font-size="15">นักเรียนแก้ <tspan class="t-mono">2x + 3 = 7</tspan> ไม่ได้ · ครูไม่บอกว่า x = 2</text>
+      <g font-size="14">
+        <rect x="10" y="40" width="430" height="42" rx="10" class="f-pensoft"/><text x="24" y="66" class="f-pen">ครู: ถ้าลบ 3 ออกจากทั้งสองข้าง จะเหลืออะไร</text>
+        <rect x="460" y="46" width="250" height="34" rx="10" class="f-surface"/><text x="474" y="68" class="f-ink t-mono">นักเรียน: 2x = 4</text>
+        <rect x="10" y="98" width="430" height="42" rx="10" class="f-pensoft"/><text x="24" y="124" class="f-pen">ครู: จะทำให้ x อยู่ตัวเดียวได้อย่างไร</text>
+        <rect x="460" y="104" width="250" height="34" rx="10" class="f-surface"/><text x="474" y="126" class="f-ink">นักเรียน: หารด้วย 2</text>
+        <rect x="10" y="156" width="430" height="42" rx="10" class="f-pensoft"/><text x="24" y="182" class="f-pen">ครู: หารแล้ว x เท่ากับอะไร</text>
+        <rect x="460" y="162" width="250" height="34" rx="10" class="f-hl"/><text x="474" y="184" class="f-ink t-mono">นักเรียน: x = 2 ✓</text>
+      </g>
+      <text x="10" y="222" class="f-muted" font-size="12">วิทยาศาสตร์: “ทำไมต้นไม้ต้องการแสง” → “ถ้าไม่มีแสงจะเกิดอะไรขึ้น”</text>
+    </svg>
+    </div>
+  </figure>
+</section>
+
+<!-- 4 -->
+<section class="note" id="adapt">
+  <div class="sec-tag">4 · Adaptive Support <span class="slide-ref">สไลด์ 10, 12</span></div>
+  <h2>ดูแลผู้เรียนตามสภาพจริง 3 ด้าน</h2>
+  <div class="grid3">
+    <div class="card"><h3>1 · Content Sequencing</h3><p>ปรับลำดับบทเรียน เข้าใจเร็วข้ามพื้นฐาน ยังไม่เข้าใจย้อนไปซ่อมเสริม</p></div>
+    <div class="card"><h3>2 · Scaffolding Strategies</h3><p>ช่วยเป็นขั้น: <b>สะกิดเตือน</b> → <b>แนะกฎ</b> → <b>ชี้ทางเดิน</b></p></div>
+    <div class="card"><h3>3 · Dynamic Difficulty</h3><p>ปรับโจทย์ให้ “พอดี” เด็กเก่งไม่เบื่อ เด็กที่ยังไม่เข้าใจได้โจทย์ง่ายขึ้นเพื่อสร้างความมั่นใจ</p></div>
+  </div>
+  <h3>แพลตฟอร์มตัวอย่าง</h3>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>แพลตฟอร์ม</th><th>วิชา</th><th>หลักการเด่น</th></tr></thead>
+    <tbody>
+      <tr><td><b>Duolingo</b></td><td>ภาษากว่า 40 ภาษา</td><td><b>Spaced Practice</b> ทวนคำศัพท์ตอนสมองเกือบจะลืมพอดี จำได้นานขึ้น</td></tr>
+      <tr><td><b>Khan Academy (Khanmigo)</b></td><td>คณิต วิทย์ มนุษยศาสตร์ Coding การเขียน</td><td>กันบอทแจกเฉลยการบ้าน ใช้ <b>คำถามนำแบบ Socratic</b></td></tr>
+      <tr><td><b>ALEKS</b></td><td>STEM เท่านั้น (คณิต เคมี สถิติ บัญชี)</td><td>มองบทเรียนเป็น <b>Knowledge Map</b> ใช้ข้อสอบราว <b>25 ข้อ</b> ระบุจุดอ่อนทั้งเทอม</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="note" id="psy">
+  <div class="sec-tag">5 · Psychology behind AI logic <span class="slide-ref">สไลด์ 11, 13</span></div>
+  <h2>จิตวิทยาการศึกษาที่กำหนดตรรกะ AI</h2>
+  <div class="grid2">
+    <figure class="card">
+      <h3>Vygotsky’s ZPD</h3>
+      <svg viewBox="0 0 260 200" role="img" aria-label="วงกลมซ้อน ZPD">
+        <circle cx="130" cy="100" r="92" class="f-surface"/>
+        <circle cx="130" cy="100" r="64" class="f-pensoft s-pen" stroke-width="2"/>
+        <circle cx="130" cy="100" r="34" class="f-bg s-axis"/>
+        <text x="130" y="96" text-anchor="middle" class="f-ink" font-size="11">ทำได้</text>
+        <text x="130" y="110" text-anchor="middle" class="f-ink" font-size="11">ด้วยตัวเอง</text>
+        <text x="130" y="56" text-anchor="middle" class="f-pen" font-size="12" font-weight="600">ZPD</text>
+        <text x="130" y="152" text-anchor="middle" class="f-pen" font-size="11">ทำได้เมื่อมีคนช่วย</text>
+        <text x="130" y="186" text-anchor="middle" class="f-muted" font-size="11">ยังทำไม่ได้</text>
+      </svg>
+      <figcaption>Zone of Proximal Development = ช่วงระหว่าง “ทำได้เอง” กับ “ทำได้เมื่อมีผู้ช่วย” ตรึงโจทย์ให้ต้อง <b>ออกแรงบ้างเล็กน้อย</b> ไม่ง่ายจนไม่เรียนรู้ ไม่ยากจนท้อ</figcaption>
+    </figure>
+    <div class="card">
+      <h3>Constructivism</h3>
+      <p>ให้ผู้เรียนเผชิญ <b>ความไม่สมดุลทางปัญญา (Disequilibrium)</b> ใช้ตัวอย่างแย้งกระตุ้นให้ค้นพบความรู้ใหม่เอง</p>
+      <h3>Cognitive Load Theory</h3>
+      <p>ลด <b>Extraneous Load</b> บนหน้าจอ รักษาพื้นที่ <b>Germane Load</b> ให้คิดเชิงลึก</p>
+      <h3>ทำไมห้ามเฉลยทันที</h3>
+      <p>ผู้เรียนที่ออกแรงคิดสร้างความจำระยะยาว ส่วนคนที่อ่านเฉลยตาม ๆ เกิด <b>ภาพลวงตาว่าเข้าใจ</b> แต่ดึงความรู้มาใช้ไม่ได้</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="note" id="logic">
+  <div class="sec-tag">6 · Nested Conditions <span class="slide-ref">สไลด์ 14–17</span></div>
+  <h2>ใช้เงื่อนไขซ้อน แยกแยะพฤติกรรมผู้เรียน</h2>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 270" role="img" aria-label="ผังเงื่อนไข ตรวจความถูกต้อง เวลา และจำนวนครั้งที่ผิด">
+      <defs><marker id="a10b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-muted"/></marker></defs>
+      <g font-size="13" text-anchor="middle">
+        <rect x="10" y="20" width="150" height="50" rx="25" class="f-hl"/><text x="85" y="42" class="f-ink">ด่าน 1</text><text x="85" y="59" class="f-ink">ตอบถูกไหม?</text>
+        <rect x="10" y="110" width="150" height="40" rx="8" class="f-surface"/><text x="85" y="135" class="f-good">ถูก → ไปต่อ</text>
+        <rect x="210" y="20" width="150" height="50" rx="25" class="f-hl"/><text x="285" y="42" class="f-ink">ด่าน 2</text><text x="285" y="59" class="f-ink">ใช้เวลา &lt; 3 วินาที?</text>
+        <rect x="210" y="110" width="150" height="56" rx="8" class="f-surface"/><text x="285" y="133" class="f-bad">Rapid Guessing</text><text x="285" y="152" class="f-muted" font-size="12">ล็อกจอ 15 วิ ให้อ่านโจทย์</text>
+        <rect x="410" y="20" width="150" height="50" rx="25" class="f-hl"/><text x="485" y="42" class="f-ink">ด่าน 3</text><text x="485" y="59" class="f-ink">ผิดครั้งที่เท่าไร?</text>
+        <rect x="590" y="90" width="125" height="50" rx="8" class="f-surface"/><text x="652" y="111" class="f-ink">ครั้ง 1 · Slip</text><text x="652" y="129" class="f-muted" font-size="11">ใบ้ระดับ 1 ให้ตรวจทาน</text>
+        <rect x="590" y="150" width="125" height="50" rx="8" class="f-surface"/><text x="652" y="171" class="f-ink">ครั้ง 2 · Misconception</text><text x="652" y="189" class="f-muted" font-size="11">ใบ้ระดับ 2 อธิบายกฎ</text>
+        <rect x="590" y="210" width="125" height="50" rx="8" class="f-pensoft"/><text x="652" y="231" class="f-pen">ครั้ง 3 · Impasse</text><text x="652" y="249" class="f-muted" font-size="11">หยุดระบบ แจ้งครู</text>
+      </g>
+      <g class="s-axis" stroke-width="1.4">
+        <line x1="85" y1="72" x2="85" y2="106" marker-end="url(#a10b)"/>
+        <line x1="162" y1="45" x2="206" y2="45" marker-end="url(#a10b)"/>
+        <line x1="285" y1="72" x2="285" y2="106" marker-end="url(#a10b)"/>
+        <line x1="362" y1="45" x2="406" y2="45" marker-end="url(#a10b)"/>
+        <path d="M562 45 H575 V115 H586" marker-end="url(#a10b)"/>
+        <path d="M575 115 V175 H586" marker-end="url(#a10b)"/>
+        <path d="M575 175 V235 H586" marker-end="url(#a10b)"/>
+      </g>
+      <g class="f-muted" font-size="11"><text x="168" y="38">ผิด</text><text x="292" y="92">ใช่</text><text x="368" y="38">ไม่ (เวลาปกติ)</text></g>
+    </svg>
+    </div>
+  </figure>
+
+  <div class="trainer" aria-live="polite">
+    <h3>ลองเป็นระบบตัดสินใจ</h3>
+    <p>ตั้งพฤติกรรมของผู้เรียน แล้วดูว่าระบบควรตอบสนองอย่างไร</p>
+    <div class="btn-row">
+      <label for="dCorrect">คำตอบ</label>
+      <select id="dCorrect"><option value="0" selected>ผิด</option><option value="1">ถูก</option></select>
+      <label for="dTime">เวลาที่ใช้ (วินาที)</label>
+      <select id="dTime"><option value="2">2</option><option value="20" selected>20</option><option value="90">90</option></select>
+      <label for="dTry">ผิดครั้งที่</label>
+      <select id="dTry"><option value="1" selected>1</option><option value="2">2</option><option value="3">3</option></select>
+    </div>
+    <div class="memo" id="dOut"></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Slip · สะเพร่า</h3>
+      <p>เคยทำได้ แต่ครั้งนี้เผลอกดผิด อ่านตกหล่น <b>เตือนสั้น ๆ ให้ตรวจทาน</b> ไม่ต้องสอนใหม่</p>
+    </div>
+    <div class="card">
+      <h3>Misconception · เข้าใจผิดจริง</h3>
+      <p>มี <b>ทฤษฎีส่วนตัวที่ผิด</b> ฝังอยู่ในหัว ต้อง <b>ส่งคำใบ้หรืออธิบายใหม่</b> เพื่อปรับโครงสร้างความคิด</p>
+    </div>
+  </div>
+
+  <figure class="card">
+    <h3>ตัวอย่างตรวจจับความเข้าใจผิด (สไลด์ 17)</h3>
+    <svg viewBox="0 0 640 110" role="img" aria-label="นักเรียนบวกเศษส่วนผิดโดยบวกเศษกับเศษ ส่วนกับส่วน">
+      <g class="t-mono" font-size="26">
+        <text x="20" y="40" class="f-ink">1</text><line x1="14" y1="50" x2="40" y2="50" class="s-ink" stroke-width="2"/><text x="20" y="80" class="f-ink">2</text>
+        <text x="56" y="62" class="f-ink">+</text>
+        <text x="90" y="40" class="f-ink">1</text><line x1="84" y1="50" x2="110" y2="50" class="s-ink" stroke-width="2"/><text x="90" y="80" class="f-ink">3</text>
+        <text x="126" y="62" class="f-ink">=</text>
+        <text x="166" y="40" class="f-bad">2</text><line x1="160" y1="50" x2="186" y2="50" class="s-bad" stroke-width="2"/><text x="166" y="80" class="f-bad">5</text>
+        <text x="200" y="62" class="f-bad" font-size="22">✗</text>
+        <text x="270" y="40" class="f-good">5</text><line x1="264" y1="50" x2="290" y2="50" class="s-good" stroke-width="2"/><text x="270" y="80" class="f-good">6</text>
+        <text x="300" y="62" class="f-good" font-size="22">✓</text>
+      </g>
+      <text x="350" y="44" class="f-ink" font-size="14">นำเศษบวกเศษ ส่วนบวกส่วน</text>
+      <text x="350" y="66" class="f-muted" font-size="13">สับสนกับกฎการคูณเศษส่วน</text>
+    </svg>
+    <figcaption>คำใบ้ตรงจุด: “สังเกตไหมว่ากำลังเอาตัวส่วน 2 กับ 3 มาบวกกันตรง ๆ ลองหาตัวส่วนร่วมก่อนนะ” · ครูเปิดแดชบอร์ดดูได้ทันทีว่ามีกี่คนติดกับดักนี้</figcaption>
+  </figure>
+</section>
+
+<!-- 7 -->
+<section class="note" id="special">
+  <div class="sec-tag">7 · Special Cases <span class="slide-ref">สไลด์ 18, 20–21</span></div>
+  <h2>กรณีที่ต้องให้ความสนใจเป็นพิเศษ</h2>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>กรณี</th><th>สัญญาณ</th><th>การจัดการ</th></tr></thead>
+    <tbody>
+      <tr><td><b>Gaming the System</b></td><td>กดขอคำใบ้ 3 ครั้งติดเพื่อหวังเฉลย</td><td>หน่วงปุ่มคำใบ้ <b>10 วินาที</b></td></tr>
+      <tr><td><b>Cognitive Impasse</b></td><td>หน้าจอนิ่งสนิทเกิน <b>5 นาที</b></td><td>สั่งพักบทเรียน แสดงข้อความปลอบใจ</td></tr>
+      <tr><td><b>Stagnation Deadlock</b></td><td>ทำบทซ่อมเสริมซ้ำเกิน <b>2 รอบ</b> ยังไม่ผ่าน</td><td>ตัดลูปทันที ส่งเรื่องให้ครู</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Safety Control</h3>
+      <p>ผิดซ้ำเกิน 3 ครั้ง หรือพิมพ์ข้อความสะท้อนความเครียดรุนแรง ระบบ <b>หยุดกิจกรรมอัตโนมัติ</b> ไม่ให้ผู้เรียนถูกกดดันเกินไป</p>
+    </div>
+    <div class="card">
+      <h3>Manual Override</h3>
+      <p>หน้าจอครูต้องมีปุ่ม สั่งหยุดระบบ เปลี่ยนโจทย์ แก้สถานะเด็ก ครู <b>แทรกแซงได้ทุกเมื่อ</b></p>
+    </div>
+  </div>
+
+  <h3>กับดักการพึ่งพา AI</h3>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 150" role="img" aria-label="วงจรกับดักความสะดวกสบาย">
+      <defs><marker id="a10c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-bad"/></marker></defs>
+      <g font-size="13" text-anchor="middle">
+        <rect x="5" y="30" width="160" height="56" rx="10" class="f-surface"/><text x="85" y="63" class="f-ink">AI ใจดีแจกเฉลย</text>
+        <rect x="190" y="30" width="160" height="56" rx="10" class="f-surface"/><text x="270" y="55" class="f-ink">สมองลัดวงจร</text><text x="270" y="73" class="f-muted" font-size="11">Short-circuiting</text>
+        <rect x="375" y="30" width="160" height="56" rx="10" class="f-surface"/><text x="455" y="55" class="f-ink">ภาพลวงตาว่า</text><text x="455" y="73" class="f-ink">เข้าใจแล้ว</text>
+        <rect x="560" y="30" width="155" height="56" rx="10" class="f-surface s-bad" stroke-width="1.6"/><text x="637" y="63" class="f-bad">ติดการพึ่งพา AI</text>
+      </g>
+      <g class="s-bad" stroke-width="1.6"><line x1="166" y1="58" x2="186" y2="58" marker-end="url(#a10c)"/><line x1="351" y1="58" x2="371" y2="58" marker-end="url(#a10c)"/><line x1="536" y1="58" x2="556" y2="58" marker-end="url(#a10c)"/></g>
+      <path d="M637 88 V112 H85 V90" class="s-bad" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#a10c)"/>
+      <text x="360" y="138" text-anchor="middle" class="f-muted" font-size="12">ป้องกันด้วย Desirable Difficulties</text>
+    </svg>
+    </div>
+  </figure>
+  <div class="grid2">
+    <div class="card uns"><h3>คำถามนำแบบ Socratic</h3><p>AI ต้องถามนำ ไม่แสดงคำตอบสุดท้ายทันที</p></div>
+    <div class="card uns"><h3>Isomorphic Test · ด่านคู่ขนาน</h3><p>ถ้าใช้คำใบ้จนผ่านโจทย์หนึ่ง ข้อถัดไป (โครงสร้างเดียวกัน) <b>ปิดปุ่มคำใบ้ทั้งหมด</b> เพื่อทดสอบว่าเข้าใจจริง</p></div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="note" id="roles">
+  <div class="sec-tag">8 · AI &amp; Teacher Roles <span class="slide-ref">สไลด์ 19</span></div>
+  <h2>AI ทำงานคัดกรอง ครูทำงานด้านจิตใจ</h2>
+  <div class="grid2">
+    <div class="card sup">
+      <h3>บทบาทของ AI</h3>
+      <ul>
+        <li>ตรวจคะแนนและข้อมูลการเรียนรู้</li>
+        <li>เฝ้าระวังพฤติกรรมตลอด 24 ชั่วโมง</li>
+        <li>ส่งคำใบ้พื้นฐานเมื่อเด็กทำผิด</li>
+        <li>สรุปจุดอ่อนของทั้งห้อง</li>
+      </ul>
+    </div>
+    <div class="card rl">
+      <h3>บทบาทของครูมนุษย์</h3>
+      <ul>
+        <li>โอบอุ้มดูแลสภาพจิตใจ</li>
+        <li>ให้คำปรึกษาเชิงลึก ปลอบประโลม</li>
+        <li>สร้างแรงบันดาลใจและความเชื่อมั่น</li>
+        <li><b>ตัดสินใจขั้นสุดท้าย</b></li>
+      </ul>
+    </div>
+  </div>
+  <div class="memo"><b>แนวคิดหลัก</b><span>AI ถูกสร้างมาเพื่อ <b>คืนเวลาความเป็นมนุษย์ให้แก่ครู</b></span></div>
+</section>
+
+<p class="foot">สรุปจากสไลด์ Session10 (23 หน้า)</p>
+</main>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const out = $("dOut");
+  function decide() {
+    const correct = $("dCorrect").value === "1";
+    const time = Number($("dTime").value);
+    const tries = Number($("dTry").value);
+    let state, action;
+    if (correct) [state, action] = ["ตอบถูก", "ไปข้อถัดไป หรือเพิ่มความยากถ้าตอบถูกต่อเนื่อง"];
+    else if (time < 3) [state, action] = ["เดาสุ่ม (Rapid Guessing)", "ล็อกหน้าจอ 15 วินาที พร้อมข้อความชวนอ่านโจทย์"];
+    else if (tries === 1) [state, action] = ["สะเพร่า (Slip)", "ส่งคำใบ้ระดับ 1 กระตุ้นให้ตรวจทาน"];
+    else if (tries === 2) [state, action] = ["เข้าใจผิด (Misconception)", "ส่งคำใบ้ระดับ 2 อธิบายกฎหรือโจทย์ให้เข้าใจง่ายขึ้น"];
+    else [state, action] = ["คิดไม่ออก (Impasse)", "หยุดระบบ และแจ้งครูมนุษย์เข้ามาช่วย"];
+    $("dTime").disabled = $("dTry").disabled = correct;
+    out.replaceChildren();
+    const b = document.createElement("b");
+    b.textContent = "วินิจฉัย: " + state;
+    const s = document.createElement("span");
+    s.textContent = "ระบบทำ: " + action;
+    out.append(b, s);
+  }
+  ["dCorrect", "dTime", "dTry"].forEach((id) => $(id).addEventListener("change", decide));
+  decide();
+})();
+</script>
+</body>
+</html>
