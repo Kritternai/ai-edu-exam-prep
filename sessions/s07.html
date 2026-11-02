@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 07 · Neural Networks</title>
+<meta name="description" content="สรุป Session 7 โครงข่ายประสาทเทียมเบื้องต้น พร้อมภาพประกอบ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../">ติวสอบ AI <span>เพื่อการศึกษา</span></a>
+    <nav class="topnav" aria-label="เมนูหลัก">
+      <a href="../">บทเรียน</a>
+      <a href="../exam.html">ทำข้อสอบ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+<section class="hero">
+  <div class="eyebrow">Session 07 · Neural Networks</div>
+  <h1>โครงข่ายประสาทเทียมเบื้องต้น</h1>
+  <p class="lede">เซลล์ประสาทเทียม 1 ตัวทำแค่ <em class="hl">คูณ บวก แล้วตัดสินใจ</em> พอต่อกันหลายชั้นก็แก้ปัญหาซับซ้อนได้ และมันเรียนรู้ด้วยวงจร <em class="hl">ทาย → วัดความผิด → ย้อนหาสาเหตุ → ปรับน้ำหนัก</em></p>
+  <nav class="toc" aria-label="สารบัญ">
+    <a href="#why">1 ทำไมต้องเลียนแบบสมอง</a>
+    <a href="#neuron">2 จากเซลล์จริงสู่ Perceptron</a>
+    <a href="#act">3 Activation Function</a>
+    <a href="#mlp">4 โครงข่ายหลายชั้น</a>
+    <a href="#loss">5 Loss</a>
+    <a href="#learn">6 การเรียนรู้</a>
+  </nav>
+</section>
+
+<!-- 1 -->
+<section class="note" id="why">
+  <div class="sec-tag">1 · Why Neural Networks <span class="slide-ref">สไลด์ 2</span></div>
+  <h2>คอมพิวเตอร์ทั่วไปเก่งเลข แต่ไม่เก่งเรื่องที่คนทำได้ง่าย</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>คอมพิวเตอร์ทั่วไป · Von Neumann</h3>
+      <p>ประมวลผล <b>ทีละคำสั่งเป็นเส้นตรง</b> (Sequential Processing) เก่งคณิตศาสตร์ แต่ล้มเหลวกับการจำใบหน้าหรือตีความภาษา</p>
+    </div>
+    <div class="card">
+      <h3>สมองมนุษย์ · ทางออก</h3>
+      <p>ประมวลผล <b>ขนานมหาศาล</b> (Massively Parallel Processing) ผ่านเซลล์ประสาทพันล้านตัว จึงเกิด <b>Artificial Neural Networks</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="note" id="neuron">
+  <div class="sec-tag">2 · Biological Neuron → Perceptron <span class="slide-ref">สไลด์ 3–6</span></div>
+  <h2>แปลงเซลล์ประสาทจริงเป็นสมการ</h2>
+  <p>เซลล์ประสาทยิงสัญญาณตามกฎ <b>All-or-None</b>: ถ้าสัญญาณรวมไม่ถึง <b>Threshold</b> ก็ไม่ยิง (0) ถ้าเกินก็ยิงเต็มที่ (1) Perceptron ลอกหลักการนี้มาเป็นตัวเลข</p>
+
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 250" role="img" aria-label="แผนภาพ Perceptron">
+      <defs><marker id="a7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-muted"/></marker></defs>
+      <g class="f-surface"><circle cx="70" cy="60" r="26"/><circle cx="70" cy="130" r="26"/><circle cx="70" cy="200" r="26"/></g>
+      <g class="f-ink t-mono" font-size="15" text-anchor="middle"><text x="70" y="65">x₁</text><text x="70" y="135">x₂</text><text x="70" y="205">xₙ</text></g>
+      <line x1="96" y1="62" x2="290" y2="122" class="s-axis" marker-end="url(#a7)"/>
+      <line x1="96" y1="130" x2="290" y2="130" class="s-axis" marker-end="url(#a7)"/>
+      <line x1="96" y1="198" x2="290" y2="138" class="s-axis" marker-end="url(#a7)"/>
+      <g class="f-pen t-mono" font-size="14"><text x="170" y="78">w₁</text><text x="170" y="124">w₂</text><text x="170" y="192">wₙ</text></g>
+      <circle cx="340" cy="130" r="46" class="f-pensoft s-pen" stroke-width="2"/>
+      <text x="340" y="126" text-anchor="middle" class="f-pen t-mono" font-size="18">z = Σwx + b</text>
+      <text x="340" y="148" text-anchor="middle" class="f-muted" font-size="12">Weighted Sum</text>
+      <line x1="386" y1="130" x2="460" y2="130" class="s-axis" marker-end="url(#a7)"/>
+      <rect x="464" y="98" width="110" height="64" rx="10" class="f-hl"/>
+      <text x="519" y="128" text-anchor="middle" class="f-ink t-mono" font-size="17">f(z)</text>
+      <text x="519" y="148" text-anchor="middle" class="f-muted" font-size="12">Activation</text>
+      <line x1="574" y1="130" x2="640" y2="130" class="s-axis" marker-end="url(#a7)"/>
+      <text x="680" y="135" text-anchor="middle" class="f-ink t-mono" font-size="16">ŷ</text>
+      <text x="340" y="215" text-anchor="middle" class="f-muted" font-size="13">b = Bias (เทียบกับ Threshold)</text>
+    </svg>
+    </div>
+  </figure>
+
+  <div class="tbl">
+  <table>
+    <thead><tr><th>ชีววิทยา</th><th>หน้าที่ในเซลล์จริง</th><th>Perceptron</th></tr></thead>
+    <tbody>
+      <tr><td><b>Dendrites</b></td><td>แขนรับสัญญาณจากเซลล์อื่น</td><td>Inputs <code>x₁, x₂, …</code></td></tr>
+      <tr><td><b>Synapse</b></td><td>รอยต่อปรับความเข้มสัญญาณ จุดที่เกิดการเรียนรู้</td><td>Weights <code>w₁, w₂, …</code></td></tr>
+      <tr><td><b>Soma</b></td><td>ตัวเซลล์ รวมสัญญาณ</td><td>Weighted Sum <code>z</code></td></tr>
+      <tr><td><b>Threshold</b></td><td>ขีดที่ต้องผ่านจึงจะยิง</td><td>Bias <code>b</code></td></tr>
+      <tr><td><b>Axon / Action Potential</b></td><td>ส่งสัญญาณออก</td><td>Activation <code>f(z)</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="memo">
+    <b>สมการหลัก (ต้องจำ)</b>
+    <span class="mono">z = (x₁w₁ + x₂w₂ + … + xₙwₙ) + b</span>
+    <span><b>Weight</b> = ความสำคัญของข้อมูล (บวก = กระตุ้น, ลบ = ยับยั้ง) · <b>Bias</b> = เกณฑ์ความตื่นตัว (โหนดนี้ตัดสินใจง่ายหรือยาก)</span>
+  </div>
+
+  <div class="trainer" aria-live="polite">
+    <h3>ลองคำนวณ Neuron 1 ตัว</h3>
+    <p>ปรับค่าแล้วดูว่า <code>z</code> และผลลัพธ์เปลี่ยนอย่างไร</p>
+    <div class="grid2 sliders" id="nCalc">
+      <label>x₁ <input type="range" id="nx1" min="-2" max="2" step="0.1" value="1"> <span class="num" id="vx1"></span></label>
+      <label>w₁ <input type="range" id="nw1" min="-2" max="2" step="0.1" value="0.6"> <span class="num" id="vw1"></span></label>
+      <label>x₂ <input type="range" id="nx2" min="-2" max="2" step="0.1" value="0.5"> <span class="num" id="vx2"></span></label>
+      <label>w₂ <input type="range" id="nw2" min="-2" max="2" step="0.1" value="-0.4"> <span class="num" id="vw2"></span></label>
+      <label>b <input type="range" id="nb" min="-2" max="2" step="0.1" value="0.1"> <span class="num" id="vb"></span></label>
+    </div>
+    <pre class="code" id="nOut"></pre>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="note" id="act">
+  <div class="sec-tag">3 · Activation Function <span class="slide-ref">สไลด์ 7–9</span></div>
+  <h2>ทำไมต้องมีฟังก์ชันกระตุ้น</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>ปัญหาของสมการเส้นตรง</h3>
+      <p>ถ้าไม่มี Activation โครงข่าย 100 ชั้นจะยุบรวมเหลือเท่ากับ <b>ชั้นเดียว</b> คำนวณได้แค่เส้นตรง (Linear Limitation)</p>
+    </div>
+    <div class="card">
+      <h3>ปัญหา XOR</h3>
+      <p>ข้อมูลจริงแบ่งด้วยเส้นตรงเส้นเดียวไม่ได้ (Non-linearly Separable) จึงต้องใช้ฟังก์ชัน <b>ไม่เป็นเส้นตรง</b> (Non-linear)</p>
+    </div>
+  </div>
+
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 150" role="img" aria-label="กราฟ step sigmoid relu และตัวอย่าง softmax">
+      <g>
+        <rect x="0" y="0" width="165" height="110" rx="8" class="f-surface"/>
+        <path d="M12 96 H81 V14 H150" class="s-pen" stroke-width="2.6"/>
+        <text x="82" y="134" text-anchor="middle" class="f-ink" font-size="14">Step</text>
+        <text x="82" y="148" text-anchor="middle" class="f-muted" font-size="11">0 หรือ 1 · หาความชันไม่ได้</text>
+      </g>
+      <g transform="translate(185 0)">
+        <rect x="0" y="0" width="165" height="110" rx="8" class="f-surface"/>
+        <path d="M12.0,95.8 L25.8,95.3 L37.3,94.2 L46.5,92.1 L53.4,89.2 L58.0,86.2 L62.6,82.2 L67.2,77.0 L71.8,70.6 L76.4,63.1 L81.0,55.0 L85.6,46.9 L90.2,39.4 L94.8,33.0 L99.4,27.8 L104.0,23.8 L108.6,20.8 L115.5,17.9 L124.7,15.8 L136.2,14.7 L150.0,14.2" class="s-pen" stroke-width="2.6"/>
+        <text x="82" y="134" text-anchor="middle" class="f-ink" font-size="14">Sigmoid</text>
+        <text x="82" y="148" text-anchor="middle" class="f-muted" font-size="11">ช่วง (0,1) · Vanishing Gradient</text>
+      </g>
+      <g transform="translate(370 0)">
+        <rect x="0" y="0" width="165" height="110" rx="8" class="f-surface"/>
+        <path d="M12 96 H81 L150 14" class="s-pen" stroke-width="2.6"/>
+        <text x="82" y="134" text-anchor="middle" class="f-ink" font-size="14">ReLU = max(0, z)</text>
+        <text x="82" y="148" text-anchor="middle" class="f-muted" font-size="11">ลบเป็น 0 · มาตรฐาน Hidden</text>
+      </g>
+      <g transform="translate(555 0)">
+        <rect x="0" y="0" width="165" height="110" rx="8" class="f-surface"/>
+        <rect x="22" y="31" width="30" height="67" rx="3" class="f-pen"/>
+        <rect x="68" y="73" width="30" height="25" rx="3" class="f-pen"/>
+        <rect x="114" y="88" width="30" height="10" rx="3" class="f-pen"/>
+        <g class="f-ink t-mono" font-size="11" text-anchor="middle"><text x="37" y="24">66%</text><text x="83" y="66">24%</text><text x="129" y="81">10%</text></g>
+        <text x="82" y="134" text-anchor="middle" class="f-ink" font-size="14">Softmax</text>
+        <text x="82" y="148" text-anchor="middle" class="f-muted" font-size="11">รวมเป็น 100% · หลายกลุ่ม</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>Softmax ตัวอย่าง: คะแนนดิบ [2, 1, 0.1] แปลงเป็นความน่าจะเป็น [0.66, 0.24, 0.10] ที่รวมกันได้ 1</figcaption>
+  </figure>
+
+  <div class="tbl">
+  <table>
+    <thead><tr><th>ฟังก์ชัน</th><th>ผลลัพธ์</th><th>จุดเด่น / ข้อจำกัด</th><th>ใช้ที่ไหน</th></tr></thead>
+    <tbody>
+      <tr><td><b>Step</b></td><td>0 หรือ 1</td><td>หาความชันไม่ได้ จึงเรียนรู้ต่อไม่ได้</td><td>ยุคคลาสสิก</td></tr>
+      <tr><td><b>Sigmoid</b></td><td>ระหว่าง 0–1 (ตัว S)</td><td>ค่าสูงมากจะเกิด <b>Vanishing Gradient</b> (ความชันหาย)</td><td>Output ของ Binary</td></tr>
+      <tr><td><b>ReLU</b></td><td><code>max(0, z)</code></td><td>เร็วมาก ไม่เกิดความชันหายในฝั่งบวก</td><td>Hidden Layer</td></tr>
+      <tr><td><b>Softmax</b></td><td>ความน่าจะเป็นรวม 100%</td><td>แยกข้อมูลหลายกลุ่ม</td><td>Output ของ Multi-class</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="note" id="mlp">
+  <div class="sec-tag">4 · Multilayer Perceptron <span class="slide-ref">สไลด์ 10–17</span></div>
+  <h2>ต่อกันหลายชั้น เพื่อเรียนรู้เป็นลำดับขั้น</h2>
+  <p>โหนดเดี่ยวแก้ปัญหาซับซ้อนไม่ได้ การร้อยหลายโหนดหลายชั้นทำให้เกิด <b>Hierarchical Learning</b> ข้อมูลดิบ → ลักษณะย่อย → รูปทรงนามธรรม → คำตอบ</p>
+
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 260" role="img" aria-label="โครงข่าย 2-3-1 พร้อมชื่อชั้น">
+      <g class="s-axis" stroke-width="1">
+        <line x1="120" y1="80" x2="340" y2="50"/><line x1="120" y1="80" x2="340" y2="130"/><line x1="120" y1="80" x2="340" y2="210"/>
+        <line x1="120" y1="180" x2="340" y2="50"/><line x1="120" y1="180" x2="340" y2="130"/><line x1="120" y1="180" x2="340" y2="210"/>
+        <line x1="340" y1="50" x2="560" y2="130"/><line x1="340" y1="130" x2="560" y2="130"/><line x1="340" y1="210" x2="560" y2="130"/>
+      </g>
+      <g class="f-surface s-ink" stroke-width="1.2"><circle cx="120" cy="80" r="24"/><circle cx="120" cy="180" r="24"/></g>
+      <g class="f-pensoft s-pen" stroke-width="1.6"><circle cx="340" cy="50" r="24"/><circle cx="340" cy="130" r="24"/><circle cx="340" cy="210" r="24"/></g>
+      <circle cx="560" cy="130" r="24" class="f-hl s-ink" stroke-width="1.2"/>
+      <g class="f-muted" font-size="12" text-anchor="end"><text x="88" y="76">เวลาเข้าเรียน</text><text x="88" y="92">(ชั่วโมง)</text><text x="88" y="176">คะแนนกลางภาค</text><text x="88" y="192">(%)</text></g>
+      <g class="f-pen t-mono" font-size="11" text-anchor="middle"><text x="340" y="54">+b</text><text x="340" y="134">+b</text><text x="340" y="214">+b</text></g>
+      <text x="560" y="134" text-anchor="middle" class="f-ink t-mono" font-size="11">+b</text>
+      <text x="600" y="128" class="f-ink" font-size="13">ผลทำนาย</text>
+      <g font-size="14" text-anchor="middle"><text x="120" y="250" class="f-ink">Input Layer</text><text x="340" y="250" class="f-pen">Hidden Layer</text><text x="560" y="250" class="f-ink">Output Layer</text></g>
+    </svg>
+    </div>
+    <figcaption>ตัวอย่างบริบทการศึกษา (สไลด์ 11) · ทุกโหนดเชื่อมกับทุกโหนดชั้นถัดไป (Fully Connected)</figcaption>
+  </figure>
+
+  <div class="grid3">
+    <div class="card">
+      <h3>Input Layer</h3>
+      <p>รับข้อมูลดิบ (Features) <b>ไม่มีการคำนวณ</b> แค่กระจายสัญญาณ</p>
+    </div>
+    <div class="card sup">
+      <h3>Hidden Layers</h3>
+      <p>สกัดความสัมพันธ์เชิงลึก (Feature Representation) · <b>Depth</b> = จำนวนชั้น ยิ่งลึกยิ่งแก้ปัญหาซับซ้อน · <b>Width</b> = จำนวนโหนดต่อชั้น ยิ่งกว้างยิ่งจับแพทเทิร์นหลากหลาย</p>
+    </div>
+    <div class="card">
+      <h3>Output Layer</h3>
+      <p>แสดงผลทำนายตามโจทย์ (ดูตารางด้านล่าง)</p>
+    </div>
+  </div>
+
+  <div class="tbl">
+  <table>
+    <thead><tr><th>ประเภทโจทย์</th><th>จำนวนโหนด Output</th><th>Activation</th><th>ผลลัพธ์</th></tr></thead>
+    <tbody>
+      <tr><td>Binary Classification</td><td>1</td><td><b>Sigmoid</b></td><td>ความน่าจะเป็น 0–1</td></tr>
+      <tr><td>Multi-class Classification</td><td>หลายโหนด (เท่าจำนวนคลาส)</td><td><b>Softmax</b></td><td>การแจกแจงความน่าจะเป็นของแต่ละคลาส</td></tr>
+      <tr><td>Regression</td><td>1</td><td><b>Linear</b></td><td>ตัวเลขต่อเนื่อง</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>นับพารามิเตอร์ (โจทย์ชอบออก)</h3>
+  <div class="memo">
+    <b>Trainable Parameters = จำนวน Weights + จำนวน Biases</b>
+    <span>• Weights ระหว่าง 2 ชั้น = โหนดชั้นก่อน × โหนดชั้นถัดไป</span>
+    <span>• Bias มีเฉพาะโหนดใน <b>Hidden และ Output</b> (Input ไม่มี)</span>
+    <span>ตัวอย่างภาพบน 2–3–1: Weights = 2×3 + 3×1 = <b>9</b> · Biases = 3 + 1 = <b>4</b> · รวม <b>13</b></span>
+    <span>ลองเอง 4–5–3: Weights = 20 + 15 = 35 · Biases = 5 + 3 = 8 · รวม <b>43</b></span>
+  </div>
+
+  <h3>Forward Propagation · การทายผล</h3>
+  <p>ข้อมูลไหล <b>ทางเดียว</b> (One-way Flow) จาก Input → Hidden 1 → Hidden 2 → Output ใช้ตอนทำนาย (Inference) ในแต่ละชั้นทำ 2 ขั้น</p>
+  <div class="grid2">
+    <div class="card"><h3>Step 1 · Weighted Sum</h3><p class="mono">z⁽ˡ⁾ = W⁽ˡ⁾ a⁽ˡ⁻¹⁾ + b⁽ˡ⁾</p></div>
+    <div class="card"><h3>Step 2 · Activation</h3><p class="mono">a⁽ˡ⁾ = f⁽ˡ⁾(z⁽ˡ⁾)</p></div>
+  </div>
+  <p>คอมพิวเตอร์ใช้ <b>การคูณเมทริกซ์</b> คำนวณทั้งชั้นรวดเดียว Forward Propagation คือการจัดระเบียบพื้นที่ข้อมูล จนปัญหาที่ซับซ้อนถูกคลี่ออกและขีดเส้นแบ่งได้ง่ายในชั้นท้าย</p>
+</section>
+
+<!-- 5 -->
+<section class="note" id="loss">
+  <div class="sec-tag">5 · Loss Function <span class="slide-ref">สไลด์ 18–19</span></div>
+  <h2>รู้ได้อย่างไรว่าทายผิด</h2>
+  <p><b>Loss Function</b> คือตัวเลขที่บอกว่าผิดมากแค่ไหน <code>Error = f(ŷ, y)</code> โดย <code>ŷ</code> (y-hat) คือที่ AI เดา และ <code>y</code> คือเฉลย เป้าหมายของการ Train คือ <b>ปรับ Weights ให้ Loss ลดลงเข้าใกล้ 0</b></p>
+  <div class="grid2">
+    <div class="card sup">
+      <h3>MSE · Mean Squared Error</h3>
+      <p>ใช้กับ <b>Regression</b></p>
+      <p class="mono">MSE = (1/N) Σ (y − ŷ)²</p>
+      <p>ยกกำลังสองเพื่อ <b>ลงโทษหนักเมื่อทายห่างมาก</b></p>
+      <p>ตัวอย่าง: y = [3, 5], ŷ = [2, 7] → (1² + 2²) / 2 = <b>2.5</b></p>
+    </div>
+    <div class="card rl">
+      <h3>Cross-Entropy · Log Loss</h3>
+      <p>ใช้กับ <b>Classification</b></p>
+      <p class="mono">−[y log ŷ + (1−y) log(1−ŷ)]</p>
+      <p>ใช้ลอการิทึม <b>ลงโทษรุนแรงเมื่อทายผิดแต่มั่นใจมาก</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="note" id="learn">
+  <div class="sec-tag">6 · Learning <span class="slide-ref">สไลด์ 20–23</span></div>
+  <h2>ปรับน้ำหนักด้วย Gradient Descent</h2>
+  <div class="memo">
+    <b>Weight Update Rule</b>
+    <span class="mono">w_new = w_old − α · ∂J/∂w</span>
+    <span><code>∂J/∂w</code> = ความชัน (ทิศทางของข้อผิดพลาด) · <code>α</code> = Learning Rate (ความกว้างของก้าว) · ลบเพราะต้องเดิน <b>สวนทางความชัน</b> ลงหุบเขา</span>
+    <span>ตัวอย่าง: w_old = 0.8, α = 0.1, ∂J/∂w = 2 → w_new = 0.8 − 0.2 = <b>0.6</b></span>
+  </div>
+
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 170" role="img" aria-label="ผลของ learning rate เล็ก พอดี ใหญ่">
+      <defs><marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5"><circle cx="5" cy="5" r="4" class="f-B"/></marker></defs>
+      <g>
+        <path d="M15.0,15.0 L23.5,34.0 L32.0,51.0 L40.5,66.0 L49.0,79.0 L57.5,90.0 L66.0,99.0 L74.5,106.0 L83.0,111.0 L91.5,114.0 L100.0,115.0 L108.5,114.0 L117.0,111.0 L125.5,106.0 L134.0,99.0 L142.5,90.0 L151.0,79.0 L159.5,66.0 L168.0,51.0 L176.5,34.0 L185.0,15.0" class="s-axis" stroke-width="1.6"/>
+        <polyline points="26.3,39.9 33.7,54.2 40.3,65.7 46.3,75.1 51.7,82.7 56.5,88.8" class="s-B" stroke-width="2" marker-start="url(#dot)" marker-mid="url(#dot)" marker-end="url(#dot)"/>
+        <text x="100" y="140" text-anchor="middle" class="f-ink" font-size="14">α เล็กไป (0.0001)</text>
+        <text x="100" y="158" text-anchor="middle" class="f-muted" font-size="12">ก้าวสั้น เรียนช้ามาก</text>
+      </g>
+      <g transform="translate(250 0)">
+        <path d="M15.0,15.0 L23.5,34.0 L32.0,51.0 L40.5,66.0 L49.0,79.0 L57.5,90.0 L66.0,99.0 L74.5,106.0 L83.0,111.0 L91.5,114.0 L100.0,115.0 L108.5,114.0 L117.0,111.0 L125.5,106.0 L134.0,99.0 L142.5,90.0 L151.0,79.0 L159.5,66.0 L168.0,51.0 L176.5,34.0 L185.0,15.0" class="s-axis" stroke-width="1.6"/>
+        <polyline points="26.3,39.9 70.5,103.0 88.2,113.1 95.3,114.7 98.1,115.0" class="s-good" stroke-width="2" marker-start="url(#dot)" marker-mid="url(#dot)" marker-end="url(#dot)"/>
+        <text x="100" y="140" text-anchor="middle" class="f-good" font-size="14">α พอดี (0.01)</text>
+        <text x="100" y="158" text-anchor="middle" class="f-muted" font-size="12">ลู่เข้าจุดต่ำสุดอย่างราบรื่น</text>
+      </g>
+      <g transform="translate(500 0)">
+        <path d="M15.0,15.0 L23.5,34.0 L32.0,51.0 L40.5,66.0 L49.0,79.0 L57.5,90.0 L66.0,99.0 L74.5,106.0 L83.0,111.0 L91.5,114.0 L100.0,115.0 L108.5,114.0 L117.0,111.0 L125.5,106.0 L134.0,99.0 L142.5,90.0 L151.0,79.0 L159.5,66.0 L168.0,51.0 L176.5,34.0 L185.0,15.0" class="s-axis" stroke-width="1.6"/>
+        <polyline points="26.3,39.9 181.0,24.1 12,6" class="s-bad" stroke-width="2" marker-start="url(#dot)" marker-mid="url(#dot)" marker-end="url(#dot)"/>
+        <text x="100" y="140" text-anchor="middle" class="f-bad" font-size="14">α ใหญ่ไป (0.9)</text>
+        <text x="100" y="158" text-anchor="middle" class="f-muted" font-size="12">กระดอนข้ามหุบ (Overshooting)</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>แกนนอน = ค่า weight · แกนตั้ง = Loss · จุด = ตำแหน่ง weight หลังแต่ละก้าว</figcaption>
+  </figure>
+
+  <h3>Backpropagation · ย้อนหาว่าใครผิด</h3>
+  <p>ใช้ <b>Chain Rule</b> ของแคลคูลัส หาอนุพันธ์ย่อยย้อนกลับทีละชั้น จาก Output กลับไปหา weight แต่ละเส้น</p>
+  <pre class="code">∂Loss/∂wᵢⱼ = ∂Loss/∂Output × ∂Output/∂Hidden × ∂Hidden/∂wᵢⱼ</pre>
+
+  <h3>วงจรการฝึก 1 Epoch</h3>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 120" role="img" aria-label="วงจร training loop 4 ขั้น">
+      <defs><marker id="a7b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs>
+      <g font-size="14" text-anchor="middle">
+        <rect x="5" y="20" width="160" height="60" rx="10" class="f-pensoft"/><text x="85" y="46" class="f-pen">1 Forward Pass</text><text x="85" y="66" class="f-muted" font-size="12">เดาคำตอบ</text>
+        <rect x="190" y="20" width="160" height="60" rx="10" class="f-pensoft"/><text x="270" y="46" class="f-pen">2 Calculate Loss</text><text x="270" y="66" class="f-muted" font-size="12">ตรวจข้อสอบ</text>
+        <rect x="375" y="20" width="160" height="60" rx="10" class="f-pensoft"/><text x="455" y="46" class="f-pen">3 Backpropagation</text><text x="455" y="66" class="f-muted" font-size="12">สืบหาสาเหตุย้อนหลัง</text>
+        <rect x="560" y="20" width="155" height="60" rx="10" class="f-hl"/><text x="637" y="46" class="f-ink">4 Update Weights</text><text x="637" y="66" class="f-muted" font-size="12">Gradient Descent</text>
+      </g>
+      <g class="s-pen" stroke-width="1.6"><line x1="166" y1="50" x2="187" y2="50" marker-end="url(#a7b)"/><line x1="351" y1="50" x2="372" y2="50" marker-end="url(#a7b)"/><line x1="536" y1="50" x2="557" y2="50" marker-end="url(#a7b)"/></g>
+      <path d="M637 82 V104 H85 V84" class="s-pen" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#a7b)"/>
+      <text x="360" y="116" text-anchor="middle" class="f-muted" font-size="12">ครบ 4 ขั้น = 1 Epoch · ทำซ้ำนับพันครั้ง</text>
+    </svg>
+    </div>
+  </figure>
+</section>
+
+<p class="foot">สรุปจากสไลด์ Session07 (23 หน้า)</p>
+</main>
+
+<script>
+(function () {
+  const ids = ["x1", "w1", "x2", "w2", "b"];
+  const get = (k) => parseFloat(document.getElementById("n" + k).value);
+  const out = document.getElementById("nOut");
+  function render() {
+    const v = Object.fromEntries(ids.map((k) => [k, get(k)]));
+    ids.forEach((k) => (document.getElementById("v" + k).textContent = v[k].toFixed(1)));
+    const z = v.x1 * v.w1 + v.x2 * v.w2 + v.b;
+    const sig = 1 / (1 + Math.exp(-z));
+    out.textContent =
+      `z = (${v.x1.toFixed(1)}×${v.w1.toFixed(1)}) + (${v.x2.toFixed(1)}×${v.w2.toFixed(1)}) + ${v.b.toFixed(1)} = ${z.toFixed(2)}\n` +
+      `Step    = ${z >= 0 ? 1 : 0}\n` +
+      `Sigmoid = ${sig.toFixed(3)}\n` +
+      `ReLU    = ${Math.max(0, z).toFixed(2)}`;
+  }
+  ids.forEach((k) => document.getElementById("n" + k).addEventListener("input", render));
+  render();
+})();
+</script>
+</body>
+</html>
