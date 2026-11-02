@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 11 · EDM &amp; Learning Analytics</title>
+<meta name="description" content="สรุป Session 11 เหมืองข้อมูลทางการศึกษาและการวิเคราะห์ร่องรอยการเรียนรู้ พร้อมภาพประกอบ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../">ติวสอบ AI <span>เพื่อการศึกษา</span></a>
+    <nav class="topnav" aria-label="เมนูหลัก">
+      <a href="../">บทเรียน</a>
+      <a href="../exam.html">ทำข้อสอบ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+<section class="hero">
+  <div class="eyebrow">Session 11 · Educational Data Mining &amp; Adaptive Learning Analytics</div>
+  <h1>เหมืองข้อมูลทางการศึกษาและการวิเคราะห์ร่องรอยการเรียนรู้</h1>
+  <p class="lede">ทุกคลิกของผู้เรียนคือ <em class="hl">ร่องรอยดิจิทัล</em> ระบบแปลงมันเป็นตัวชี้วัด ทำนาย แล้วปรับบทเรียนเองแบบเรียลไทม์ แต่ต้อง <em class="hl">ระวังสถิติหลอก และห้ามตราหน้าผู้เรียน</em></p>
+  <nav class="toc" aria-label="สารบัญ">
+    <a href="#trace">1 ร่องรอยดิจิทัล</a>
+    <a href="#edmla">2 EDM กับ LA</a>
+    <a href="#predict">3 ทำนายและจัดกลุ่ม</a>
+    <a href="#feature">4 เตรียมข้อมูล</a>
+    <a href="#caution">5 ข้อควรระวัง</a>
+    <a href="#adaptive">6 ตรรกะปรับเหมาะ</a>
+  </nav>
+</section>
+
+<!-- 1 -->
+<section class="note" id="trace">
+  <div class="sec-tag">1 · Digital Traces <span class="slide-ref">สไลด์ 2–4</span></div>
+  <h2>จาก Static CAI สู่ Adaptive Platform</h2>
+  <div class="grid2">
+    <div class="card"><h3>Static CAI</h3><p>ทุกคนเรียนลำดับเดียว หน้า 1 → 2 → 3 ตอบผิดก็แค่บอก “ผิด” แล้วให้ทำซ้ำแบบเดิม</p></div>
+    <div class="card sup"><h3>Adaptive Platform</h3><p>วัดความถูกต้องและความเร็วแบบเรียลไทม์ แล้วปรับเนื้อหาแบบพลวัต (<b>Dynamic Branching</b>) เข้าใจสูงข้ามไปโจทย์ท้าทาย ติดขัดได้โจทย์พื้นฐานทันที</p></div>
+  </div>
+
+  <h3>ข้อมูลกิจกรรม 1 รายการ</h3>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 110" role="img" aria-label="โครงสร้าง log กิจกรรม">
+      <g font-size="14" text-anchor="middle">
+        <rect x="5" y="10" width="170" height="44" rx="8" class="f-pensoft"/><text x="90" y="38" class="f-pen">วัน-เวลา</text>
+        <rect x="185" y="10" width="170" height="44" rx="8" class="f-pensoft"/><text x="270" y="38" class="f-pen">รหัสผู้เรียน</text>
+        <rect x="365" y="10" width="170" height="44" rx="8" class="f-pensoft"/><text x="450" y="38" class="f-pen">คำสั่งการกระทำ</text>
+        <rect x="545" y="10" width="170" height="44" rx="8" class="f-pensoft"/><text x="630" y="38" class="f-pen">วัตถุเป้าหมายบนจอ</text>
+      </g>
+      <text x="5" y="90" class="f-muted t-mono" font-size="13">2026-11-03 09:14:02 · S6501 · CLICK_HINT · ข้อ 7 ปุ่มคำใบ้</text>
+    </svg>
+    </div>
+    <figcaption>บรรทัดล่างเป็นตัวอย่างสมมติ</figcaption>
+  </figure>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>พฤติกรรมสำคัญ 4 อย่างที่บันทึก</h3>
+      <ul>
+        <li><b>Response Latency</b> วินาทีที่คิดก่อนกดส่ง</li>
+        <li><b>Content Revisit</b> ย้อนดูวิดีโอหรือเนื้อหา</li>
+        <li><b>Hint Request</b> จำนวนและระดับคำใบ้ที่ขอ</li>
+        <li><b>Item Accuracy</b> ถูกหรือผิดรายข้อ</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>ข้อมูล 2 รูปแบบ</h3>
+      <p><b>Numerical Logs</b> เวลาต่อข้อ จำนวนครั้งทำซ้ำ % ถูก → ป้อนอัลกอริทึม <b>ปรับความยากข้อถัดไปทันที</b></p>
+      <p><b>Text Logs</b> ข้อความที่พิมพ์ในแชต → ส่งเข้า <b>NLP</b> วิเคราะห์แนวคิดที่เข้าใจผิด</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="note" id="edmla">
+  <div class="sec-tag">2 · EDM vs Learning Analytics <span class="slide-ref">สไลด์ 5–7</span></div>
+  <h2>EDM คือสมองหลังบ้าน LA คือคนขับหน้าบ้าน</h2>
+  <div class="grid2">
+    <div class="card sup">
+      <h3>EDM · Educational Data Mining</h3>
+      <p><b>ระบบหลังบ้าน</b> วิเคราะห์สถิติ หาแบบแผนการคลิก คำนวณโอกาสสอบตก</p>
+      <p class="hint">เปรียบ: เซ็นเซอร์และสมองกลที่วัดความเร็วรถ</p>
+    </div>
+    <div class="card rl">
+      <h3>LA · Learning Analytics</h3>
+      <p><b>ระบบหน้าบ้าน</b> เอาผลจาก EDM มาตัดสินใจแสดงผล เช่น ส่งข้อความกระตุ้น สับรางข้อสอบ</p>
+      <p class="hint">เปรียบ: ระบบขับอัตโนมัติที่สั่งเร่งหรือเบรกตามสภาพถนน</p>
+    </div>
+  </div>
+
+  <h3>วงจรประมวลผลอัตโนมัติ</h3>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 270" role="img" aria-label="วงจรปิด 6 ขั้นของ pipeline">
+      <defs><marker id="a11" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs>
+      <g font-size="13" text-anchor="middle">
+        <rect x="30" y="20" width="190" height="50" rx="10" class="f-surface"/><text x="125" y="50" class="f-ink">1 ผู้เรียนทำกิจกรรม</text>
+        <rect x="265" y="20" width="190" height="50" rx="10" class="f-surface"/><text x="360" y="50" class="f-ink">2 บันทึกร่องรอยดิจิทัล</text>
+        <rect x="500" y="20" width="190" height="50" rx="10" class="f-surface"/><text x="595" y="50" class="f-ink">3 แปลงเป็นตัวชี้วัด</text>
+        <rect x="500" y="190" width="190" height="50" rx="10" class="f-pensoft"/><text x="595" y="220" class="f-pen">4 AI ประเมินแนวคิด</text>
+        <rect x="265" y="190" width="190" height="50" rx="10" class="f-pensoft"/><text x="360" y="220" class="f-pen">5 ปรับเนื้อหาอัตโนมัติ</text>
+        <rect x="30" y="190" width="190" height="50" rx="10" class="f-hl"/><text x="125" y="220" class="f-ink">6 กลับไปหน้าจอผู้เรียน</text>
+      </g>
+      <g class="s-pen" stroke-width="1.6">
+        <line x1="221" y1="45" x2="261" y2="45" marker-end="url(#a11)"/>
+        <line x1="456" y1="45" x2="496" y2="45" marker-end="url(#a11)"/>
+        <line x1="595" y1="72" x2="595" y2="186" marker-end="url(#a11)"/>
+        <line x1="499" y1="215" x2="459" y2="215" marker-end="url(#a11)"/>
+        <line x1="264" y1="215" x2="224" y2="215" marker-end="url(#a11)"/>
+        <line x1="125" y1="188" x2="125" y2="74" marker-end="url(#a11)"/>
+      </g>
+      <text x="360" y="135" text-anchor="middle" class="f-muted" font-size="13">วงจรปิดเรียลไทม์</text>
+      <text x="360" y="153" text-anchor="middle" class="f-muted" font-size="13">ไม่ต้องรอมนุษย์สั่ง</text>
+    </svg>
+    </div>
+  </figure>
+
+  <div class="memo">
+    <b>Automated Remediation Loop · แก้ปัญหาคิดไม่ออกอัตโนมัติ</b>
+    <span>สัญญาณ: ทำโจทย์เรื่องเดิม <b>ผิดติดกัน 3 ครั้ง</b> และเวลาต่อข้อเพิ่มผิดปกติ → วินิจฉัย <b>Impasse State</b></span>
+    <span>ตอบสนอง: ระงับโจทย์ปัจจุบัน → ดึง <b>โจทย์ปูพื้นฐาน (Prerequisite Concept)</b> มาให้ทำ → ผ่านแล้วพากลับโจทย์เดิม</span>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="note" id="predict">
+  <div class="sec-tag">3 · Prediction &amp; Clustering <span class="slide-ref">สไลด์ 8–11</span></div>
+  <h2>ทำนายความเสี่ยง ประเมินความสามารถ และจัดกลุ่ม</h2>
+  <div class="grid3">
+    <div class="card rl">
+      <h3>Drop-out Prediction</h3>
+      <p>ตัวแปรพยากรณ์</p>
+      <ul><li><b>Skip Rate</b> สูงขึ้น</li><li>เวลาใช้งานต่อวันลดลงต่อเนื่อง</li><li>ตอบผิดติดกันบ่อย</li></ul>
+      <p>คำนวณ <b>Churn/Drop-out Score</b> เพื่อเตรียมมาตรการดึงดูดก่อนผู้เรียนเลิกใช้</p>
+    </div>
+    <div class="card sup">
+      <h3>Mastery Classification</h3>
+      <p>แยกสถานะ <b>ยังไม่เข้าใจ / กำลังพัฒนา / บรรลุเป้าหมาย</b> ใช้ปลดล็อกด่านถัดไป หรือล็อกให้ฝึกซ้ำ</p>
+    </div>
+    <div class="card sup">
+      <h3>Proficiency Estimation</h3>
+      <p>คำนวณคะแนนทักษะสะสม เช่น <b>Elo Rating</b> หรือ <b>Item Response Theory</b> เพื่อเลือกโจทย์ที่ยากพอดีกับระดับตอนนี้</p>
+    </div>
+  </div>
+
+  <h3>Learner Clustering · จัดกลุ่มโดยไม่ต้องตั้งเกณฑ์ล่วงหน้า</h3>
+  <div class="grid2">
+    <figure class="card">
+      <svg viewBox="0 0 280 240" role="img" aria-label="กราฟจัดกลุ่มผู้เรียนตามเวลาและความถูกต้อง">
+        <path d="M34 206 H270 M34 206 V10" class="s-axis"/>
+        <text x="152" y="232" text-anchor="middle" class="f-muted" font-size="12">เวลาเฉลี่ยต่อบทเรียน →</text>
+        <text x="14" y="108" text-anchor="middle" class="f-muted" font-size="12" transform="rotate(-90 14 108)">สัดส่วนตอบถูก →</text>
+        <g class="f-A"><circle cx="70" cy="40" r="5"/><circle cx="84" cy="30" r="5"/><circle cx="62" cy="54" r="5"/><circle cx="92" cy="48" r="5"/><circle cx="78" cy="62" r="5"/></g>
+        <g class="f-B"><circle cx="210" cy="160" r="5"/><circle cx="228" cy="172" r="5"/><circle cx="240" cy="150" r="5"/><circle cx="220" cy="186" r="5"/><circle cx="250" cy="176" r="5"/></g>
+        <g class="f-pen"><circle cx="50" cy="176" r="5"/><circle cx="60" cy="188" r="5"/><circle cx="44" cy="192" r="5"/><circle cx="66" cy="168" r="5"/></g>
+        <text x="104" y="40" class="f-A" font-size="12">Fast Learners</text>
+        <text x="170" y="132" class="f-B" font-size="12">Struggling</text>
+        <text x="76" y="182" class="f-pen" font-size="12">Guessers</text>
+      </svg>
+      <figcaption>แกน X = เวลาเฉลี่ยต่อบทเรียน · แกน Y = สัดส่วนตอบถูก (สไลด์ 10)</figcaption>
+    </figure>
+    <div class="tbl">
+    <table style="min-width:0">
+      <thead><tr><th>กลุ่ม</th><th>ลักษณะ</th><th>ระบบปรับให้</th></tr></thead>
+      <tbody>
+        <tr><td><b>Fast Learners</b></td><td>เวลาน้อย ถูกเกือบหมด</td><td>ข้ามโจทย์พื้นฐาน</td></tr>
+        <tr><td><b>Struggling Learners</b></td><td>ใช้เวลานาน ทำซ้ำบ่อย แต่ผิด</td><td>ส่งคำใบ้และวิดีโอสั้น</td></tr>
+        <tr><td><b>Trial-and-Error Guessers</b></td><td>ตอบเร็วมาก ผิดเยอะ</td><td>หน่วงเวลาล็อกปุ่มตอบ</td></tr>
+        <tr><td><b>Bite-sized Users</b></td><td>ใช้วันละ 3–5 นาทีสม่ำเสมอ</td><td>จัดคอนเทนต์กระชับ</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="note" id="feature">
+  <div class="sec-tag">4 · Preparing Data <span class="slide-ref">สไลด์ 12–15</span></div>
+  <h2>แปลงคลิกเป็นความรู้ และทำความสะอาดข้อมูล</h2>
+  <h3>Feature Engineering</h3>
+  <p>บันทึกการกดปุ่มอย่างเดียว <b>บอกระดับความเข้าใจไม่ได้</b> ต้องแปลงเป็นตัวแปร</p>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>ข้อมูลดิบ</th><th>ตัวแปรที่ได้</th></tr></thead>
+    <tbody>
+      <tr><td>การคลิกตอบ</td><td><code>Response_Time</code> เวลาที่ใช้คิดต่อข้อ</td></tr>
+      <tr><td>การกดตรวจคำตอบ</td><td><code>First_Attempt_Success</code> ถูกตั้งแต่ครั้งแรกไหม</td></tr>
+      <tr><td>ประวัติการใช้ปุ่มตัวช่วย</td><td><code>Hint_Abuse_Index</code> ดัชนีกดคำใบ้ซ้ำ ๆ</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="grid2">
+    <div class="card rl">
+      <h3>Gaming the System Detection</h3>
+      <p><b>Rapid Guessing</b> กดสุ่มภายใน 1 วินาที → ตอบเร็วกว่าเวลาอ่านโจทย์ขั้นต่ำ <b>ให้คะแนนข้อนั้นเป็นโมฆะ</b></p>
+      <p><b>Hint Abuse</b> กดคำใบ้จนถึงระดับสุดท้ายเพื่อเอาคำตอบ → <b>ซ่อนคำตอบสุดท้าย</b> เปลี่ยนเป็นคำถามนำแบบ Socratic</p>
+    </div>
+    <div class="card">
+      <h3>Data Cleaning</h3>
+      <ul>
+        <li><b>Noise</b> แอปกระตุกส่งคำตอบซ้ำ → รวมเป็นครั้งเดียว</li>
+        <li><b>Outlier</b> เปิดแอปค้าง 2 ชั่วโมง → ตัดเวลาที่เกิน 5 นาทีออก</li>
+        <li><b>Session Dropout</b> สัญญาณหลุด → พักสถานะไว้ <b>ไม่บันทึกเป็นศูนย์</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="memo">
+    <b>Cross-Validation · ตรวจความสอดคล้องหลายกิจกรรม</b>
+    <span>เทียบผล Multiple Choice, Fill-in-the-blank และ Drag &amp; Drop ถ้า <b>เลือกตอบได้เต็ม แต่เติมคำไม่ได้เลย</b> ประเมินว่าเดาสุ่ม และลดระดับความชำนาญลง</span>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="note" id="caution">
+  <div class="sec-tag">5 · Cautions &amp; Ethics <span class="slide-ref">สไลด์ 16–19</span></div>
+  <h2>สิ่งที่อัลกอริทึมมองไม่เห็น</h2>
+  <h3>Correlation ไม่ใช่ Causation</h3>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 200" role="img" aria-label="ตัวอย่างความสัมพันธ์ที่ไม่ใช่สาเหตุ">
+      <defs>
+        <marker id="a11r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-bad"/></marker>
+        <marker id="a11g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-good"/></marker>
+      </defs>
+      <text x="10" y="22" class="f-bad" font-size="14">ระบบสรุปผิด</text>
+      <g font-size="13" text-anchor="middle">
+        <rect x="10" y="34" width="200" height="50" rx="8" class="f-surface"/><text x="110" y="56" class="f-ink">อ่านหน้าสรุปคำศัพท์นาน</text>
+        <rect x="290" y="34" width="150" height="50" rx="8" class="f-surface"/><text x="365" y="64" class="f-ink">คะแนนต่ำ</text>
+        <rect x="520" y="34" width="190" height="50" rx="8" class="f-surface s-bad"/><text x="615" y="56" class="f-bad">สั่งข้ามหน้าสรุป</text><text x="615" y="74" class="f-bad" font-size="11">ยิ่งทำร้ายเด็กอ่อน</text>
+      </g>
+      <line x1="212" y1="59" x2="286" y2="59" class="s-bad" stroke-width="1.6" marker-end="url(#a11r)"/>
+      <text x="249" y="50" text-anchor="middle" class="f-bad" font-size="11">“ทำให้”</text>
+      <line x1="442" y1="59" x2="516" y2="59" class="s-bad" stroke-width="1.6" marker-end="url(#a11r)"/>
+
+      <text x="10" y="122" class="f-good" font-size="14">ความจริงเชิงการเรียนรู้</text>
+      <g font-size="13" text-anchor="middle">
+        <rect x="10" y="134" width="200" height="50" rx="8" class="f-hl"/><text x="110" y="164" class="f-ink">พื้นฐานอ่อน</text>
+        <rect x="290" y="134" width="200" height="50" rx="8" class="f-surface"/><text x="390" y="164" class="f-ink">ต้องอ่านคำศัพท์นาน</text>
+      </g>
+      <line x1="212" y1="159" x2="286" y2="159" class="s-good" stroke-width="1.6" marker-end="url(#a11g)"/>
+      <path d="M110 186 V196 H600 V186" class="s-good" stroke-width="1.4"/>
+      <rect x="520" y="134" width="170" height="50" rx="8" class="f-surface"/><text x="605" y="164" text-anchor="middle" class="f-ink" font-size="13">คะแนนต่ำ</text>
+      <line x1="600" y1="196" x2="600" y2="188" class="s-good" stroke-width="1.4" marker-end="url(#a11g)"/>
+    </svg>
+    </div>
+    <figcaption>สาเหตุจริงคือ “พื้นฐานอ่อน” ซึ่งทำให้เกิดทั้งสองอย่าง ผู้ออกแบบต้องเข้าใจตรรกะการเรียนรู้ ไม่ตั้งเงื่อนไขตามค่าสถิติที่ไม่ใช่สาเหตุ</figcaption>
+  </figure>
+
+  <h3>Anti-Labeling UI · ห้ามแจ้งคะแนนความเสี่ยงกับผู้เรียน</h3>
+  <div class="grid2">
+    <div class="card" style="box-shadow: inset 0 3px 0 var(--bad)">
+      <h3>ไม่ควรทำ</h3>
+      <p class="mono" style="color:var(--bad)">คุณมีโอกาสสอบตก 80%</p>
+      <p>ทำลายแรงจูงใจ</p>
+    </div>
+    <div class="card" style="box-shadow: inset 0 3px 0 var(--good)">
+      <h3>ควรทำ</h3>
+      <div class="bar-track" style="height:12px"><div class="bar-fill target" style="width:62%"></div></div>
+      <p>แสดง Progress Bar หรือแถบพลังสะสม พร้อมข้อความเชิงบวก “บทเรียนนี้กำลังช่วยให้คุณพัฒนาขึ้น ลองฝึกอีกนิดนะ”</p>
+    </div>
+  </div>
+  <p>ตัวเลขความเสี่ยงใช้ <b>หลังบ้านเท่านั้น</b> ผลของอัลกอริทึมมีไว้กระตุ้นและสนับสนุน ไม่ใช่ตราหน้า</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>ปัจจัยที่เซ็นเซอร์ตรวจไม่พบ</h3>
+      <p>ระบบเห็นแค่อัตรากดผิดและเวลานิ่งค้าง แต่ไม่เห็นว่า <b>จอทัชเสีย</b>, <b>แบตใกล้หมดเครื่องหน่วง</b>, <b>แจ้งเตือนแอปอื่นรบกวน</b> ทางออกคือออกแบบให้ยืดหยุ่น เช่น ปุ่มยกเลิกหรือเริ่มใหม่</p>
+    </div>
+    <div class="card">
+      <h3>Platform Telemetry Dashboard</h3>
+      <p>สำหรับนักพัฒนาตรวจว่าอัลกอริทึมได้ผลไหม</p>
+      <ul>
+        <li><b>Drop-off Rate per Module</b> บทไหนคนเลิกมากสุด → โจทย์ยากไป</li>
+        <li><b>Average Remediation Success</b> สัดส่วนที่ซ่อมเสริมแล้วกลับมาทำโจทย์หลักได้</li>
+        <li><b>Hint Utility Rate</b> คำใบ้ไหนดูแล้วยังผิด → คำใบ้ไม่ชัด</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="note" id="adaptive">
+  <div class="sec-tag">6 · Adaptive Logic <span class="slide-ref">สไลด์ 20–23</span></div>
+  <h2>ตรรกะปรับเนื้อหา คำใบ้ 3 ขั้น และกลไกความปลอดภัย</h2>
+
+  <div class="trainer" aria-live="polite">
+    <h3>Adaptive Branching Logic · ลองเลื่อนคะแนน</h3>
+    <div class="btn-row">
+      <label for="bScore">คะแนน</label>
+      <input type="range" id="bScore" min="0" max="100" step="1" value="72" style="flex:1;min-width:160px">
+      <span class="num" id="bScoreV" style="min-width:48px">72%</span>
+      <label for="bFast">ตอบเร็ว</label>
+      <select id="bFast"><option value="1" selected>ใช่</option><option value="0">ไม่</option></select>
+      <label for="bRepeat">ผิดซ้ำ</label>
+      <select id="bRepeat"><option value="0" selected>ไม่</option><option value="1">ใช่</option></select>
+    </div>
+    <div class="grid3" id="bRoutes">
+      <div class="card" data-route="fast"><h3>Fast-Track</h3><p>≥ 80% และตอบเร็ว → ข้ามพื้นฐาน ไปภารกิจท้าทาย</p></div>
+      <div class="card" data-route="std"><h3>Standard Flow</h3><p>50–79% → เส้นทางปกติ</p></div>
+      <div class="card" data-route="rem"><h3>Remedial Loop</h3><p>&lt; 50% หรือผิดซ้ำ → ซ่อมเสริมและย่อยเนื้อหา</p></div>
+    </div>
+  </div>
+
+  <h3>Scaffolded Hint Progression · บันไดคำใบ้</h3>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 200" role="img" aria-label="บันไดคำใบ้ 3 ระดับ">
+      <g font-size="14">
+        <rect x="10" y="130" width="225" height="60" rx="8" class="f-surface"/><text x="22" y="154" class="f-ink" font-weight="600">1 · Prompting</text><text x="22" y="176" class="f-muted" font-size="12">“ลองสังเกตเครื่องหมายบวกลบตรงนี้”</text>
+        <rect x="245" y="80" width="225" height="110" rx="8" class="f-pensoft"/><text x="257" y="104" class="f-pen" font-weight="600">2 · Rule Explanation</text><text x="257" y="126" class="f-muted" font-size="12">“จำได้ไหม กฎข้อนี้ต้องทำ</text><text x="257" y="142" class="f-muted" font-size="12">ในวงเล็บก่อน”</text>
+        <rect x="480" y="30" width="230" height="160" rx="8" class="f-hl"/><text x="492" y="54" class="f-ink" font-weight="600">3 · Bottom-out Hint</text><text x="492" y="76" class="f-muted" font-size="12">แสดงวิธีทำ “ขั้นตอนแรก”</text><text x="492" y="92" class="f-muted" font-size="12">ให้ผู้เรียนคิดต่อเอง</text>
+      </g>
+      <text x="10" y="40" class="f-ink" font-size="13">ช่วยมากขึ้นทีละขั้น</text>
+      <text x="10" y="60" class="f-bad" font-size="13">แต่ไม่เฉลยคำตอบสำเร็จรูปทันที</text>
+    </svg>
+    </div>
+  </figure>
+
+  <div class="grid2">
+    <div class="card rl">
+      <h3>Circuit Breakers · กลไกความปลอดภัย</h3>
+      <p>ทำไม่ผ่านซ้ำ ๆ จะเครียดสะสม หมดแรงจูงใจ เมื่อ <b>ไม่ผ่านครบ 3 ครั้ง</b></p>
+      <ul>
+        <li>หยุดบทเรียนชั่วคราว</li>
+        <li>แอนิเมชันพักสายตา <b>1 นาที</b> พร้อมข้อความผ่อนคลาย</li>
+        <li>รีเซ็ตไปเริ่มจาก <b>Walkthrough Example</b> ที่อธิบายทีละขั้น</li>
+      </ul>
+    </div>
+    <div class="card uns">
+      <h3>Productive Struggle</h3>
+      <p>ระบบที่ฉลาดเกินไปอาจยื่นคำใบ้เร็วจนผู้เรียนไม่ได้คิด</p>
+      <p><b>Deliberate Delay</b>: ตอบผิดครั้งแรกยังไม่แสดงคำใบ้ หน่วง <b>15–30 วินาที</b> ให้ทบทวนเอง</p>
+      <p>เป้าหมาย: สร้าง <b>Self-Regulation</b> (การกำกับตนเอง)</p>
+    </div>
+  </div>
+</section>
+
+<p class="foot">สรุปจากสไลด์ Session11 (23 หน้า)</p>
+</main>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const cards = [...document.querySelectorAll("#bRoutes .card")];
+  function route() {
+    const score = Number($("bScore").value);
+    const fast = $("bFast").value === "1";
+    const repeat = $("bRepeat").value === "1";
+    $("bScoreV").textContent = score + "%";
+    let r = "std";
+    if (score < 50 || repeat) r = "rem";
+    else if (score >= 80 && fast) r = "fast";
+    cards.forEach((c) => {
+      const on = c.dataset.route === r;
+      c.style.background = on ? "var(--accent-soft)" : "";
+      c.style.boxShadow = on ? "inset 0 0 0 2px var(--accent)" : "";
+      c.setAttribute("aria-current", on ? "true" : "false");
+    });
+  }
+  ["bScore", "bFast", "bRepeat"].forEach((id) => $(id).addEventListener("input", route));
+  route();
+})();
+</script>
+</body>
+</html>
