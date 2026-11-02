@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ทำข้อสอบ · ติวสอบ AI</title>
+<meta name="description" content="โหมดทำข้อสอบปรนัย เลือก session ได้ สุ่มข้อและตัวเลือก">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="./">ติวสอบ AI <span>เพื่อการศึกษา</span></a>
+    <nav class="topnav" aria-label="เมนูหลัก">
+      <a href="./">บทเรียน</a>
+      <a href="exam.html" aria-current="page">ทำข้อสอบ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page" id="app">
+
+  <!-- setup -->
+  <section id="viewSetup" style="display:grid;gap:24px">
+    <div class="hero">
+      <div class="eyebrow">โหมดทำข้อสอบ</div>
+      <h1>ตั้งค่าชุดข้อสอบ</h1>
+      <p class="lede">ข้อสอบปรนัย 4 ตัวเลือก ระบบสุ่มลำดับข้อและตัวเลือกใหม่ทุกครั้ง</p>
+    </div>
+    <form class="panel" id="setupForm">
+      <fieldset>
+        <legend>Session ที่จะสอบ</legend>
+        <div class="opt-grid" id="sessionOpts"><p class="hint">กำลังโหลด…</p></div>
+      </fieldset>
+      <fieldset>
+        <legend>จำนวนข้อ</legend>
+        <div class="opt-grid">
+          <label class="opt"><input type="radio" name="count" value="10" id="count10">10 ข้อ</label>
+          <label class="opt"><input type="radio" name="count" value="20" id="count20" checked>20 ข้อ</label>
+          <label class="opt"><input type="radio" name="count" value="all" id="countAll">ทั้งหมด</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>รูปแบบ</legend>
+        <div class="opt-grid">
+          <label class="opt"><input type="radio" name="mode" value="practice" id="modePractice" checked><span>ฝึกทำ<small>ตอบแล้วเห็นเฉลยและคำอธิบายทันที</small></span></label>
+          <label class="opt"><input type="radio" name="mode" value="exam" id="modeExam"><span>สอบจริง<small>แก้คำตอบได้ เห็นเฉลยตอนส่ง</small></span></label>
+        </div>
+      </fieldset>
+      <p class="hint" id="setupHint"></p>
+      <div class="btn-row"><button class="btn" type="submit" id="btnStart">เริ่มทำข้อสอบ</button></div>
+    </form>
+  </section>
+
+  <!-- runner -->
+  <section id="viewRun" hidden style="display:grid;gap:18px">
+    <div class="runner-head">
+      <span id="runCounter">ข้อ 1 / 20</span>
+      <span><span id="runMode"></span> · <span class="mono" id="runTimer">00:00</span></span>
+    </div>
+    <div class="progress" aria-hidden="true"><div id="runProgress" style="width:0%"></div></div>
+
+    <article class="panel" aria-live="polite">
+      <div class="q-tag" id="qTag"></div>
+      <p class="q-text" id="qText"></p>
+      <div class="choices" id="qChoices"></div>
+      <div class="explain" id="qExplain" hidden></div>
+    </article>
+
+    <div class="btn-row" style="justify-content:space-between">
+      <button class="btn quiet" type="button" id="btnPrev">← ก่อนหน้า</button>
+      <div class="btn-row">
+        <button class="btn ghost" type="button" id="btnSubmit">ส่งคำตอบ</button>
+        <button class="btn" type="button" id="btnNext">ถัดไป →</button>
+      </div>
+    </div>
+
+    <div class="confirm" id="confirmBox" hidden>
+      <span id="confirmText"></span>
+      <div class="btn-row">
+        <button class="btn" type="button" id="btnConfirm">ส่งเลย</button>
+        <button class="btn quiet" type="button" id="btnCancel">กลับไปทำต่อ</button>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:8px">
+      <span class="hint">ไปยังข้อ · กดปุ่ม 1–4 เพื่อเลือกคำตอบ ← → เพื่อเปลี่ยนข้อ</span>
+      <div class="navgrid" id="navGrid"></div>
+    </div>
+  </section>
+
+  <!-- result -->
+  <section id="viewResult" hidden style="display:grid;gap:24px">
+    <div class="hero">
+      <div class="eyebrow" id="resEyebrow">ผลสอบ</div>
+      <div class="score"><span class="big" id="resPct">0%</span><span class="of" id="resOf"></span></div>
+      <p class="lede" id="resMsg"></p>
+    </div>
+    <div class="stats" id="resStats"></div>
+    <div class="btn-row">
+      <button class="btn" type="button" id="btnRetryWrong">ทำเฉพาะข้อที่ผิดอีกครั้ง</button>
+      <button class="btn ghost" type="button" id="btnAgain">สุ่มชุดใหม่</button>
+      <button class="btn quiet" type="button" id="btnSetup">ตั้งค่าใหม่</button>
+    </div>
+    <div style="display:grid;gap:12px">
+      <div class="btn-row" style="justify-content:space-between">
+        <h2>ทบทวนคำตอบ</h2>
+        <div class="filter">
+          <button class="btn quiet" type="button" data-filter="all" id="fAll">ทั้งหมด</button>
+          <button class="btn quiet" type="button" data-filter="no" id="fWrong">เฉพาะข้อผิด</button>
+        </div>
+      </div>
+      <div class="review" id="resReview"></div>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/site.js"></script>
+<script src="assets/exam.js"></script>
+</body>
+</html>
