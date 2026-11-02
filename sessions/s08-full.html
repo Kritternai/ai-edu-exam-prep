@@ -21,7 +21,7 @@
   </div>
 </header>
 
-<main class="page">
+<main class="page" data-figs="1">
 
 <section class="hero">
   <nav class="seg" aria-label="รูปแบบเนื้อหา"><a href="s08.html">ฉบับสรุป</a><a href="s08-full.html" aria-current="page">ฉบับเต็ม</a></nav>
@@ -34,7 +34,9 @@
 <section class="note slide" id="s2" data-n="2">
   <div class="sec-tag">สไลด์ 2</div>
   <h2>ความเข้าใจทางความหมายระหว่างมนุษย์และคอมพิวเตอร์</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>คอมพิวเตอร์อ่านคำเหมือนเราอ่านภาษาที่ไม่รู้จัก เห็นตัวอักษรแต่ไม่รู้ความหมาย</p>
   <p>เมื่อมนุษย์ได้ยินคำว่า “แอปเปิ้ล” เรานึกถึงผลไม้สีแดง กลิ่นหอม รสหวานกรอบ หรือโลโก้โทรศัพท์มือถือได้ทันที เพราะคำนั้นเชื่อมกับประสบการณ์ของเรา แต่คอมพิวเตอร์เห็นคำว่า “แอปเปิ้ล” เป็นแค่ <b>รหัสตัวเลขอักขระ</b> (Binary / Unicode) ไม่มีความหมายติดมาด้วย</p>
+  <figure><div class="art"><svg viewBox="0 0 720 200" role="img" aria-label="คำว่า ขัน มีหลายความหมาย"><g class="s-axis" stroke-width="1.4"><line x1="360" y1="100" x2="150" y2="40"/><line x1="360" y1="100" x2="570" y2="40"/><line x1="360" y1="100" x2="150" y2="160"/><line x1="360" y1="100" x2="570" y2="160"/></g><circle cx="360" cy="100" r="40" class="f-hl"/><text x="360" y="110" text-anchor="middle" class="f-ink" font-size="26">ขัน</text><rect x="40" y="18" width="220" height="44" rx="10" class="f-surface"/><text x="150" y="44.9" text-anchor="middle" class="f-ink" font-size="14">ภาชนะตักน้ำ</text><rect x="460" y="18" width="220" height="44" rx="10" class="f-surface"/><text x="570" y="44.9" text-anchor="middle" class="f-ink" font-size="14">หัวเราะ (ขำขัน)</text><rect x="40" y="138" width="220" height="44" rx="10" class="f-surface"/><text x="150" y="164.9" text-anchor="middle" class="f-ink" font-size="14">ไก่ขัน</text><rect x="460" y="138" width="220" height="44" rx="10" class="f-surface"/><text x="570" y="164.9" text-anchor="middle" class="f-ink" font-size="14">ขันน็อต</text><text x="360" y="196" text-anchor="middle" class="f-muted t-mono" font-size="12">คอมพิวเตอร์เห็นแค่ U+0E02 U+0E31 U+0E19</text></svg></div><figcaption>คนเลือกความหมายจากบริบทได้ทันที แต่ระบบคีย์เวิร์ดเห็นแค่รหัสตัวอักษรชุดเดียวกัน</figcaption></figure>
   <p>ภาษามนุษย์มีความซับซ้อนหลายแบบที่ทำให้ระบบค้นหาด้วยคีย์เวิร์ดล้มเหลว</p>
   <ul>
     <li><b>คำพ้องรูป/พ้องเสียง</b> คำเดียวหลายความหมาย เช่น “ขัน” อาจหมายถึงภาชนะตักน้ำ, หัวเราะ (ขำขัน), ไก่ร้อง (ไก่ขัน) หรือไขน็อต (ขันน็อต)</li>
@@ -46,7 +48,33 @@
 <section class="note slide" id="s3" data-n="3">
   <div class="sec-tag">สไลด์ 3</div>
   <h2>โทเคน (Token)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>โทเคนเหมือนตัวต่อเลโก้ ไม่ต้องมีตัวต่อรูปบ้านสำเร็จ มีแค่ชิ้นเล็กพอ ก็ต่อเป็นบ้านแบบไหนก็ได้</p>
   <p><b>Token</b> คือชิ้นส่วนย่อยของข้อความที่ LLMs ตัดหรือหั่นออกมาเพื่อนำไปประมวลผล โทเคน <b>ไม่ใช่คำ และไม่ใช่ตัวอักษรเดี่ยว</b> แต่อยู่ระหว่างกลาง</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 200" role="img" aria-label="ตัวอย่างการหั่นโทเคน">
+      <text x="10" y="24" class="f-muted" font-size="13">Subword · คำยาวหั่นเป็นชิ้นที่รู้จัก</text>
+      <text x="10" y="64" class="f-ink t-mono" font-size="20">Hamburger</text>
+      <text x="150" y="64" class="f-muted" font-size="20">→</text>
+      <rect x="190" y="38" width="76" height="38" rx="6" class="f-pensoft s-pen"/><text x="228" y="63" text-anchor="middle" class="f-pen t-mono" font-size="17">Ham</text>
+      <rect x="272" y="38" width="104" height="38" rx="6" class="f-pensoft s-pen"/><text x="324" y="63" text-anchor="middle" class="f-pen t-mono" font-size="17">burger</text>
+
+      <text x="10" y="114" class="f-muted" font-size="13">ภาษาไทยไม่มีเว้นวรรค · จุดตัดกำกวม</text>
+      <text x="10" y="164" class="f-ink" font-size="22">ตากลม</text>
+      <path d="M90 156 L150 132 M90 160 L150 180" class="s-axis"/>
+      <rect x="158" y="114" width="44" height="34" rx="6" class="f-surface"/><text x="180" y="137" text-anchor="middle" class="f-ink" font-size="16">ตา</text>
+      <rect x="206" y="114" width="52" height="34" rx="6" class="f-surface"/><text x="232" y="137" text-anchor="middle" class="f-ink" font-size="16">กลม</text>
+      <text x="270" y="137" class="f-muted" font-size="13">ดวงตากลมโต</text>
+      <rect x="158" y="160" width="52" height="34" rx="6" class="f-surface"/><text x="184" y="183" text-anchor="middle" class="f-ink" font-size="16">ตาก</text>
+      <rect x="214" y="160" width="44" height="34" rx="6" class="f-surface"/><text x="236" y="183" text-anchor="middle" class="f-ink" font-size="16">ลม</text>
+      <text x="270" y="183" class="f-muted" font-size="13">ไปนั่งรับลม</text>
+
+      <text x="440" y="64" class="f-ink t-mono" font-size="16">“I love teaching”</text>
+      <text x="440" y="90" class="f-muted" font-size="13">→ [I] [love] [teaching] แยกตามช่องว่าง</text>
+    </svg>
+    </div>
+    <figcaption>ภาษาไทย 1 คำอาจแตกเป็นหลายโทเคน ทำให้ <b>โควตาความจำ (Context) ของ LLMs เต็มเร็วกว่าภาษาอังกฤษ</b></figcaption>
+  </figure>
   <p><b>ทำไมไม่จำทีละคำหรือใช้ทั้งคำ</b> คำในโลกมีเป็นล้านคำ และมีคำสแลงใหม่ ๆ เกิดทุกวัน ถ้าจำทีละคำ คลังศัพท์จะใหญ่จนล้น และเมื่อเจอคำที่ไม่เคยเห็น AI จะไม่รู้จัก (ปัญหา <b>Out-Of-Vocabulary</b>)</p>
   <p><b>ทางออกคือ Subword Tokenization</b> หั่นคำเป็นชิ้นคำ เช่น “Hamburger” เป็น [“Ham”, “burger”] ชิ้นคำเหล่านี้ใช้ซ้ำได้ในหลายคำ ทำให้ LLMs เข้าใจรากศัพท์ และประสมคำใหม่ได้ไม่รู้จบ แม้คำนั้นไม่เคยอยู่ในข้อมูลฝึก</p>
 </section>
@@ -62,7 +90,32 @@
 <section class="note slide" id="s5" data-n="5">
   <div class="sec-tag">สไลด์ 5</div>
   <h2>แผนที่คำศัพท์ (Word Map) และพิกัดความหมาย</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>บอกฉันว่าเพื่อนคุณคือใคร แล้วฉันจะบอกได้ว่าคุณเป็นคนแบบไหน คำก็เช่นกัน</p>
   <p>คอมพิวเตอร์รู้ความหมายของคำจาก <b>คำที่อยู่ข้าง ๆ</b> หลักนี้เรียกว่า <b>สมมติฐานเชิงแจกแจง (Distributional Hypothesis)</b> เราเดาหรือเข้าใจความหมายของคำได้จากคำอื่น ๆ ที่อยู่รอบตัวมัน</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 260" role="img" aria-label="แผนที่คำศัพท์และการบวกลบเวกเตอร์">
+      <rect x="0" y="0" width="340" height="250" rx="10" class="f-surface"/>
+      <g class="f-A"><circle cx="80" cy="80" r="7"/><circle cx="118" cy="98" r="7"/><circle cx="96" cy="128" r="7"/></g>
+      <g class="f-ink" font-size="14"><text x="92" y="76">สุนัข</text><text x="130" y="103">แมว</text><text x="60" y="152">กระต่าย</text></g>
+      <circle cx="270" cy="200" r="7" class="f-B"/><text x="250" y="226" class="f-ink" font-size="14">ตู้เย็น</text>
+      <circle cx="230" cy="175" r="7" class="f-B"/><text x="200" y="166" class="f-ink" font-size="14">ไมโครเวฟ</text>
+      <text x="20" y="236" class="f-muted" font-size="12">คำบริบทเดียวกันอยู่ละแวกเดียวกัน</text>
+
+      <g transform="translate(380 0)">
+        <rect x="0" y="0" width="340" height="250" rx="10" class="f-surface"/>
+        <defs><marker id="a8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs>
+        <g class="f-ink"><circle cx="70" cy="190" r="6"/><circle cx="70" cy="70" r="6"/><circle cx="250" cy="190" r="6"/><circle cx="250" cy="70" r="6"/></g>
+        <g font-size="14" class="f-ink"><text x="40" y="214">ผู้ชาย</text><text x="44" y="56">ราชา</text><text x="226" y="214">ผู้หญิง</text><text x="222" y="56">ราชินี</text></g>
+        <line x1="70" y1="184" x2="70" y2="80" class="s-pen" stroke-width="2" marker-end="url(#a8)"/>
+        <line x1="250" y1="184" x2="250" y2="80" class="s-pen" stroke-width="2" marker-end="url(#a8)"/>
+        <text x="80" y="134" class="f-pen" font-size="12">+ ความเป็นกษัตริย์</text>
+        <text x="170" y="245" text-anchor="middle" class="f-pen t-mono" font-size="13">ราชา − ผู้ชาย + ผู้หญิง ≈ ราชินี</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption><b>Word Embeddings</b> = พิกัดความหมาย · แมวอยู่ใกล้สุนัขมากกว่าตู้เย็น · ความสัมพันธ์บวกลบกันได้</figcaption>
+  </figure>
   <p>ตัวอย่าง “เจ้าของพา [สุนัข] ไปเดินเล่นที่สวนสาธารณะแล้วให้อาหาร” กับ “เจ้าของพา [แมว] ไปเดินเล่นที่สวนสาธารณะแล้วให้อาหาร” สุนัขกับแมวมักปรากฏคู่กับคำเดียวกัน เช่น เจ้าของ เดินเล่น อาหารเม็ด สัตวแพทย์ LLMs จึงวางสองคำนี้ไว้ใกล้กันบนแผนที่จำลอง</p>
   <p><b>พิกัดความหมาย (Word Embeddings)</b> แต่ละคำถูกแทนด้วยตัวเลขชุดหนึ่ง (เวกเตอร์) เหมือนพิกัดบนแผนที่ คำที่ใช้ในบริบทเดียวกันอยู่ละแวกเดียวกัน เช่น แมวอยู่ใกล้สุนัขมากกว่าตู้เย็น</p>
   <p><b>ความสัมพันธ์บวกลบได้</b> ตัวอย่างคลาสสิกคือ <code>ราชา − ผู้ชาย + ผู้หญิง ≈ ราชินี</code> ระยะทางและทิศทางบนแผนที่เก็บความสัมพันธ์ทางความหมายไว้</p>
@@ -71,7 +124,41 @@
 <section class="note slide" id="s6" data-n="6">
   <div class="sec-tag">สไลด์ 6</div>
   <h2>วิวัฒนาการจากอดีตสู่ปัจจุบัน (RNN สู่ Transformers)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>RNN เหมือนฟังเรื่องเล่าทีละประโยคแล้วต้องจำเอง Transformer เหมือนได้อ่านเรื่องทั้งหน้าพร้อมกัน</p>
   <p>ประเด็นคือการเปลี่ยนจาก <b>อ่านทีละคำ</b> ไปสู่ <b>การเห็นทั้งประโยค</b></p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 220" role="img" aria-label="RNN อ่านทีละคำ เทียบ Transformer เห็นทุกคำพร้อมกัน">
+      <defs><marker id="a8b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-muted"/></marker></defs>
+      <text x="10" y="22" class="f-ink" font-size="15">RNN / LSTM · อ่านซ้ายไปขวาทีละคำ</text>
+      <g font-size="14" text-anchor="middle">
+        <rect x="10" y="38" width="70" height="36" rx="6" class="f-surface"/><text x="45" y="61" class="f-muted">ครู</text>
+        <rect x="100" y="38" width="70" height="36" rx="6" class="f-surface"/><text x="135" y="61" class="f-muted">เดิน</text>
+        <rect x="190" y="38" width="70" height="36" rx="6" class="f-surface"/><text x="225" y="61" class="f-ink">เข้า</text>
+        <rect x="280" y="38" width="70" height="36" rx="6" class="f-pensoft"/><text x="315" y="61" class="f-pen">ห้อง</text>
+      </g>
+      <g class="s-axis"><line x1="80" y1="56" x2="98" y2="56" marker-end="url(#a8b)"/><line x1="170" y1="56" x2="188" y2="56" marker-end="url(#a8b)"/><line x1="260" y1="56" x2="278" y2="56" marker-end="url(#a8b)"/></g>
+      <text x="10" y="100" class="f-muted" font-size="12">ประโยคยาว ๆ ลืมคำแรก ๆ เหมือนเกมกระซิบบอกต่อ</text>
+
+      <text x="390" y="22" class="f-ink" font-size="15">Transformers (2017) · เห็นทุกคำพร้อมกัน</text>
+      <g class="s-pen" stroke-width="1" opacity="0.6">
+        <path d="M425 74 Q 470 110 515 74"/><path d="M425 74 Q 515 130 605 74"/><path d="M425 74 Q 560 150 695 74"/>
+        <path d="M515 74 Q 560 110 605 74"/><path d="M515 74 Q 605 130 695 74"/><path d="M605 74 Q 650 110 695 74"/>
+      </g>
+      <g font-size="14" text-anchor="middle">
+        <rect x="390" y="38" width="70" height="36" rx="6" class="f-pensoft"/><text x="425" y="61" class="f-pen">ครู</text>
+        <rect x="480" y="38" width="70" height="36" rx="6" class="f-pensoft"/><text x="515" y="61" class="f-pen">เดิน</text>
+        <rect x="570" y="38" width="70" height="36" rx="6" class="f-pensoft"/><text x="605" y="61" class="f-pen">เข้า</text>
+        <rect x="660" y="38" width="56" height="36" rx="6" class="f-pensoft"/><text x="688" y="61" class="f-pen">ห้อง</text>
+      </g>
+      <text x="390" y="150" class="f-muted" font-size="12">ประมวลผลคู่ขนานได้เต็มที่</text>
+      <text x="390" y="167" class="f-muted" font-size="12">กระดูกสันหลังของ ChatGPT, Gemini, Claude</text>
+
+      <line x1="0" y1="180" x2="720" y2="180" class="s-axis" stroke-dasharray="3 5"/>
+      <text x="10" y="206" class="f-muted" font-size="12">RNN = โครงข่ายสำหรับข้อมูลลำดับ (Sequential / Time-Series) · LSTM = RNN ชนิดพิเศษที่แก้ปัญหาความจำสั้น</text>
+    </svg>
+    </div>
+  </figure>
   <p><b>ระบบเดิม (RNN/LSTM)</b> อ่านข้อความทีละคำจากซ้ายไปขวา ส่งความจำต่อไปเรื่อย ๆ จุดด้อยคือเมื่ออ่านประโยคยาวหรือข้อความเยอะ จะลืมคำแรก ๆ เหมือนเกมกระซิบบอกต่อ ยิ่งส่งต่อหลายทอดข้อความยิ่งเพี้ยน</p>
   <ul>
     <li><b>RNN (Recurrent Neural Network)</b> โครงข่ายที่ออกแบบสำหรับข้อมูลที่เป็นลำดับต่อเนื่อง (Sequential Data) หรือข้อมูลที่สัมพันธ์กับเวลา (Time-Series) มีความสามารถจดจำข้อมูลในอดีตมาใช้กับการคาดเดาปัจจุบัน</li>
@@ -83,7 +170,33 @@
 <section class="note slide" id="s7" data-n="7">
   <div class="sec-tag">สไลด์ 7</div>
   <h2>Self-Attention</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนอ่านแล้วขีดเส้นโยงว่า “มัน” หมายถึงอะไร โดยดูคำใบ้ในประโยค</p>
   <p><b>Self-Attention (กลไกการใส่ใจตนเอง)</b> คือกลไกที่ทำให้โมเดล AI โดยเฉพาะสถาปัตยกรรม Transformer คำนวณและชั่งน้ำหนักความสัมพันธ์ระหว่าง <b>ทุก ๆ คำ</b> ในประโยคเดียวกัน เพื่อเข้าใจบริบทและความหมายของแต่ละคำได้ถูกต้อง</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 170" role="img" aria-label="Self-Attention เชื่อมคำว่า มัน กับ ยา">
+      <g font-size="16" text-anchor="middle">
+        <text x="60" y="130" class="f-ink">เด็กหญิง</text>
+        <text x="160" y="130" class="f-muted">ไม่ยอม</text>
+        <text x="240" y="130" class="f-muted">กิน</text>
+        <text x="310" y="130" class="f-ink" font-weight="600">ยา</text>
+        <text x="390" y="130" class="f-muted">เพราะ</text>
+        <rect x="438" y="108" width="54" height="32" rx="6" class="f-hl"/>
+        <text x="465" y="130" class="f-ink" font-weight="600">มัน</text>
+        <text x="530" y="130" class="f-muted">มี</text>
+        <text x="600" y="130" class="f-ink" font-weight="600">รสขม</text>
+        <text x="675" y="130" class="f-muted">มาก</text>
+      </g>
+      <path d="M465 106 Q 388 20 310 106" class="s-pen" stroke-width="5"/>
+      <path d="M465 106 Q 262 0 60 106" class="s-axis" stroke-width="1.2"/>
+      <path d="M465 106 Q 532 50 600 106" class="s-B" stroke-width="3"/>
+      <text x="388" y="48" text-anchor="middle" class="f-pen" font-size="13">น้ำหนักสูงสุด</text>
+      <text x="560" y="62" class="f-B" font-size="12">รสขม → ของที่กินได้</text>
+      <text x="360" y="162" text-anchor="middle" class="f-muted" font-size="12">“มัน” มองทุกคำ เจอ “รสขม” จึงส่งน้ำหนักไปที่ “ยา” มากที่สุด ไม่ใช่ “เด็กหญิง”</text>
+    </svg>
+    </div>
+    <figcaption><b>Multi-Head Attention</b> = มีตัวค้นหาหลายตัวพร้อมกัน ตัวหนึ่งดูไวยากรณ์ ตัวหนึ่งดูความหมาย อีกตัวดูอารมณ์</figcaption>
+  </figure>
   <p><b>โจทย์ภาษา</b> “เด็กหญิงไม่ยอมกินยา เพราะมันมีรสขมมาก” คำว่า “มัน” หมายถึงเด็กหญิง หรือหมายถึงยา</p>
   <p><b>การทำงาน</b> เมื่อ AI ประมวลผลคำว่า “มัน” จะกวาดมองทุกคำในประโยค เจอคำว่า “รสขม” ซึ่งเข้ากับของที่กินได้ จึงส่งน้ำหนักการเชื่อมโยงกลับไปที่ “ยา” สูงที่สุด ความหมายของ “มัน” ในประโยคนี้จึงถูกตีความว่าเป็นยา</p>
   <p><b>Multi-Head Attention</b> มีตัวค้นหาหลายตัวทำงานพร้อมกัน แต่ละตัวดูคนละมุม เช่น ตัวหนึ่งดูไวยากรณ์ ตัวหนึ่งดูความหมาย อีกตัวดูอารมณ์ แล้วนำผลมารวมกัน</p>
@@ -92,7 +205,24 @@
 <section class="note slide" id="s8" data-n="8">
   <div class="sec-tag">สไลด์ 8</div>
   <h2>LLMs กับการพยากรณ์คำถัดไป (Next Token Prediction)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนระบบเดาคำบนคีย์บอร์ดมือถือ แต่เก่งกว่ามาก และกดเดาต่อเองไปเรื่อย ๆ</p>
   <p><b>LLMs (Large Language Models)</b> ในแง่การทำงานคือเครื่องจักรทายคำต่อไปที่เก่งที่สุดในโลก ความจริงเชิงระบบคือ LLMs ไม่ได้มีความคิดเป็นก้อนในหัวก่อนพูด แต่ <b>คำนวณทางสถิติว่าคำต่อไปควรเป็นคำว่าอะไร</b></p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 190" role="img" aria-label="การกระจายความน่าจะเป็นของคำถัดไป">
+      <text x="10" y="28" class="f-ink" font-size="18">ครูเดินเข้าห้อง <tspan class="f-pen">___</tspan></text>
+      <g font-size="14">
+        <text x="10" y="72" class="f-ink">เรียน</text><rect x="90" y="56" width="450" height="22" rx="4" class="f-pen"/><text x="550" y="73" class="f-ink t-mono">75%</text>
+        <text x="10" y="106" class="f-ink">น้ำ</text><rect x="90" y="90" width="90" height="22" rx="4" class="f-pensoft s-pen"/><text x="190" y="107" class="f-ink t-mono">15%</text>
+        <text x="10" y="140" class="f-ink">พักครู</text><rect x="90" y="124" width="48" height="22" rx="4" class="f-pensoft s-pen"/><text x="148" y="141" class="f-ink t-mono">8%</text>
+        <text x="10" y="174" class="f-ink">นอน</text><rect x="90" y="158" width="12" height="22" rx="4" class="f-pensoft s-pen"/><text x="112" y="175" class="f-ink t-mono">2%</text>
+      </g>
+      <text x="610" y="73" class="f-muted" font-size="12">สุ่มเลือก “เรียน”</text>
+      <text x="610" y="90" class="f-muted" font-size="12">แล้ววนทายต่อ</text>
+    </svg>
+    </div>
+    <figcaption>มันไม่ได้เข้าใจเนื้อหา แต่เลือกคำที่ <b>ฟังดูน่าเชื่อถือที่สุดตามสถิติ</b></figcaption>
+  </figure>
   <p><b>กระบวนการทำงาน</b></p>
   <ol>
     <li>ป้อนข้อความ “ครูเดินเข้าห้อง...”</li>
@@ -106,17 +236,21 @@
 <section class="note slide" id="s9" data-n="9">
   <div class="sec-tag">สไลด์ 9</div>
   <h2>วงจรการสร้าง LLMs</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>อ่านหนังสือทั้งห้องสมุด → ฝึกตอบคำถาม → ให้ครูตรวจมารยาท</p>
   <ol>
     <li><b>Pre-training</b> ให้อ่านหนังสือหรือข้อมูลทั้งโลก ป้อนข้อมูลเว็บ หนังสือ วิกิพีเดีย นับล้านล้านคำ เพื่อเรียนรู้คลังภาษาและข้อเท็จจริง ขั้นนี้โมเดลเก่งภาษาแล้ว <b>แต่ยังคุยตอบคำถามไม่เป็น</b> เพราะมันแค่ต่อข้อความไปเรื่อย ๆ</li>
     <li><b>Instruction Fine-tuning</b> หัดตอบคำถามตามที่สั่ง ป้อนตัวอย่างบทสนทนาถาม-ตอบคุณภาพสูง ให้เรียนรู้บทบาทว่าเมื่อมนุษย์สั่ง ต้องตอบให้ตรงประเด็น</li>
     <li><b>RLHF (Reinforcement Learning from Human Feedback)</b> ปรับมารยาทและความปลอดภัยด้วยมนุษย์ ให้คนให้คะแนนคำตอบ ตอบดีได้รางวัล (+Reward) ตอบอันตราย ลำเอียง หรือหยาบคายถูกตัดคะแนน (−Penalty) เป็นการนำหลัก Reinforcement Learning จาก Session 6 มาใช้</li>
   </ol>
-</section>
+
+  <figure><div class="art"><svg viewBox="0 0 720 150" role="img" aria-label="3 ขั้นการสร้าง LLMs"><defs><marker id="n08a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs><rect x="10" y="20" width="210" height="60" rx="10" class="f-pensoft"/><text x="115" y="45.4" text-anchor="middle" class="f-pen" font-size="14">1 Pre-training</text><text x="115" y="64.4" text-anchor="middle" class="f-muted" font-size="12">อ่านข้อมูลทั้งโลก</text><rect x="255" y="20" width="210" height="60" rx="10" class="f-pensoft"/><text x="360" y="45.4" text-anchor="middle" class="f-pen" font-size="14">2 Instruction Fine-tuning</text><text x="360" y="64.4" text-anchor="middle" class="f-muted" font-size="12">ฝึกถาม-ตอบตามสั่ง</text><rect x="500" y="20" width="210" height="60" rx="10" class="f-hl"/><text x="605" y="45.4" text-anchor="middle" class="f-ink" font-size="14">3 RLHF</text><text x="605" y="64.4" text-anchor="middle" class="f-muted" font-size="12">คนให้คะแนน + / −</text><line x1="222" y1="50" x2="251" y2="50" class="s-pen" stroke-width="1.6" marker-end="url(#n08a)"/><line x1="467" y1="50" x2="496" y2="50" class="s-pen" stroke-width="1.6" marker-end="url(#n08a)"/><g font-size="13" text-anchor="middle"><text x="115" y="112" class="f-ink">ได้: รู้ภาษา</text><text x="115" y="130" class="f-bad">แต่ยังคุยไม่เป็น</text><text x="360" y="112" class="f-ink">ได้: ตอบตรงคำถาม</text><text x="605" y="112" class="f-ink">ได้: สุภาพ ปลอดภัย</text></g></svg></div></figure></section>
 
 <section class="note slide" id="s10" data-n="10">
   <div class="sec-tag">สไลด์ 10</div>
   <h2>จุดอันตรายของ LLMs</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>เหมือนคนพูดเก่งที่ไม่ยอมบอกว่าไม่รู้ ตอบอะไรก็ฟังดูน่าเชื่อ แต่บางทีก็แต่งขึ้นมาเอง</p>
   <p><b>ทฤษฎีนกแก้วสุ่มคำ (Stochastic Parrots)</b> LLMs พูดจาไพเราะ ถูกไวยากรณ์ น่าเชื่อถือ แต่ไม่เข้าใจสิ่งที่พูดแม้แต่น้อย เหมือนนกแก้วที่พูดตามได้ นอกจากนี้ยังขาดสามัญสำนึกทางกายภาพ เช่น ไม่รู้จริง ๆ ว่าแก้วตกพื้นแล้วจะแตก เพราะไม่เคยมีร่างกายและไม่เคยมีประสบการณ์ในโลกจริง</p>
+  <figure><div class="art"><svg viewBox="0 0 720 200" role="img" aria-label="ตัวอย่าง hallucination มั่นใจแต่ไม่จริง"><rect x="20" y="20" width="440" height="110" rx="16" class="f-surface"/><text x="40" y="52" class="f-muted" font-size="12">คำตอบของ AI (ตัวอย่างสมมติ)</text><text x="40" y="80" class="f-ink" font-size="14">“จากงานวิจัยของ ดร.สมมติ (2562) พบว่าการบ้าน</text><text x="40" y="102" class="f-ink" font-size="14">ทำให้คะแนนเด็ก ป.1 ลดลง 47% อย่างมีนัยสำคัญ”</text><g transform="rotate(-8 340 160)"><rect x="240" y="140" width="210" height="38" rx="6" class="f-bg s-bad" stroke-width="2"/><text x="345" y="165" text-anchor="middle" class="f-bad" font-size="14" font-weight="600">ไม่มีงานวิจัยนี้จริง</text></g><text x="500" y="56" class="f-ink" font-size="13">ความมั่นใจของน้ำเสียง</text><rect x="500" y="64" width="200" height="14" rx="7" class="f-pen"/><text x="500" y="112" class="f-ink" font-size="13">ความถูกต้อง</text><rect x="500" y="120" width="200" height="14" rx="7" class="f-surface"/><rect x="500" y="120" width="24" height="14" rx="7" class="f-bad"/></svg></div><figcaption>LLMs ถูกฝึกให้เขียนลื่นไหล ไม่ได้ถูกฝึกให้ตรวจความจริง ความมั่นใจจึงไม่ได้บอกว่าถูก</figcaption></figure>
   <p><b>อาการประสาทหลอน (Hallucination)</b> LLMs แต่งเรื่องเท็จขึ้นมา แต่นำเสนอด้วยน้ำเสียงที่มั่นใจ หนักแน่น และสุภาพ</p>
   <ul>
     <li><b>สาเหตุ</b> LLMs ถูกเทรนให้สร้างคำที่ <b>ลื่นไหล</b> ไม่ใช่ <b>ตรวจหาความจริง</b></li>
@@ -145,7 +279,9 @@
 <section class="note slide" id="s13" data-n="13">
   <div class="sec-tag">สไลด์ 13</div>
   <h2>การออกแบบบริบท (Context Framing)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>สั่งร้านอาหารว่า “ขออะไรก็ได้” จะได้อะไรก็ไม่รู้ สั่งว่า “ข้าวผัดกุ้ง ไม่เผ็ด ไม่ใส่ผัก” จะได้ตรงใจ</p>
   <p><b>สูตร Prompt</b> ที่แชร์กันตามเน็ตเปราะบางมาก พอโมเดลอัปเดตเวอร์ชันใหม่ สูตรก็อาจใช้ไม่ได้ สิ่งที่ยั่งยืนกว่าคือเข้าใจหลักการตีกรอบบริบท</p>
+  <figure><div class="art"><svg viewBox="0 0 720 210" role="img" aria-label="prompt กว้างได้คำตอบกระจาย prompt ตีกรอบได้คำตอบแคบ"><path d="M20 100 L360 20 L360 190 Z" class="f-surface"/><circle cx="220" cy="40" r="5" class="f-muted"/><circle cx="257" cy="93" r="5" class="f-muted"/><circle cx="294" cy="146" r="5" class="f-muted"/><circle cx="331" cy="69" r="5" class="f-muted"/><circle cx="248" cy="122" r="5" class="f-muted"/><circle cx="285" cy="45" r="5" class="f-muted"/><circle cx="322" cy="98" r="5" class="f-muted"/><circle cx="239" cy="151" r="5" class="f-muted"/><circle cx="276" cy="74" r="5" class="f-muted"/><circle cx="313" cy="127" r="5" class="f-muted"/><circle cx="230" cy="50" r="5" class="f-muted"/><circle cx="267" cy="103" r="5" class="f-muted"/><circle cx="304" cy="156" r="5" class="f-muted"/><circle cx="221" cy="79" r="5" class="f-muted"/><text x="24" y="96" class="f-ink" font-size="13">“ช่วยออกแบบการสอนวิทย์”</text><text x="190" y="206" text-anchor="middle" class="f-bad" font-size="13">อนุบาล? ม.ปลาย? ฟิสิกส์? ชีวะ? ต้องเดา</text><path d="M380 60 L700 95 L700 115 L380 150 Z" class="f-pensoft"/><circle cx="680" cy="105" r="8" class="f-pen"/><text x="386" y="56" class="f-ink" font-size="13">บทบาท + บริบท + งาน + ข้อจำกัด</text><text x="540" y="180" text-anchor="middle" class="f-good" font-size="13">ครู ม.2 · แรงเสียดทาน · ไม่มีอุปกรณ์หรู</text></svg></div><figcaption>บริบทที่ชัดบีบความน่าจะเป็นให้ไปรวมที่คำตอบที่เราต้องการ</figcaption></figure>
   <p><b>สั่งกว้างเกินไป</b> เช่น “ช่วยออกแบบการสอนวิทยาศาสตร์หน่อย” ปริภูมิคำตอบกว้างมหาศาล จะเป็นระดับอนุบาลหรือมหาวิทยาลัย ฟิสิกส์หรือชีวะ LLMs ต้องเดาสุ่ม</p>
   <p><b>สั่งแบบตีกรอบบริบท</b> เช่น “คุณคือครู ม.2 ออกแบบการทดลองเรื่องแรงเสียดทาน ในห้องเรียนที่ไม่มีอุปกรณ์หรู” เป็นการบีบลู่ทางคำตอบให้แคบลง ตัดตัวเลือกที่ไม่เกี่ยวข้องทิ้ง และกำหนดเป้าหมายได้แม่นยำ ซึ่งสอดคล้องกับธรรมชาติของ LLMs ที่เลือกคำตามความน่าจะเป็น บริบทที่ชัดทำให้ความน่าจะเป็นไปรวมที่คำตอบที่ต้องการ</p>
 </section>
@@ -161,6 +297,7 @@
   <div class="sec-tag">สไลด์ 15</div>
   <h2>กรอบแนวคิดหลัก 4 อย่างในการควบคุม LLMs (3–4)</h2>
   <p><b>กรอบที่ 3 · Task &amp; Intent (งานและเป้าหมาย)</b> แปลงเป้าหมายเป็นขั้นตอน 1-2-3 ที่ชัดเจน หลีกเลี่ยงคำหรือความคลุมเครือ ตัวอย่าง “1. ออกแบบขั้นตอนการทดลอง 30 นาที 2. เขียนคำถามกระตุ้นคิด 2 ข้อเพื่อให้นักเรียนสรุปผลได้เอง”</p>
+  <figure><div class="stack"><div><span class="t">1 · Role &amp; Persona</span>คุณคือครูวิทยาศาสตร์ระดับมัธยมต้น ผู้เชี่ยวชาญการจัดกิจกรรม Active Learning</div><div style="border-color:var(--grpA)"><span class="t">2 · Context &amp; Environment</span>สอนนักเรียน ม.2 จำนวน 40 คน คาบละ 50 นาที ห้องทดลองมีเฉพาะอุปกรณ์พื้นฐาน</div><div style="border-color:var(--hl)"><span class="t">3 · Task &amp; Intent</span>1. ออกแบบการทดลองเรื่องแรงเสียดทาน 30 นาที 2. เขียนคำถามกระตุ้นคิด 2 ข้อให้นักเรียนสรุปผลเอง</div><div style="border-color:var(--grpB)"><span class="t">4 · Constraints &amp; Fallback</span>ห้ามสรุปผลสำเร็จรูป ห้ามใช้อุปกรณ์ราคาแพง หากข้อมูลไม่พอ ห้ามเดา ให้ตอบว่า “ข้อมูลไม่เพียงพอ”</div></div><figcaption>ประกอบ 4 กรอบเป็น Prompt เดียว อ่านจากบนลงล่าง</figcaption></figure>
   <p><b>กรอบที่ 4 · Constraints &amp; Fallback (ข้อห้ามและแนวทางเมื่อเกิดข้อผิดพลาด)</b> สไลด์ระบุว่า <b>สำคัญที่สุด</b> ใช้กำหนดความปลอดภัย ห้ามทำอะไร และถ้าข้อมูลไม่พอให้ทำอย่างไร ตัวอย่าง</p>
   <ul>
     <li>ห้ามสรุปผลทดลองสำเร็จรูป ให้เด็กค้นพบเอง</li>
@@ -173,6 +310,7 @@
 <section class="note slide" id="s16" data-n="16">
   <div class="sec-tag">สไลด์ 16</div>
   <h2>RAG (Retrieval-Augmented Generation)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ไม่มี RAG = สอบปิดตำรา ตอบจากความจำ · มี RAG = สอบเปิดตำรา เปิดหาหน้าที่เกี่ยวข้องก่อนตอบ</p>
   <p><b>LLMs ทั่วไปที่ไม่มี RAG</b> ใช้ความจำหรือข้อมูลที่ตัวเองมีมาตอบ ถ้าถามเรื่องใหม่ ๆ หรือข้อมูลภายในที่ไม่เคยเรียนรู้ มันจะตอบไม่ได้ หรือมโนคำตอบขึ้นมาเอง</p>
   <p><b>LLMs ที่ใช้ RAG</b> ไปดึงข้อมูลจากภายนอก เช่น เอกสารภายในบริษัท คู่มือ หรือฐานข้อมูลส่วนตัว มาอ่านก่อน แล้วจึงนำข้อมูลนั้นมาประมวลผลเพื่อตอบคำถาม ทำให้ค้นหาข้อมูลที่ถูกต้องและตอบได้แม่นยำ เปรียบเหมือนสอบแบบเปิดหนังสือ แทนการตอบจากความจำล้วน</p>
 </section>
@@ -181,6 +319,21 @@
   <div class="sec-tag">สไลด์ 17</div>
   <h2>RAG (ต่อ): ทำงานอย่างไร</h2>
   <p><b>ปัญหาของ Context Window</b> ถ้าใส่เอกสารทั้งเล่มลงในช่องแชตตรง ๆ จะเกิดอาการจำหัวกับท้ายได้แต่ลืมตรงกลาง (<b>Lost in the Middle</b>)</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 200" role="img" aria-label="ขั้นตอน RAG">
+      <defs><marker id="a8c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-pen"/></marker></defs>
+      <rect x="5" y="70" width="110" height="56" rx="10" class="f-surface"/><text x="60" y="103" text-anchor="middle" class="f-ink" font-size="15">คำถาม</text>
+      <rect x="150" y="60" width="150" height="76" rx="10" class="f-pensoft"/><text x="225" y="90" text-anchor="middle" class="f-pen" font-size="15">1 Retrieval</text><text x="225" y="112" text-anchor="middle" class="f-muted" font-size="12">ค้นคลังเอกสาร</text><text x="225" y="127" text-anchor="middle" class="f-muted" font-size="12">ดึงเฉพาะย่อหน้าที่เกี่ยว</text>
+      <rect x="335" y="60" width="150" height="76" rx="10" class="f-pensoft"/><text x="410" y="90" text-anchor="middle" class="f-pen" font-size="15">2 Augmentation</text><text x="410" y="112" text-anchor="middle" class="f-muted" font-size="12">รวมข้อความที่เจอ</text><text x="410" y="127" text-anchor="middle" class="f-muted" font-size="12">+ คำถาม เป็น Context</text>
+      <rect x="520" y="60" width="150" height="76" rx="10" class="f-hl"/><text x="595" y="90" text-anchor="middle" class="f-ink" font-size="15">3 Generation</text><text x="595" y="112" text-anchor="middle" class="f-muted" font-size="12">LLMs อ่านแล้ว</text><text x="595" y="127" text-anchor="middle" class="f-muted" font-size="12">เรียบเรียงคำตอบ</text>
+      <g class="s-pen" stroke-width="1.6"><line x1="116" y1="98" x2="146" y2="98" marker-end="url(#a8c)"/><line x1="301" y1="98" x2="331" y2="98" marker-end="url(#a8c)"/><line x1="486" y1="98" x2="516" y2="98" marker-end="url(#a8c)"/></g>
+      <g transform="translate(195 152)"><rect width="18" height="24" rx="2" class="f-surface s-axis"/><rect x="24" width="18" height="24" rx="2" class="f-surface s-axis"/><rect x="48" width="18" height="24" rx="2" class="f-surface s-axis"/></g>
+      <text x="225" y="196" text-anchor="middle" class="f-muted" font-size="11">PDF, คู่มือ, ฐานข้อมูล</text>
+    </svg>
+    </div>
+    <figcaption>ใส่เอกสารทั้งเล่มลงช่องแชตตรง ๆ จะเกิด <b>Lost in the Middle</b> (จำหัวกับท้ายได้ ลืมตรงกลาง) RAG ส่งไปเฉพาะส่วนที่เกี่ยว</figcaption>
+  </figure>
   <p><b>การทำงานของ RAG 3 ขั้น</b></p>
   <ol>
     <li><b>ดึงข้อมูล (Retrieval)</b> นำคำถามไปค้นในคลังเอกสารหรือฐานข้อมูลที่อัปโหลดไว้ ดึงเฉพาะข้อความหรือย่อหน้าที่เกี่ยวข้องกับคำถามมากที่สุดออกมา</li>
@@ -202,7 +355,23 @@
 <section class="note slide" id="s19" data-n="19">
   <div class="sec-tag">สไลด์ 19</div>
   <h2>ทฤษฎีภาระทางปัญญา (Cognitive Load Theory)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>สมองเหมือนโต๊ะทำงานขนาดเล็ก ถ้ามีของรกวางอยู่เต็ม (Extraneous) ก็ไม่มีที่ทำงานจริง (Germane)</p>
   <p><b>Working Memory</b> (ความจำใช้งาน) จุข้อมูลได้จำกัดเพียงประมาณ <b>4–7 หน่วย</b> ในเวลาเดียวกัน ถ้าภาระเกินจะเรียนรู้ไม่ได้ ภาระสมองแบ่งเป็น 3 ประเภท</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 150" role="img" aria-label="แถบความจุ working memory แบ่งเป็น 3 ภาระ ก่อนและหลังครูออกแบบ">
+      <text x="10" y="20" class="f-muted" font-size="13">ก่อน · สไลด์แน่น เสียงรบกวน</text>
+      <rect x="10" y="30" width="250" height="34" class="f-surface"/><text x="135" y="52" text-anchor="middle" class="f-ink" font-size="13">Intrinsic</text>
+      <rect x="260" y="30" width="330" height="34" class="f-bad" opacity="0.85"/><text x="425" y="52" text-anchor="middle" class="f-bg" font-size="13">Extraneous</text>
+      <rect x="590" y="30" width="120" height="34" class="f-good" opacity="0.85"/><text x="650" y="52" text-anchor="middle" class="f-bg" font-size="13">Germane</text>
+      <text x="10" y="94" class="f-muted" font-size="13">หลัง · ครูลดสิ่งรบกวน</text>
+      <rect x="10" y="104" width="250" height="34" class="f-surface"/><text x="135" y="126" text-anchor="middle" class="f-ink" font-size="13">Intrinsic</text>
+      <rect x="260" y="104" width="80" height="34" class="f-bad" opacity="0.85"/><text x="300" y="126" text-anchor="middle" class="f-bg" font-size="12">Extr.</text>
+      <rect x="340" y="104" width="370" height="34" class="f-good" opacity="0.85"/><text x="525" y="126" text-anchor="middle" class="f-bg" font-size="13">Germane · พื้นที่สร้างความเข้าใจ</text>
+    </svg>
+    </div>
+    <figcaption>ความยาวรวมคงที่ = ความจุของ Working Memory</figcaption>
+  </figure>
   <ul>
     <li><b>ภาระภายใน (Intrinsic Load)</b> ความยากโดยธรรมชาติของเนื้อหา เช่น แคลคูลัสย่อมยากกว่าการบวกเลขพื้นฐาน สมองต้องใช้แรงประมวลผลสูงโดยหลีกเลี่ยงไม่ได้ ลดความยากของเนื้อหาไม่ได้ แต่ <b>จัดลำดับการสอน</b> จะช่วยได้</li>
     <li><b>ภาระภายนอก (Extraneous Load)</b> สิ่งรบกวนหรือการออกแบบนำเสนอที่ไม่ดี เช่น สไลด์ตัวหนังสือแน่นเกินไป เสียงรบกวนรอบข้าง ทำให้สมองเสียพื้นที่โฟกัสโดยเปล่าประโยชน์</li>
@@ -214,6 +383,7 @@
 <section class="note slide" id="s20" data-n="20">
   <div class="sec-tag">สไลด์ 20</div>
   <h2>การลัดวงจรทางปัญญา (Cognitive Short-circuiting)</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>ใช้เครื่องคิดเลขตอนเรียนบวกเลขครั้งแรก ได้คำตอบถูก แต่ไม่เคยบวกเป็น</p>
   <p>คำถามสำคัญคือ AI ช่วยทุ่นแรง หรือทำให้นักเรียนหยุดคิด</p>
   <ul>
     <li><b>AI ที่ดี (Good AI)</b> ลด Extraneous Load เช่น ตรวจคำผิด จัดตาราง ทำให้นักเรียนมีเวลาเหลือไปคิดเชิงลึก</li>
@@ -225,7 +395,25 @@
 <section class="note slide" id="s21" data-n="21">
   <div class="sec-tag">สไลด์ 21</div>
   <h2>SAMR Model และ Active Learning</h2>
+  <p class="easy"><b>เข้าใจง่าย ๆ</b>S, A ทำงานเดิมได้เร็วขึ้น · M, R เปลี่ยนงานให้เด็กได้คิดมากขึ้น</p>
   <p>SAMR เป็นกรอบดูว่าเทคโนโลยีถูกใช้ระดับไหนในการสอน แบ่งเป็น 2 โซน 4 ระดับ</p>
+  <figure>
+    <div class="art">
+    <svg viewBox="0 0 720 230" role="img" aria-label="บันได SAMR">
+      <g font-size="14">
+        <rect x="10" y="170" width="170" height="50" rx="6" class="f-surface"/><text x="22" y="192" class="f-ink" font-weight="600">S · Substitution</text><text x="22" y="211" class="f-muted" font-size="12">AI สรุปชีทแทนครู</text>
+        <rect x="190" y="120" width="170" height="100" rx="6" class="f-surface"/><text x="202" y="142" class="f-ink" font-weight="600">A · Augmentation</text><text x="202" y="161" class="f-muted" font-size="12">AI ตรวจไวยากรณ์</text>
+        <rect x="370" y="70" width="170" height="150" rx="6" class="f-pensoft"/><text x="382" y="92" class="f-pen" font-weight="600">M · Modification</text><text x="382" y="111" class="f-muted" font-size="12">ออกแบบงานใหม่</text><text x="382" y="127" class="f-muted" font-size="12">ให้สืบค้นและสะท้อนคิด</text>
+        <rect x="550" y="20" width="160" height="200" rx="6" class="f-pensoft"/><text x="562" y="42" class="f-pen" font-weight="600">R · Redefinition</text><text x="562" y="61" class="f-muted" font-size="12">ภารกิจที่ทำไม่ได้</text><text x="562" y="77" class="f-muted" font-size="12">ถ้าไม่มี AI เช่น คุยกับ</text><text x="562" y="93" class="f-muted" font-size="12">บุคคลประวัติศาสตร์จำลอง</text>
+      </g>
+      <text x="185" y="40" text-anchor="middle" class="f-muted" font-size="13">Enhancement Zone</text>
+      <text x="185" y="58" text-anchor="middle" class="f-muted" font-size="12">สะดวก รวดเร็ว</text>
+      <text x="455" y="40" text-anchor="middle" class="f-pen" font-size="13">Transformation Zone</text>
+      <text x="455" y="58" text-anchor="middle" class="f-pen" font-size="12">คิดเชิงลึก · Active Learning</text>
+    </svg>
+    </div>
+    <figcaption>คำถามสำคัญ: <b>ขณะที่ AI ทำงาน ใครกำลังคิดมากกว่ากัน AI หรือนักเรียน</b></figcaption>
+  </figure>
   <p><b>โซนการยกระดับสิ่งเดิม (Enhancement Zone)</b> เน้นความสะดวกและความเร็ว</p>
   <ul>
     <li><b>S · Substitution (การแทนที่)</b> เปลี่ยนเครื่องมือ แต่ผลลัพธ์เดิม เช่น ให้ AI สรุปชีทแทนครู</li>
